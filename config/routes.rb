@@ -1,8 +1,13 @@
 Mellterm11::Application.routes.draw do
-  get "pages/home"
-  get "pages/about"	
-  get "pages/contact"
-
+ 
+	root :to => "pages#home"
+  
+	match '/about', :to => 'pages#about' 
+	match '/profile', :to => 'pages#profile' 
+	match '/mellterm', :to => 'pages#mellterm' 
+	match '/terms_and_conditions', :to => 'pages#terms_and_conditions' 
+ 
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

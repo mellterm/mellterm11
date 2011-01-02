@@ -26,20 +26,6 @@ describe "GET 'home'" do
 	end
 end		
 
-describe "GET 'contact'" do
-    it "should be successful" do
-      get 'contact'
-      response.should be_success
-    end
-
-  
-  	it "should have the right title" do
-		get 'contact'
-		response.should have_selector("title",
-		:content => "#{@base_title} | Contact")
-	end
-end
-
 describe "GET 'about'" do
     it "should be successful" do
       get 'about'
@@ -52,5 +38,48 @@ describe "GET 'about'" do
 		:content => "#{@base_title} | About")
 	end
 end
+
+describe "GET 'profile'" do
+    it "should be successful" do
+      get 'profile'
+      response.should be_success
+    end
+
+  
+  	it "should have the right title" do
+		get 'profile'
+		response.should have_selector("title",
+		:content => "#{@base_title} | Profile")
+	end
+end
+
+describe "GET 'mellterm'" do
+    it "should be successful" do
+      get 'mellterm'
+      response.should be_success
+    end
+
+  
+  	it "should have the right title" do
+		get 'mellterm'
+		response.should have_selector("title",
+		:content => "#{@base_title} | Mellterm")
+	end
+end
+
+describe "GET 'mellterm'" do
+    it "should be successful" do
+      get 'mellterm'
+      response.should be_success
+    end
+
+  
+  	it "should have the right title" do
+		get 'terms_and_conditions'
+		response.should have_selector("title",
+		:content => "#{@base_title} | Terms & Conditions")
+	end
+end
+
 
 end

@@ -3,12 +3,20 @@ class PagesController < ApplicationController
   	@title = "Home"
   end
 
-  def contact
-  	@title = "Contact"
-  end
-
   def about
   	@title = "About"
   end
+  
+  def profile
+  	@title = "Profile"
+  end
+  
+  def mellterm
+	@title = "Mellterm"
+	end
 
+  def terms_and_conditions
+  	@title = "Terms & Conditions"
+  end	
+	
 end
