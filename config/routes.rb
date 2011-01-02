@@ -1,5 +1,6 @@
 Mellterm11::Application.routes.draw do
- 
+ 	get "users/new"
+	
 	root :to => "pages#home"
   
 	match '/about', :to => 'pages#about' 
@@ -7,6 +8,7 @@ Mellterm11::Application.routes.draw do
 	match '/mellterm', :to => 'pages#mellterm' 
 	match '/terms_and_conditions', :to => 'pages#terms_and_conditions' 
  
+	match '/signup', :to => 'users#new' 
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
