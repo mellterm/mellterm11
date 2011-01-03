@@ -6,6 +6,8 @@
         <dict>
             <key>routes.</key>
             <string>config\routes.rb</string>
+            <key>userspec</key>
+            <string>spec\models\user_spec.rb</string>
         </dict>
     </dict>
 </plist>
