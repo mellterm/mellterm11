@@ -22,7 +22,6 @@ it "should have a Home page at '/'" do
 	response.should have_selector('title', :content => "Mellterm" )  
   end  
   
-  
 it "should have a Terms and Conditions page at '/terms_and_conditions'" do
 	get '/terms_and_conditions'
 	response.should have_selector('title', :content => "Terms & Conditions" )  
