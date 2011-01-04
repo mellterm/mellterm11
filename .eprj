@@ -12,6 +12,8 @@
             <string>config\routes.rb</string>
             <key>routes.rb</key>
             <string>config\routes.rb</string>
+            <key>user.r</key>
+            <string>app\models\user.rb</string>
             <key>users</key>
             <string>app\controllers\users_controller.rb</string>
             <key>userspec</key>
