@@ -6,6 +6,10 @@
         <dict>
             <key>routes.</key>
             <string>config\routes.rb</string>
+            <key>routes.rb</key>
+            <string>config\routes.rb</string>
+            <key>users</key>
+            <string>app\controllers\users_controller.rb</string>
             <key>userspec</key>
             <string>spec\models\user_spec.rb</string>
         </dict>
