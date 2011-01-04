@@ -1,14 +1,25 @@
-<h1>
-<%= gravatar_for (@user, :d =>'mm' ) %>
-<%= @user.name %> 
-</h1>
+<table class="profile" summary="Profile information">
+	<tr>
+		<td class="main">
+			<h1>
+				<%= gravatar_for (@user) %>
+				<%= @user.name %> 
+			</h1>
+		</td>
+		
+		<td class="sidebar round">
+			<strong>Name</strong> <%= @user.name %>  <br />
+			<strong>URL</strong> <%= link_to user_path(@user.id),user_path(@user.id) %> 
+		</td>
+	</tr>
+	
+	
+	</table>
 
 
-<%= @user.phone %>,
-<%= @user.skype %>,
-
-<p>Location information:</p>
+<strong>Phone</strong> <%= @user.phone %> <br/>
+ 
+<strong>Skype</strong><%= @user.skype %>
+<p>My Location</p>
 <%= @user.time_zone %>,
-
-<p>Financial Information:</p>
 <%= @user.rate %>,

@@ -38,6 +38,13 @@ describe "GET 'show'" do
 		response.should have_selector('h1>img', :class=>'gravatar')
 	
 end
+	it "should have the right URL" do
+		get :show, :id=>@user.id
+		response.should have_selector('td>a', :content => user_path(@user),
+											:href => user_path(@user)
+		)
+	end
+
 
 describe "GET 'new'" do
 	it "should be successful" do

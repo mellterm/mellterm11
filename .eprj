@@ -4,6 +4,8 @@
     <dict>
         <key>fileTriggers</key>
         <dict>
+            <key>custom</key>
+            <string>public\stylesheets\custom.css</string>
             <key>routes</key>
             <string>config\routes.rb</string>
             <key>routes.</key>
