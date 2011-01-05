@@ -4,8 +4,12 @@
     <dict>
         <key>fileTriggers</key>
         <dict>
+            <key>applica</key>
+            <string>app\views\layouts\application.html.erb</string>
             <key>custom</key>
             <string>public\stylesheets\custom.css</string>
+            <key>new</key>
+            <string>app\views\users\new.html.erb</string>
             <key>routes</key>
             <string>config\routes.rb</string>
             <key>routes.</key>
@@ -17,7 +21,9 @@
             <key>users</key>
             <string>app\controllers\users_controller.rb</string>
             <key>userspec</key>
-            <string>spec\models\user_spec.rb</string>
+            <string>spec\controllers\users_controller_spec.rb</string>
+            <key>usspec</key>
+            <string>spec\controllers\users_controller_spec.rb</string>
         </dict>
     </dict>
 </plist>
