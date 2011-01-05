@@ -19,7 +19,7 @@
             <key>user.r</key>
             <string>app\models\user.rb</string>
             <key>users</key>
-            <string>app\controllers\users_controller.rb</string>
+            <string>spec\controllers\users_controller_spec.rb</string>
             <key>userspec</key>
             <string>spec\controllers\users_controller_spec.rb</string>
             <key>usspec</key>
