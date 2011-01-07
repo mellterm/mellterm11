@@ -3,9 +3,6 @@ class PagesController < ApplicationController
   	@title = "Home"
   end
 
-  def about
-  	@title = "About"
-  end
   
   def profile
   	@title = "Profile"
@@ -18,5 +15,11 @@ class PagesController < ApplicationController
   def terms_and_conditions
   	@title = "Terms & Conditions"
   end	
+  
+  def developers
+  @title = "Developers"
+  	
+  end
+  	
 	
 end

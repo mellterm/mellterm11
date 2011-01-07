@@ -26,16 +26,16 @@ describe "GET 'home'" do
 	end
 end		
 
-describe "GET 'about'" do
+describe "GET 'developers'" do
     it "should be successful" do
-      get 'about'
+      get 'developers'
       response.should be_success
     end
 
 	it "should have the right title" do
-		get 'about'
+		get 'developers'
 		response.should have_selector("title",
-		:content => "#{@base_title} | About")
+		:content => "#{@base_title} | Developers")
 	end
 end
 

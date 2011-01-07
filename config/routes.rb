@@ -6,7 +6,7 @@ Mellterm11::Application.routes.draw do
  	
 	root :to => "pages#home"
   
-	match '/about', :to => 'pages#about' 
+	match '/developers', :to => 'pages#developers' 
 	match '/profile', :to => 'pages#profile' 
 	match '/mellterm', :to => 'pages#mellterm' 
 	match '/terms_and_conditions', :to => 'pages#terms_and_conditions' 
@@ -26,7 +26,7 @@ Mellterm11::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  # Sample resource route (maps HTTP verbs put, get, set, update to controller actions automatically):
   #   resources :products
 
   # Sample resource route with options:

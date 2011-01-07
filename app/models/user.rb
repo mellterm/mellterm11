@@ -1,4 +1,23 @@
 # == Schema Information
+# Schema version: 20110104084431
+#
+# Table name: users
+#
+#  id                 :integer         not null, primary key
+#  name               :string(255)
+#  email              :string(255)
+#  phone              :string(255)
+#  skype              :string(255)
+#  time_zone          :string(255)
+#  notes              :text
+#  rate               :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#  encrypted_password :string(255)
+#  salt               :string(255)
+#
+
+# == Schema Information
 # Schema version: 20110103175526
 #
 # Table name: users
@@ -48,10 +67,19 @@ class User < ActiveRecord::Base
 	end
 	
 	#class method self.authenticate is also ok
+	#also ok class << self \n def authenticate
 	def User.authenticate(email, submitted_password)
 		user = User.find_by_email(email)
 		return nil if user.nil?
 		return user if user.has_password?(submitted_password)
+	end
+	
+	def User.authenticate_with_salt(id, cookie_salt)
+		user = find_by_id(id)
+		return nil if user.nil?
+		return user if user.salt == cookie_salt
+		#Also: (user && user.salt == cookie_salt) ? user:nil		
+		
 	end
 	
 	
