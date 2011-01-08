@@ -79,7 +79,13 @@ end
 			visit root_path
 			response.should have_selector("a", 	:href => user_path(@user),
 												:content => "My Profile")
-end
+		end
+		
+		it "should have a users path" do
+			visit root_path
+			response.should have_selector("a", 	:href => users_path,
+												:content => "Users") 
+		end
 		
 	end
 	

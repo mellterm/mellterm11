@@ -8,10 +8,14 @@
             <string>app\views\layouts\application.html.erb</string>
             <key>custom</key>
             <string>public\stylesheets\custom.css</string>
+            <key>custom.</key>
+            <string>public\stylesheets\custom.css</string>
             <key>friendl</key>
             <string>spec\requests\friendly_forwardings_spec.rb</string>
             <key>friendly</key>
             <string>spec\requests\friendly_forwardings_spec.rb</string>
+            <key>layo</key>
+            <string>spec\requests\layout_links_spec.rb</string>
             <key>new</key>
             <string>app\views\users\new.html.erb</string>
             <key>new.html</key>
