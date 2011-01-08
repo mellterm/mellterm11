@@ -8,6 +8,10 @@
             <string>app\views\layouts\application.html.erb</string>
             <key>custom</key>
             <string>public\stylesheets\custom.css</string>
+            <key>friendl</key>
+            <string>spec\requests\friendly_forwardings_spec.rb</string>
+            <key>friendly</key>
+            <string>spec\requests\friendly_forwardings_spec.rb</string>
             <key>new</key>
             <string>app\views\users\new.html.erb</string>
             <key>new.html</key>
@@ -18,10 +22,12 @@
             <string>config\routes.rb</string>
             <key>routes.rb</key>
             <string>config\routes.rb</string>
+            <key>sessions</key>
+            <string>app\helpers\sessions_helper.rb</string>
             <key>user.r</key>
             <string>app\models\user.rb</string>
             <key>users</key>
-            <string>spec\controllers\users_controller_spec.rb</string>
+            <string>app\controllers\users_controller.rb</string>
             <key>users_sp</key>
             <string>spec\requests\users_spec.rb</string>
             <key>userspec</key>
