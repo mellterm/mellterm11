@@ -20,6 +20,8 @@
             <string>app\models\user.rb</string>
             <key>users</key>
             <string>spec\controllers\users_controller_spec.rb</string>
+            <key>users_sp</key>
+            <string>spec\requests\users_spec.rb</string>
             <key>userspec</key>
             <string>spec\controllers\users_controller_spec.rb</string>
             <key>usspec</key>
