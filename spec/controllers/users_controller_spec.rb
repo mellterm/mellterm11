@@ -197,5 +197,23 @@ end
 	end
 end	
 	
+	describe 'authentification for user edit and update actions' do
+		
+		before (:each)do
+		@user = Factory(:user)
+		end
+		
+		it "should deny access to 'edit'" do
+			get 'edit', :id => @user
+			response.should redirect_to(signin_path)
+			flash[:notice].should =~/sign in/i
+		end
+		
+		it "should deny access to 'update'" do
+			put 'update', :id => @user, :user => {}
+			response.should redirect_to(signin_path)
+		end
+		
+	end
 			
 end
