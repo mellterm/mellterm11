@@ -19,6 +19,11 @@ render_views
 				test_sign_in(@user)
 				second = Factory(:user, :email => "another@example.com")
 				third = Factory(:user, :email => "another@example.net")
+				
+				30.times do 
+					Factory(:user, :email => Factory.next(:email))
+				end
+				
 			end
 			
 			it "should be sucessful" do
@@ -34,9 +39,21 @@ render_views
 			
 			it "should have an element for each user" do
 				get 'index'
-				User.all.each do |user| 
+				User.paginate(:page => 1).each do |user| 
 					response.should have_selector('li', :content=> user.name)
+					response.should have_selector('span.disabled', :content=> "Previous")
+					response.should have_selector('a', 	:href => "/users?page=2"
+														:content=> "2")
+					response.should have_selector("a", 	:href => "/users?page=2",
+														:content => "Next")
 				end
+			end
+			
+			it "should paginate users" do
+				get 'index'
+				response.should have_selector('div.pagination')
+				
+				
 			end
 			
 		end
@@ -262,8 +279,10 @@ end
 		
 		describe "for signed in users" do
 			before (:each)do
-			wrong_user = Factory(:user, :email => "user@example.net")
-			test_sign_in(wrong_user)
+				wrong_user = Factory(:user, :email => "user@example.net")
+				test_sign_in(wrong_user)
+				
+				
 			end
 		
 			it "should require matching users for 'edit'" do

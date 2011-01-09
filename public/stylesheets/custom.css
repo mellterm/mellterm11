@@ -36,7 +36,7 @@ float: right;
 }
 nav {
 background-color: white;
-padding: 0 0.7em;
+padding: 0 0.2em;
 white-space: nowrap;
 }
 nav ul {
@@ -158,10 +158,10 @@ padding: 1em;
 background: #fff;
 }
 
-ul.userslist {
+
+ul.users {
 margin-top: 1em;
 }
-.userslist li {
+.users li {
 list-style: none;
 }
-

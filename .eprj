@@ -6,6 +6,8 @@
         <dict>
             <key>applica</key>
             <string>app\views\layouts\application.html.erb</string>
+            <key>custo</key>
+            <string>public\stylesheets\custom.css</string>
             <key>custom</key>
             <string>public\stylesheets\custom.css</string>
             <key>custom.</key>
@@ -14,6 +16,8 @@
             <string>spec\requests\friendly_forwardings_spec.rb</string>
             <key>friendly</key>
             <string>spec\requests\friendly_forwardings_spec.rb</string>
+            <key>gem</key>
+            <string>Gemfile</string>
             <key>layo</key>
             <string>spec\requests\layout_links_spec.rb</string>
             <key>new</key>
