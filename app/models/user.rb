@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110104084431
+# Schema version: 20110109083719
 #
 # Table name: users
 #
@@ -15,6 +15,7 @@
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
+#  admin              :boolean
 #
 
 # == Schema Information
@@ -44,7 +45,7 @@ class User < ActiveRecord::Base
 	phone_regex = /\A[\d+\-\s]+\z/
 	
 	validates :name,  	:presence => true,
-						:length => {:minimum => 4, :maximum => 15}
+						:length => {:minimum => 4, :maximum => 30}
 	
 	validates :email, 	:presence => true,
 						:format => {:with => email_regex},

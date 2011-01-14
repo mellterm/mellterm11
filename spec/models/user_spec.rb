@@ -32,7 +32,7 @@ describe User do
 	end
 	
 	it 'should reject names that are too long' do
-		long_name = "a" *25
+		long_name = "a" *35
 		long_name_user = User.new(@attr.merge(:name=>long_name))
 		long_name_user.should_not be_valid
 	end
@@ -113,7 +113,7 @@ describe User do
 		end
 	end
 	
-	describe "password encryption" do
+		describe "password encryption" do
 		
 		before(:each) do
 			@user = User.create!(@attr)
@@ -164,10 +164,43 @@ describe User do
 					User.authenticate(@attr[:email], @attr[:password]).should == @user
 					
 				end
-							
+		end		
 		end	
+		
+		describe "Admin attribute" do
 			
-		end	
+			before(:each) do
+				@attr = { 	
+				:name => "A User", 
+			   	:email => "anyuser@example.com", 
+			   	:phone => "023-476-292",
+			   	:skype => "blankskype",
+			   	:time_zone => "UTC",
+			   	:notes => "instructions",
+			   	:rate => 0.10,
+			   	:password =>"foobar",
+			   	:password_confirmation =>"foobar"
+	   		}		
+				@user = User.create!(@attr)
+				
+			end
+			
+			it "should respond to admin" do
+				@user.should respond_to(:admin)
+			end
+			
+			it "should not be an admin by default" do
+				#calls @user.admin? 
+				@user.should_not be_admin	
+			end
+			
+			it "should be convertible to admin" do
+				#boolean cols get toggle automatically
+				@user.toggle!(:admin)
+				@user.should be_admin
+			end
+			
+		end
 		
 	end
 	

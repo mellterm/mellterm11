@@ -18,6 +18,8 @@
             <string>spec\requests\friendly_forwardings_spec.rb</string>
             <key>gem</key>
             <string>Gemfile</string>
+            <key>index.h</key>
+            <string>app\views\users\index.html.erb</string>
             <key>layo</key>
             <string>spec\requests\layout_links_spec.rb</string>
             <key>new</key>
@@ -32,11 +34,19 @@
             <string>config\routes.rb</string>
             <key>sessions</key>
             <string>app\helpers\sessions_helper.rb</string>
+            <key>user</key>
+            <string>app\models\user.rb</string>
             <key>user.r</key>
             <string>app\models\user.rb</string>
+            <key>user_sp</key>
+            <string>spec\models\user_spec.rb</string>
             <key>users</key>
-            <string>app\controllers\users_controller.rb</string>
+            <string>.git\refs\heads\modeling-users</string>
+            <key>users_controller_spec</key>
+            <string>spec\controllers\users_controller_spec.rb</string>
             <key>users_sp</key>
+            <string>spec\requests\users_spec.rb</string>
+            <key>userspe</key>
             <string>spec\requests\users_spec.rb</string>
             <key>userspec</key>
             <string>spec\controllers\users_controller_spec.rb</string>
