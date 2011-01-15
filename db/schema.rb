@@ -10,7 +10,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110109083719) do
+ActiveRecord::Schema.define(:version => 20110115003458) do
+
+  create_table "domains", :force => true do |t|
+    t.string   "code"
+    t.string   "long_name"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "languages", :force => true do |t|
+    t.string   "code"
+    t.string   "long_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "terms", :force => true do |t|
+    t.string   "source_content"
+    t.string   "target_content"
+    t.integer  "source_language_id"
+    t.integer  "target_language_id"
+    t.integer  "domain_id"
+    t.text     "notes"
+    t.integer  "source"
+    t.boolean  "is_query"
+    t.boolean  "is_public"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "terms", ["domain_id"], :name => "index_terms_on_domain_id"
+  add_index "terms", ["source_language_id"], :name => "index_terms_on_source_language_id"
+  add_index "terms", ["target_language_id"], :name => "index_terms_on_target_language_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

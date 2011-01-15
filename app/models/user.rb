@@ -41,6 +41,8 @@ class User < ActiveRecord::Base
 	attr_accessor	:password
 	attr_accessible :name, :email,:phone, :skype, :time_zone, :notes, :rate, :password, :password_confirmation 
 	
+	has_many :terms, :dependent => :destroy
+	
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[1-z]+\z/i
 	phone_regex = /\A[\d+\-\s]+\z/
 	

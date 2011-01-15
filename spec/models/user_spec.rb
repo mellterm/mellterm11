@@ -199,8 +199,43 @@ describe User do
 				@user.toggle!(:admin)
 				@user.should be_admin
 			end
-			
 		end
+			
+		describe "term associations" do
+			
+			before (:each) do
+				@attr = { 	
+					:name => "A User", 
+				   	:email => "someotheruser@example.com", 
+				   	:phone => "023-476-292",
+				   	:skype => "blankskype",
+				   	:time_zone => "UTC",
+				   	:notes => "instructions",
+				   	:rate => 0.10,
+				   	:password =>"foobar",
+				   	:password_confirmation =>"foobar"
+	   		}
+				@user = User.create!(@attr)
+				@t1 = Factory(:term, :user => @user, :domain_id => 1, :created_at => 1.day.ago)
+				@t2 = Factory(:term, :user => @user, :domain_id => 3, :created_at => 3.day.ago)
+				@t3 = Factory(:term, :user => @user, :domain_id => 2, :created_at => 2.day.ago)				
+			end
+			
+				it "should have a term attribute " do
+					@user.should respond_to(:terms) 
+				end
+				
+				it "should have the right terms in the right order (by created_at)" do
+					@user.terms.should == [@t1, @t3, @t2]
+				end
+				
+				it "should destroy associated terms" do
+					@user.destroy
+					[@t1, @t2, @t3].each do |term|
+						Term.find_by_id(term.id).should be_nil
+					end
+				end
+		end	
 		
 	end
 	
