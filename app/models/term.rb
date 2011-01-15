@@ -24,5 +24,8 @@ class Term < ActiveRecord::Base
 	
 	belongs_to :user
 	
+	validates_presence_of :source_content, :target_content, :source_language_id, :target_language_id, :domain_id, :user_id
+	
+
 	default_scope :order => 'terms.domain_id ASC'
 end

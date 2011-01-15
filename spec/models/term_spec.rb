@@ -8,7 +8,8 @@ describe Term do
 				:source_content => "Irgendetwas", 
 			   	:target_content => "something or another", 
 			   	:source_language_id => 1,
-			   	:target_language_id => 2	
+			   	:target_language_id => 2,
+			   	:domain_id =>1	
 	   		}
 	end
 
@@ -34,8 +35,22 @@ describe Term do
 			@term.user.should == @user			
 			
 		end
-		
 	end
 	
+	describe "term validations" do
+		
+		it "should have a user id" do
+			Term.new(@attr).should_not be_valid
+		end
+		
+		it 'should require a non-blank content' do
+			@user.terms.build(:source_content => "      ", :target_content => "").should_not be_valid
+		end
+		
+		it "should reject content without source, target content, -language and domain" do
+			@user.terms.build(:notes => "Ipsum lorum", :source => 1).should_not be_valid
+		end
+		
+	end
 
 end
