@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@title = @user.name	
 		@terms = @user.terms.paginate(:page => params[:page])
+		@domains = Domain.find(params[:id])
 	
 	end
 	
@@ -58,9 +59,7 @@ class UsersController < ApplicationController
 	
 	private
 	
-	def authenticate
-		deny_access unless signed_in?
-	end	
+
 	
 	def correct_user
 		@user = User.find(params[:id])

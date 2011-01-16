@@ -23,9 +23,11 @@ class Term < ActiveRecord::Base
 	attr_accessible :source_content, :target_content, :source_language_id,:target_language_id, :domain_id, :notes, :source, :is_query, :is_public
 	
 	belongs_to :user
+	belongs_to :language
+	belongs_to :domain
 	
 	validates_presence_of :source_content, :target_content, :source_language_id, :target_language_id, :domain_id, :user_id
 	
 
-	default_scope :order => 'terms.domain_id ASC'
+	default_scope :order => 'terms.created_at DESC'
 end

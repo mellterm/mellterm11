@@ -11,4 +11,6 @@
 #
 
 class Language < ActiveRecord::Base
+	
+	has_many :terms
 end

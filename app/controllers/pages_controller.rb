@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   def home
   	@title = "Home"
+  	if signed_in?
+  	@term = Term.new
+  	end 
   end
 
   

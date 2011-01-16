@@ -12,5 +12,5 @@
 #
 
 class Domain < ActiveRecord::Base
-
+	has_many :terms
 end

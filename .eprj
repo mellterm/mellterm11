@@ -4,6 +4,8 @@
     <dict>
         <key>fileTriggers</key>
         <dict>
+            <key>_fields</key>
+            <string>app\views\users\_fields.html.erb</string>
             <key>applica</key>
             <string>app\views\layouts\application.html.erb</string>
             <key>custo</key>
@@ -14,20 +16,28 @@
             <string>public\stylesheets\custom.css</string>
             <key>custom.c</key>
             <string>public\stylesheets\custom.css</string>
+            <key>edit.</key>
+            <string>app\views\users\edit.html.erb</string>
             <key>friendl</key>
             <string>spec\requests\friendly_forwardings_spec.rb</string>
             <key>friendly</key>
             <string>spec\requests\friendly_forwardings_spec.rb</string>
             <key>gem</key>
             <string>Gemfile</string>
+            <key>home</key>
+            <string>app\views\pages\home.html.erb</string>
             <key>index.h</key>
             <string>app\views\users\index.html.erb</string>
             <key>layo</key>
             <string>spec\requests\layout_links_spec.rb</string>
             <key>new</key>
             <string>app\views\users\new.html.erb</string>
-            <key>new.html</key>
+            <key>new.</key>
             <string>app\views\users\new.html.erb</string>
+            <key>new.html</key>
+            <string>app\views\sessions\new.html.erb</string>
+            <key>route</key>
+            <string>config\routes.rb</string>
             <key>routes</key>
             <string>config\routes.rb</string>
             <key>routes.</key>
@@ -36,6 +46,8 @@
             <string>config\routes.rb</string>
             <key>sessions</key>
             <string>app\helpers\sessions_helper.rb</string>
+            <key>term_spec</key>
+            <string>spec\models\term_spec.rb</string>
             <key>user</key>
             <string>app\models\user.rb</string>
             <key>user.r</key>
