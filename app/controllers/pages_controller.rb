@@ -2,13 +2,14 @@ class PagesController < ApplicationController
   def home
   	@title = "Home"
   	if signed_in?
-  	@term = Term.new
+  		@term = Term.new
+  		@feed_items = current_user.feed.paginate(:page => params[:page])
   	end 
   end
 
   
-  def profile
-  	@title = "Profile"
+  def about
+  	@title = "About"
   end
   
   def mellterm
@@ -20,7 +21,7 @@ class PagesController < ApplicationController
   end	
   
   def developers
-  @title = "Developers"
+  	@title = "Developers"
   	
   end
   	

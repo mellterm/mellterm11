@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@title = @user.name	
 		@terms = @user.terms.paginate(:page => params[:page])
-		@domains = Domain.find(params[:id])
 	
 	end
 	

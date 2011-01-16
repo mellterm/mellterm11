@@ -4,6 +4,8 @@
     <dict>
         <key>fileTriggers</key>
         <dict>
+            <key>_feed</key>
+            <string>app\views\shared\_feed_item.html.erb</string>
             <key>_fields</key>
             <string>app\views\users\_fields.html.erb</string>
             <key>applica</key>
@@ -26,9 +28,13 @@
             <string>Gemfile</string>
             <key>home</key>
             <string>app\views\pages\home.html.erb</string>
+            <key>home.</key>
+            <string>app\views\pages\home.html.erb</string>
             <key>index.h</key>
             <string>app\views\users\index.html.erb</string>
             <key>layo</key>
+            <string>spec\requests\layout_links_spec.rb</string>
+            <key>layou</key>
             <string>spec\requests\layout_links_spec.rb</string>
             <key>new</key>
             <string>app\views\users\new.html.erb</string>
@@ -36,6 +42,8 @@
             <string>app\views\users\new.html.erb</string>
             <key>new.html</key>
             <string>app\views\sessions\new.html.erb</string>
+            <key>pages</key>
+            <string>app\controllers\pages_controller.rb</string>
             <key>route</key>
             <string>config\routes.rb</string>
             <key>routes</key>
@@ -46,10 +54,22 @@
             <string>config\routes.rb</string>
             <key>sessions</key>
             <string>app\helpers\sessions_helper.rb</string>
+            <key>term</key>
+            <string>app\controllers\terms_controller.rb</string>
+            <key>term.htm</key>
+            <string>app\views\terms\_term.html.erb</string>
+            <key>term.html</key>
+            <string>app\views\terms\_term.html.erb</string>
+            <key>term_co</key>
+            <string>app\controllers\terms_controller.rb</string>
+            <key>term_con</key>
+            <string>spec\controllers\terms_controller_spec.rb</string>
             <key>term_spec</key>
             <string>spec\models\term_spec.rb</string>
+            <key>terms</key>
+            <string>app\controllers\terms_controller.rb</string>
             <key>user</key>
-            <string>app\models\user.rb</string>
+            <string>spec\models\user_spec.rb</string>
             <key>user.r</key>
             <string>app\models\user.rb</string>
             <key>user_sp</key>

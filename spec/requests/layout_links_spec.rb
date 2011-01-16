@@ -12,9 +12,9 @@ it "should have a Home page at '/'" do
 	response.should have_selector('title', :content => "Developers" )  
   end  
   
-  it "should have a Profile page at '/profile'" do
+  it "should have an About page at '/profile'" do
 	get '/profile'
-	response.should have_selector('title', :content => "Profile" )  
+	response.should have_selector('title', :content => "About" )  
   end  
   
   it "should have a link to Mellterm page at '/mellterm'" do
@@ -44,8 +44,8 @@ it "should have the right links on the layout" do
 	response.should have_selector('title', :content => "Home" )
 	click_link "Developers"
 	response.should have_selector('title', :content => "Developers" )
-	click_link "Profile"
-	response.should have_selector('title', :content => "Profile" )
+	click_link "About"
+	response.should have_selector('title', :content => "About" )
 	click_link "Home"
 	response.should have_selector('title', :content => "Home" )
 	click_link "Sign Up Now"

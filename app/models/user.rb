@@ -69,6 +69,13 @@ class User < ActiveRecord::Base
 		self.encrypted_password == encrypt(submitted_password)		
 	end
 	
+	
+	def feed
+		#=? used to escape SQL
+		Term.where("user_id= ?", self.id)
+	end
+	
+	
 	#class method self.authenticate is also ok
 	#also ok class << self \n def authenticate
 	def User.authenticate(email, submitted_password)

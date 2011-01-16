@@ -235,6 +235,26 @@ describe User do
 						Term.find_by_id(term.id).should be_nil
 					end
 				end
+		
+		
+		describe "term feed" do
+			
+			it "should have a feed action" do
+				@user.should respond_to(:feed)
+			end
+		
+			it "should include other user's terms" do
+				@user.feed.should include(@t1)
+				@user.feed.include?(@t2).should be_true
+			end
+				
+			it "should not include a different user's terms" do
+				t4 = Factory(:term, :user=> Factory(:user, 
+													:email => Factory.next(:email)))
+				
+				@user.feed.should_not include(t4)
+			end
+		end	
 		end	
 		
 	end

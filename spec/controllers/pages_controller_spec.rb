@@ -39,17 +39,17 @@ describe "GET 'developers'" do
 	end
 end
 
-describe "GET 'profile'" do
+describe "GET 'about'" do
     it "should be successful" do
-      get 'profile'
+      get 'about'
       response.should be_success
     end
 
   
   	it "should have the right title" do
-		get 'profile'
+		get 'about'
 		response.should have_selector("title",
-		:content => "#{@base_title} | Profile")
+		:content => "#{@base_title} | About")
 	end
 end
 

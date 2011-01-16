@@ -3,12 +3,12 @@ Mellterm11::Application.routes.draw do
 
  	resources :users
  	resources :sessions, :only => 	[:new, :create, :destroy]
- 	resources :terms, :only => 		[:create, :destroy, :update]
+ 	resources :terms, :only => 		[:create, :destroy, :update, :show]
  	
 	root :to => "pages#home"
   
 	match '/developers', :to => 'pages#developers' 
-	match '/profile', :to => 'pages#profile' 
+	match '/profile', :to => 'pages#about' 
 	match '/mellterm', :to => 'pages#mellterm' 
 	match '/terms_and_conditions', :to => 'pages#terms_and_conditions' 
  

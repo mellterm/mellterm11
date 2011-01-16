@@ -18,5 +18,6 @@ Factory.define :term do |term|
 	 term.notes "Some notes about where to use this term"
 	 term.is_query true
 	 term.user_id 1
+	 term.domain_id 1
 	 term.association :user
 end
