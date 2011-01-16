@@ -12,6 +12,8 @@
             <string>public\stylesheets\custom.css</string>
             <key>custom.</key>
             <string>public\stylesheets\custom.css</string>
+            <key>custom.c</key>
+            <string>public\stylesheets\custom.css</string>
             <key>friendl</key>
             <string>spec\requests\friendly_forwardings_spec.rb</string>
             <key>friendly</key>

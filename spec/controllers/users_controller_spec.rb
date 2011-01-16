@@ -78,7 +78,6 @@ render_views
 	end
 
 
-
 	describe "GET 'show'" do
 		
 		before(:each) do
@@ -118,6 +117,74 @@ render_views
 													:href => user_path(@user)
 			)
 		end
+		
+		it "should show the user's terms" do
+			t1 = Factory(:term, :user => @user, 
+								:source_content => "Biegeempfindlichen",
+								:target_content => "bending sensitivities",
+								:source_language_id => 1,
+								:target_language_id => 2,
+								:domain_id =>1,
+								:notes => "This one is reliable"
+								)
+			
+			t2 = Factory(:term, :user => @user, 
+								:source_content => "Biegeempfindlichen",
+								:target_content => "sensibilite du flex",
+								:source_language_id => 1,
+								:target_language_id => 3,
+								:domain_id =>1,
+								:notes => "C'est vrais"
+								)							
+			t3 = Factory(:term, :user => @user, 
+								:source_content => "Automatische Optische Inspektion",
+								:target_content => "Automatic Optical Inspection",
+								:source_language_id => 1,
+								:target_language_id => 2,
+								:domain_id =>1
+								)					
+			get 'show', :id => @user	
+			
+			response.should have_selector('span.source_content', :content => t1.source_content)	
+			response.should have_selector('span.source_content', :content => t2.source_content)
+			response.should have_selector('span.source_content', :content => t3.source_content)		
+		end
+		
+			it "should paginate terms" do
+				31.times {
+					Factory(:term, 
+								:user => @user, 
+								:source_content => "Deutsches Wort",
+								:target_content => "Englisches Wort",
+								:source_language_id => 1,
+								:target_language_id => 2,
+								:domain_id =>1,
+								:notes => "Kommentar/Comments"
+								)			
+				
+				}
+				get 'show', :id => @user
+				response.should have_selector('div.pagination')
+			end
+		
+			it "should display the term count" do
+				10.times {
+					Factory(:term, 
+								:user => @user, 
+								:source_content => "Deutsches Wort",
+								:target_content => "Englisches Wort",
+								:source_language_id => 1,
+								:target_language_id => 2,
+								:domain_id =>1,
+								:notes => "Kommentar/Comments"
+								)			
+				
+				}
+				get 'show', :id => @user
+				response.should have_selector('td.sidebar', 
+												:content => @user.terms.count.to_s)
+			end
+			
 	end
 
 	describe "GET 'new'" do

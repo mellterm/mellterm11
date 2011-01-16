@@ -165,3 +165,67 @@ margin-top: 1em;
 .users li {
 list-style: none;
 }
+
+
+/* Show Terms on Users page */
+
+.source_content {
+	color: blue;
+} 
+
+.target_content {
+	color: green;
+} 
+
+.source_language, .target_language {
+	font-style:italic;
+}
+
+/* Term styling */
+
+h1.term {
+margin-bottom: 0.3em;
+}
+table.terms {
+margin-top: 1em;
+}
+table.terms tr {
+height: 70px;
+}
+table.terms tr td.gravatar {
+border-top: 1px solid #ccc;
+vertical-align: top;
+width: 50px;
+}
+table.terms tr td.term {
+border-top: 1px solid #ccc;
+vertical-align: top;
+padding-top: 10px;
+}
+
+table.terms tr td.term span.timestamp {
+display: block;
+font-size: 85%;
+color: #666;
+}
+div.user_info img {
+padding-right: 0.1em;
+}
+div.user_info a {
+text-decoration: none;
+}
+div.user_info span.user_name {
+position: absolute;
+}
+div.user_info span.terms {
+font-size: 80%;
+}
+form.new_term {
+margin-bottom: 2em;
+}
+form.new_term textarea {
+height: 4em;
+margin-bottom: 0;
+}
+
+

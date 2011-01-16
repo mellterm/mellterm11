@@ -5,11 +5,32 @@
 				<%= gravatar_for (@user) %>
 				<%= @user.name %> 
 			</h1>
+			<% if @user.terms.any? %>
+				
+			<table class="terms" summary = "User terms" >
+			
+					<%= render @terms %>
+					
+			</table>
+			<%= will_paginate @terms %>
+			
+			
+			<% end %>
 		</td>
 		
 		<td class="sidebar round">
 			<strong>Name</strong> <%= @user.name %>  <br />
-			<strong>URL</strong> <%= link_to user_path(@user.id),user_path(@user.id) %> 
+			<strong>URL</strong> <%= link_to user_path(@user.id),user_path(@user.id) %><br />
+			<strong>Phone:</strong> <%= @user.phone %> <br/>
+ 			<strong>Skype:</strong>	<%= @user.skype %><br />
+ 			<% if @user.time_zone? %>
+ 				<strong>My time zone:</strong> <% @user.time_zone %><br/>
+ 			<% end %>
+ 			<% if @user.rate? %>
+				<strong>My rate:</strong>   <%= @user.rate %> <br />
+			<% end %>
+			<strong>Number of terms:</strong>	<%= @user.terms.count %><br />
+			
 		</td>
 	</tr>
 	
@@ -17,8 +38,3 @@
 	</table>
 
 
-<strong>Phone:</strong> <%= @user.phone %> <br/>
- 
-<strong>Skype:</strong>	<%= @user.skype %>
-<strong>My time zone:</strong> <%= @user.time_zone %>
-<strong>My rate:</strong>   <%= @user.rate %>
