@@ -1,8 +1,22 @@
+<h1>Detailed Term Information </h1>
+<p>
+Thank you for purchasing this term.
+It has now been added to your termbase as a private term.
+You are free to edit, export and use this term as you please.
+</p>
 <table class="profile" summary="Detailed term information">
 	<tr>
-		<td class="main">
-		<%= @term.source_content %>
-		<%= @term.target_content %>  
+		<td class="term">
+			<span class="source_content"><%= @term.source_content %></span>
+			<span class="source_language"><%= @term.source_language_id %></span>
+			<br/>
+			<span class="target_content"><%= @term.target_content %></span>
+			<span class="target_language"><%= @term.target_language_id %></span>
+			<br />
+			<span class="domain"><%= @term.domain_id %>
 			</td>
 			</tr>
+			<td>
+			<%= link_to 'Search Term in Context' %>
+			</td>	
 	</table>
