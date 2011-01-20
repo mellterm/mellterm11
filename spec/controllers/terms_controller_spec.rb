@@ -66,7 +66,7 @@ describe TermsController do
 		}
 				 end
 
-			it "should create a micropost" do
+			it "should create a term" do
 				lambda do
 				post 'create', :term => @attr
 				end.should change(Term, :count).by(1)
@@ -110,7 +110,7 @@ describe TermsController do
 					@term = Factory(:term, :user => @user)
 				end
 				
-				it "should destroy the micropost" do
+				it "should destroy the term" do
 					lambda do
 					delete :destroy, :id => @term
 					flash[:success].should =~ /term deleted/i

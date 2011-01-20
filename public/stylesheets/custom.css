@@ -116,6 +116,7 @@ div.field, div.actions {
 margin-bottom: 10px;
 }
 
+
 .field_with_errors {
 margin-top: 10px;
 padding: 2px;
@@ -168,6 +169,11 @@ list-style: none;
 
 
 /* Show Terms on Users page */
+
+.query {
+	background-color:#FFFF00;
+	font-style: italic;	
+}
 
 .source_content {
 	color: blue;

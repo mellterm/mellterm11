@@ -2,7 +2,7 @@
 	<%= render 'shared/error_messages', :object => f.object %>
 	<div class="field">
 		<%= f.label :source_language, "From" %><br /> 
-		<%= f.select(:source_language_id, Language.all.collect {|p| [p.code, p.id]}) %>
+		<%= f.collection_select(:source_language_id, Language.all, :id, :code) %>
 	</div>
 		<div class="field">
 		<%= f.label :source_content, "Source" %><br /> 
@@ -10,19 +10,27 @@
 	</div>
 		<div class="field">
 		<%= f.label :target_language, "To" %><br /> 
-		<%= f.select(:target_language_id, Language.all.collect {|p| [p.code, p.id]}) %>
+		<%= f.collection_select(:target_language_id, Language.all, :id, :code) %>
 	</div>
 	<div class="field">
 		<%= f.label :target_content, "Target" %><br />  
 		<%= f.text_area :target_content %>
 	</div>
-			<div class="field">
+	<div class="field">
 		<%= f.label :domain_id, "Domain" %><br /> 
-		<%= f.select(:domain_id, Domain.all.collect {|p| [p.long_name, p.id]}) %>
+		<%= f.collection_select(:domain_id, Domain.all, :id, :long_name) %>
 	</div>
 	<div class="field">
 		<%= f.label :notes, "Notes" %><br />  
 		<%= f.text_area :notes %>
+	</div>
+	<div class="field">
+		<%= f.check_box :is_public %>
+		<%= f.label :is_public, "Public" %> 
+	</div>
+		<div class="field">
+		<%= f.check_box :is_query %>
+		<%= f.label :is_query, "Query" %> 
 	</div>
 	<div class="actions">
 		<%= f.submit "Submit Term" %>

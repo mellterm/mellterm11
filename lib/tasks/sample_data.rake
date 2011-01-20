@@ -41,15 +41,16 @@ require 'faker'
 				:rate => rate
 			)
 			end
+			
 
 	User.all(:limit => 6).each do |user|
 		50.times do 
 			user.terms.create!(
-				:source_content => "Manchen sto horchte", 
-			   	:target_content => "ought hoped of", 
+				:source_content => "deutscher Begriff", 
+			   	:target_content => "englischer Begriff", 
 			   	:source_language_id => 1+rand(3),
 			   	:target_language_id => 1+rand(3),
-			   	:domain_id =>1+rand(5)	
+			   	:domain_id =>1+rand(4)	
 			)	
 	end
 	end

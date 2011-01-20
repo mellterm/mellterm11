@@ -119,6 +119,7 @@ render_views
 		end
 		
 		it "should show the user's terms" do
+			
 			t1 = Factory(:term, :user => @user, 
 								:source_content => "Biegeempfindlichen",
 								:target_content => "bending sensitivities",
@@ -167,7 +168,7 @@ render_views
 				response.should have_selector('div.pagination')
 			end
 		
-			it "should display the term count" do
+			it "should display the term count by domain" do
 				10.times {
 					Factory(:term, 
 								:user => @user, 

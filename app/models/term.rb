@@ -26,8 +26,14 @@ class Term < ActiveRecord::Base
 	belongs_to :language
 	belongs_to :domain
 	
-	validates_presence_of :source_content, :target_content, :source_language_id, :target_language_id, :domain_id, :user_id
+	validates_presence_of :source_language_id, :target_language_id, :domain_id, :user_id
 	
+	validates :source_content,  	:presence => true,
+									:length => {:minimum => 4, :maximum => 40}
+									
+									
+	validates :target_content,  	:presence => true,
+									:length => {:minimum => 4, :maximum => 40}								
 
 	default_scope :order => 'terms.created_at DESC'
 end

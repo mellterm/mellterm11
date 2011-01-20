@@ -18,6 +18,8 @@
             <string>public\stylesheets\custom.css</string>
             <key>custom.c</key>
             <string>public\stylesheets\custom.css</string>
+            <key>custom.css</key>
+            <string>public\stylesheets\custom.css</string>
             <key>edit.</key>
             <string>app\views\users\edit.html.erb</string>
             <key>friendl</key>

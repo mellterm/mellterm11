@@ -27,6 +27,7 @@ class TermsController < ApplicationController
 	
 	def show
 		@term = Term.find(params[:id])
+
 	end
 	
 	private
@@ -36,5 +37,8 @@ class TermsController < ApplicationController
 		flash[:success] = "Term deleted"
 		redirect_to root_path unless current_user?(@term.user) 
 	end
+
+	
+	
 	
 end

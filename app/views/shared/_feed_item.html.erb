@@ -2,28 +2,12 @@
 	<td class="gravatar">
 	<%= link_to gravatar_for(feed_item.user), feed_item.user %>
 </td>
+
 <td class="term">
-	<span class="user">
+		<span class="user">
 		<%= link_to feed_item.user.name, feed_item.user %>
 	</span><br />
-	<span class="source_content"><%= feed_item.source_content %></span>
-			<span class="source_language"><%= feed_item.source_language_id %></span>
-			<br/>
-			<span class="target_content"><%= feed_item.target_content %></span>
-			<span class="target_language"><%= feed_item.target_language_id %></span>
-			<br />
-			<span class="domain"><%= feed_item.domain_id %>
-		<span class="timestamp">
-			First created <%= time_ago_in_words(feed_item.created_at) %> ago.<br/>
-			Last updated <%= time_ago_in_words(feed_item.updated_at) %> ago.
-		</span>	
+	<%= render 'shared/_term_class', :object => feed_item %>
 </td>
-<% if current_user?(feed_item.user) %>
-<td>
-	<%= link_to "delete", feed_item, 	:method => :delete,
-									 	:confirm => "Are you sure?"
- 										%>
-									 										 	
-</td>
-<% end %>
+
 </tr>	
