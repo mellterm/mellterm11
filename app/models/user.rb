@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
 						:uniqueness => { :case_sensitive => false }
 						
 	validates :phone, 	:presence => true,
-						:length => {:minimum => 4, :maximum => 15},
+						:length => {:minimum => 4, :maximum => 20},
 						:format => {:with => phone_regex}
 						
 	validates :password, 	:presence => true,

@@ -62,7 +62,7 @@ describe User do
 	end
 	
 		it 'should reject phone numbers that are too long' do
-		long_phone = "1" *16
+		long_phone = "1" *21
 		long_name_user = User.new(@attr.merge(:phone=>long_phone))
 		long_name_user.should_not be_valid
 	end

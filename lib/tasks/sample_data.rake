@@ -1,32 +1,33 @@
 require 'faker'
+require 'populator'
 
 	namespace :db do
 		desc "Fill database with sample data"
 		task :populate => :environment do
-			
+			 
 			Rake::Task['db:reset'].invoke
-			
+			[User, Term, Language, Domain].each(&:delete_all)
 			admin = User.create!(
-				:name => "Example User",
-				:email => "example@railstutorial.org",
+				:name => "Mellterm Admin",
+				:email => "admin@mellterm.net",
 				:password => "foobar",
 				:password_confirmation => "foobar",
-				:phone =>"1234",
+				:phone =>"123 457 6382",
 				:notes => "lorum ipsum factum",
-				:skype => "my skype",
+				:skype => "mellterm",
 				:timezone => "UTC",
-				:rate => 0.10
+				:rate => 10
 			)
 			admin.toggle!(:admin)
 	
-			99.times do |n|
+			10.times do |n|
 				name = Faker::Name.name
-				email = "example-#{n+1}@railstutorial.org"
-				password = "password"
-				phone = "1234"
-				rate = 0.01
-				skype = "my skype"
-				notes = "lorum ipsum factum"
+				email = Faker::Internet.email
+				password = "foobar"
+				phone = "12312434"
+				rate = [3..12].to_a.rand()
+				skype = Faker::Internet.user_name
+				notes = Faker::Lorem.sentences(1)
 				timezone = "UTC"
 
 			User.create!(
@@ -42,15 +43,74 @@ require 'faker'
 			)
 			end
 			
+	6.times do |l|
+		code = ["de_de", "en_gb", "en_en", "en_us", "fr_fr", "sp_sp"][l]
+		long_name = ["German, Germany", "English, England", "English, International", "English, USA",
+		"French, France", "Spanish, Spain"][l]
+		
+		Language.create!(
+		:code => code,
+		:long_name => long_name
+		)			
+	end		
+			
+	14.times do |l|
+		code = ["ELEC",
+				"GENTECH",
+				"AUTO", 
+				"LEGAL",
+				"COMPUTING",
+				"CAD",
+				"GENERAL",
+				"MACHINE",
+				"ENERGY",
+				"BUILD",
+				"TELECOM",
+				"TECHDOC",
+				"MARKET",
+				"BUSFINA"
+				][l]	
+		long_name = 
+				["Electrical Engineering & Electronics",
+				"Non-domain specific technical term",
+				"Automotive, Cars & Trucks",
+				"Legal, Patents",
+				"Computers: Systems, Networks, hardware",
+				"Computer Aided Design",
+				"General usage",
+				"Mechanical Engineering",
+				"Energy / Power Generation",
+				"Construction / Civil Engineering",
+				"Telecom(munications)",
+				"Language of technical documentation",
+				"Marketing, including slogans",
+				"Business Financial"
+				][l]
+		
+		Domain.create!(
+		:code => code,
+		:long_name => long_name
+		)			
+	end
+	
 
 	User.all(:limit => 6).each do |user|
 		50.times do 
+			
+			source_content =	Populator.words(2..3)
+			target_content =	Populator.words(2..3)
+			created_at = 	2.months.ago..Time.now
+			is_query = [0,1].rand
+			is_public = [0,1].rand
 			user.terms.create!(
-				:source_content => "deutscher Begriff", 
-			   	:target_content => "englischer Begriff", 
-			   	:source_language_id => 1+rand(3),
-			   	:target_language_id => 1+rand(3),
-			   	:domain_id =>1+rand(4)	
+				:source_content => source_content, 
+			   	:target_content => target_content, 
+			   	:source_language_id => 1+rand(6),
+			   	:target_language_id => 1+rand(6),
+			   	:domain_id => 1+rand(14),
+			   	:is_query => is_query,
+				:is_public => is_public,
+				:created_at =>  created_at   
 			)	
 	end
 	end

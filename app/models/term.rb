@@ -29,11 +29,11 @@ class Term < ActiveRecord::Base
 	validates_presence_of :source_language_id, :target_language_id, :domain_id, :user_id
 	
 	validates :source_content,  	:presence => true,
-									:length => {:minimum => 4, :maximum => 40}
+									:length => {:minimum => 2, :maximum => 40}
 									
 									
 	validates :target_content,  	:presence => true,
-									:length => {:minimum => 4, :maximum => 40}								
+									:length => {:minimum => 2, :maximum => 40}								
 
 	default_scope :order => 'terms.created_at DESC'
 end

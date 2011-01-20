@@ -120,6 +120,10 @@ render_views
 		
 		it "should show the user's terms" do
 			
+			Factory(:domain, :code => "ELEC", :long_name=> "Electrical")
+			Factory(:language, :code => "de_de", :long_name=> "German")
+			Factory(:language, :code => "en_gb", :long_name=> "English")
+			
 			t1 = Factory(:term, :user => @user, 
 								:source_content => "Biegeempfindlichen",
 								:target_content => "bending sensitivities",
@@ -133,7 +137,7 @@ render_views
 								:source_content => "Biegeempfindlichen",
 								:target_content => "sensibilite du flex",
 								:source_language_id => 1,
-								:target_language_id => 3,
+								:target_language_id => 2,
 								:domain_id =>1,
 								:notes => "C'est vrais"
 								)							
@@ -152,6 +156,11 @@ render_views
 		end
 		
 			it "should paginate terms" do
+				
+				Factory(:domain, :code => "ELEC", :long_name=> "Electrical")
+				Factory(:language, :code => "de_de", :long_name=> "German")
+				Factory(:language, :code => "en_gb", :long_name=> "English")
+				
 				31.times {
 					Factory(:term, 
 								:user => @user, 
@@ -169,6 +178,11 @@ render_views
 			end
 		
 			it "should display the term count by domain" do
+				
+				Factory(:domain, :code => "ELEC", :long_name=> "Electrical")
+				Factory(:language, :code => "de_de", :long_name=> "German")
+				Factory(:language, :code => "en_gb", :long_name=> "English")
+				
 				10.times {
 					Factory(:term, 
 								:user => @user, 
