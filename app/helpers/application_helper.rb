@@ -11,7 +11,7 @@ module ApplicationHelper
 	end
 	
 	def logo
-		image_tag("logo.png", :alt => "mellterm", :class => "round")
+		image_tag("mt_logo3.png", :alt => "mellterm", :class => "round")
 	end
 	
 end

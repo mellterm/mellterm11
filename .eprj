@@ -10,6 +10,8 @@
             <string>app\views\users\_fields.html.erb</string>
             <key>applica</key>
             <string>app\views\layouts\application.html.erb</string>
+            <key>c</key>
+            <string>public\stylesheets\custom.css</string>
             <key>custo</key>
             <string>public\stylesheets\custom.css</string>
             <key>custom</key>

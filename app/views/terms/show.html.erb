@@ -4,19 +4,45 @@ Thank you for purchasing this term.
 It has now been added to your termbase as a private term.
 You are free to edit, export and use this term as you please.
 </p>
+
 <table class="profile" summary="Detailed term information">
 	<tr>
 		<td class="term">
-			<span class="source_content"><%= @term.source_content %></span>
-			<span class="source_language"><%= @term.source_language_id %></span>
-			<br/>
-			<span class="target_content"><%= @term.target_content %></span>
-			<span class="target_language"><%= @term.target_language_id %></span>
+			
+	<% if @term.is_public? %>	
+		<% if @term.is_query? %>		
+			<span class="query">
+	<% end %>
+	
+	<span class="source_content">Source term: <%= @term.source_content %></span>	
+	<span class="source_language">Source language: <%= Language.find(@term.source_language_id).code %></span><br/>	
+	<span class="target_content">Target term: <%= @term.target_content %></span>
+	<span class="target_language">Target language: <%= Language.find(@term.target_language_id).code %></span><br />
+	<% if @term.notes? %>
+	<span class="notes">Notes: <%= @term.notes %></span><br />
+	<% end %>		
+	<% if @term.is_query? %>		
+			</span>
+	<% end %>
+									
+	<% else %>
+ 
+	<span class="source_content">Source term: <%= @term.source_content  %></span>
+	<span class="source_language">Source language: <%= Language.find(@term.source_language_id).code %></span>
+	<br/>
+		<%= link_to do %>
+			<span class="hidden_target_content"><%= "Click to purchase" %></span>
+		<% end %>
+			<span class="target_language">Target language:<%= Language.find(@term.target_language_id).code %></span>
 			<br />
-			<span class="domain"><%= @term.domain_id %>
-			</td>
-			</tr>
-			<td>
-			<%= link_to 'Search Term in Context' %>
-			</td>	
+	<% end %>
+	
+	<span class="domain">Domain: <%= Domain.find(@term.domain_id).code %> | 
+						<%= Domain.find(@term.domain_id).long_name %>						
+	</span><br/>
+	<span class="timestamp">
+			First created <%= time_ago_in_words(@term.created_at) %> ago.<br/>
+			Last updated <%= time_ago_in_words(@term.updated_at) %> ago.
+	</span>
+	</td>
 	</table>

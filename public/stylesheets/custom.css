@@ -2,7 +2,8 @@
 width: 710px;
 }
 body {
-background: #cff;
+background: #EECFA1;		
+
 }
 header {
 padding-top: 20px;
@@ -236,9 +237,6 @@ margin-bottom: 0;
 
 /* my term display styles */
 
-.timestamp {
-	font-size: 40%;
-}
 .domain {
 	color: #00ff00;
 }
