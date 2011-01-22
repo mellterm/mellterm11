@@ -1,12 +1,22 @@
 Mellterm11::Application.routes.draw do
   
 
+  get "searches/new"
+
+  get "searches/create"
+
+  get "searches/show"
+  
+
  	resources :users
  	resources :sessions, :only => 	[:new, :create, :destroy]
- 	resources :terms, :only => 		[:create, :destroy, :update, :show]
+ 	resources :terms, :only => 		[:create, :destroy, :update, :show, :index, :edit]
+ 	resources :searches, :only =>	[:new, :create, :show]
  	
 	root :to => "pages#home"
-  
+  	
+
+  	
 	match '/developers', :to => 'pages#developers' 
 	match '/profile', :to => 'pages#about' 
 	match '/mellterm', :to => 'pages#mellterm' 
@@ -15,6 +25,14 @@ Mellterm11::Application.routes.draw do
 	match '/signup', :to => 'users#new' 
   	match '/signin', :to => 'sessions#new'
   	match '/signout', :to => 'sessions#destroy'
+  	
+  	match '/searches', :to => 'searches#new'
+  	match '/queryresult', :to => 'searches#show'
+  	
+  	resources :users do
+  		resources :terms
+  		end
+  	
   	
   # The priority is based upon order of creation:
   # first created -> highest priority.

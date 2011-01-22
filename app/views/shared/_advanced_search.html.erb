@@ -1,0 +1,33 @@
+<% form_for @search, {:class=> 'new_search'} do |f| %>
+  <p>
+    <%= f.label :source_content %><br />
+    <%= f.text_area :source_content %>
+  </p>
+    <p>
+    <%= f.label :language_direction_id %><br />
+    <%= f.collection_select :source_language_id, Language.all, :id, :code %> >>
+   <%= f.collection_select :target_language_id, Language.all, :id, :code, :include_blank => 'ALL' %>
+  </p>
+  <p>
+    <%= f.label :domain_id %><br />
+    <%= f.collection_select :domain_id, Domain.all, :id, :code, :include_blank => 'ANY' %>
+  </p>
+  	 <p>
+  	 <%= f.check_box (:is_public) %>
+	 <%= f.label :is_public, "Public (free) terms only" %>
+	</p>
+   <p>
+  	 <%= f.check_box (:is_query) %>
+	 <%= f.label :is_query, "Only show queries" %>
+	</p>
+	<p>
+
+	<%= f.label :created_at, 'Created on or since' %><br/>
+	<%= f.date_select 			:created_at,  :prompt=> true, 
+								:start_year => Time.now.year, :end_year => Time.now.year+1, 
+								:order => [:day, :month, :year]
+																%>
+	</p>
+  
+  <p><%= f.submit "Search" %></p>
+<% end %>

@@ -74,6 +74,48 @@ font-weight: bold;
 padding: 20px;
 }
 
+
+/* search styling */
+/* my search button */
+a.search_button {
+margin-left: auto;
+margin-right: auto;
+display: block;
+text-align: center;
+width: 190px;
+color: #fff;
+background: #B22222;
+font-size: 150%;
+font-weight: bold;
+padding: 20px;
+	
+	
+}
+
+h1.search {
+margin-bottom: 0.3em;
+}
+
+
+form.new_search textarea {
+height: 4em;
+margin-bottom: 0;
+}
+
+#search_explanation {
+	font-size: 75%;
+}
+
+
+/* searches/new */
+table.newsearch {
+width: 100%;
+margin-bottom: 0;
+}
+
+
+
+
 /* Round corners */
 .round {
 -moz-border-radius: 10px;

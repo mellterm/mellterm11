@@ -1,0 +1,50 @@
+<td class="term">
+	<% if term.is_public? %>	
+		<% if term.is_query? %>		
+			<span class="query">
+		<% end %>
+	
+		<%= link_to term_path(term) do %>
+			<span class="source_content"><%= term.source_content %></span>
+		<% end %>
+	
+		<span class="source_language"><%= Language.find(term.source_language_id).code %></span><br/>	
+		<span class="target_content"><%= term.target_content %></span>
+		<span class="target_language"><%= Language.find(term.target_language_id).code %></span><br />
+	
+		<% if term.is_query? %>		
+			</span>
+		<% end %>
+									
+	<% else %>
+ 
+		<span class="source_content"><%= term.source_content  %></span>
+		<span class="source_language"><%= Language.find(term.source_language_id).code %></span>
+		<br/>
+		<%= link_to do %>
+			<span class="hidden_target_content"><%= "Click to purchase" %></span>
+		<% end %>
+		<span class="target_language"><%= Language.find(term.target_language_id).code %></span>
+		<br />
+	<% end %>
+	
+	<span class="domain"><%= Domain.find(term.domain_id).code %> | 
+						<%= Domain.find(term.domain_id).long_name %>
+				</span><br/>		
+	<span class="timestamp">
+			First created <%= time_ago_in_words(term.created_at) %> ago.<br/>
+			Last updated <%= time_ago_in_words(term.updated_at) %> ago.
+	</span>
+	</td>
+		
+		<% user = term.user rescue User.find(term.user_id) #workaround lesson11 %>
+
+	<td>
+	<%= link_to "Delete", term, 		:method => :delete,
+									 	:confirm => "Are you sure?"
+ 										%>	|			
+
+ 	<%= link_to "Edit", edit_term_path(term) %>								 										 	
+	</td>
+</td>
+

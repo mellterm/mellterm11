@@ -1,0 +1,16 @@
+<h1>List Search Results</h1>
+<p>Find me in app/views/searches/show.html.erb</p>
+
+<% if @search %>
+			
+	<table class="search_term_results" summary = "Search terms" >	
+		<%= render @search.terms %>
+					
+	</table>
+<% else %>						
+<p>
+	Sorry, no results found
+	</p>
+<%= link_to "Search again", searches_path %> 
+	
+<% end %>

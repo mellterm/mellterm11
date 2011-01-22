@@ -1,0 +1,19 @@
+
+<h1><%= gravatar_for current_user%> 
+	Your terms </h1>
+<%= will_paginate %>
+<% if @terms.any? %>
+	<table class="terms" summary="User own terms">
+	
+		<% for term in @terms %>
+			<tr>
+			<%= render 'shared/own_feed_item', :term => term %>
+			</tr>
+		<% end %>
+	</table>
+		
+<% end %>
+
+<%= will_paginate %>
+
+

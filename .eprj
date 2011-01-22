@@ -24,6 +24,8 @@
             <string>public\stylesheets\custom.css</string>
             <key>edit.</key>
             <string>app\views\users\edit.html.erb</string>
+            <key>enviro</key>
+            <string>config\environment.rb</string>
             <key>friendl</key>
             <string>spec\requests\friendly_forwardings_spec.rb</string>
             <key>friendly</key>
@@ -48,6 +50,10 @@
             <string>app\views\sessions\new.html.erb</string>
             <key>pages</key>
             <string>app\controllers\pages_controller.rb</string>
+            <key>ro</key>
+            <string>config\routes.rb</string>
+            <key>rou</key>
+            <string>config\routes.rb</string>
             <key>route</key>
             <string>config\routes.rb</string>
             <key>routes</key>

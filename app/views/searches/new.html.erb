@@ -1,0 +1,36 @@
+<table class="newsearch" summary="Search form">
+	<tr>
+		<td class="main">
+			<h1>New Mellterm Search</h1>
+		<%= render 'shared/advanced_search'%>
+			
+		</td>
+
+		<td class="sidebar round">
+
+			<div id="search_explanation">
+			<p>
+			Some of the searches you can carry out:	
+			<ul>
+			<li>Search for all terms 'like' the search term for all target languages</li>
+			<li>Search for all target terms for a specific language (e.g. 'fr-fr').</li>
+			<li>Search for all terms for any target language variant (e.g. use 'en/English' to include 'en-us', 'en-gb', 'en-en', ..)</li>
+			<li>Search by a single domain</li>
+			<li>Only search for public (free of charge) terms</li>
+			<li>Only search for queries - get credits for answering them</li>
+			</ul>
+			</p>
+			<p>
+			Coming soon:
+			Search by multiple domains, user_ids or names, job ids or names, company or client ids or names
+			Save and reload previous searches!
+			</p>
+			<p>
+			Today's date: <%=	Time.now %><br/>
+			Current week of the year <%= Time.now.strftime("%W")%><br/>	
+			</p>		
+		</div>
+
+		</td>
+	</tr>
+</table>

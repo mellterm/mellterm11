@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110115003458) do
+ActiveRecord::Schema.define(:version => 20110121082437) do
 
   create_table "domains", :force => true do |t|
     t.string   "code"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(:version => 20110115003458) do
     t.string   "long_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "searches", :force => true do |t|
+    t.string   "source_content"
+    t.string   "target_content"
+    t.integer  "source_language_id"
+    t.integer  "target_language_id"
+    t.integer  "domain_id"
+    t.boolean  "is_public"
+    t.boolean  "is_query"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "job_id"
   end
 
   create_table "terms", :force => true do |t|

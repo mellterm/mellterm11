@@ -3,9 +3,20 @@
 	<table class="front" summary="For signed-in users">
 		<tr>
 			<td class="main">
-				<h1 class="term">Got term?</h1>
+				
+				<h1 class="searchterm">Need Term?</h1>
+				<%= link_to "Search terms!", searches_path, :class => "search_button round" %>
+				
+				<h1 class="term">Got Term?</h1>
 				<%= render 'shared/term_form' %>
+				
+				
+				<h1 class="searchfeed">Your Latest Feeds</h1>
+				
 				<%= render 'shared/feed' %>
+		
+				
+				
 			</td>
 			<td class="sidebar round">
 				<%= render 'shared/user_info' %>	

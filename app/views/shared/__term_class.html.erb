@@ -16,7 +16,9 @@
 	<% end %>
 									
 <% else %>
- 
+ 	<% if object.is_query? %>		
+			<span class="query">
+	<% end %>
 	<span class="source_content"><%= object.source_content  %></span>
 	<span class="source_language"><%= Language.find(object.source_language_id).code %></span>
 	<br/>
@@ -25,6 +27,10 @@
 		<% end %>
 			<span class="target_language"><%= Language.find(object.target_language_id).code %></span>
 			<br />
+			
+	<% if object.is_query? %>		
+			</span>
+	<% end %>		
 	<% end %>
 	
 	<span class="domain"><%= Domain.find(object.domain_id).code %> | 

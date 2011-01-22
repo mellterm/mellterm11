@@ -1,0 +1,28 @@
+<!-- deprecated -->
+
+<% form_tag queryresult_path, :method => 'get', :class=> 'new_search' do %>
+			<p>
+				<%= label_tag :search_term, "Search for a Term" %><br />
+				<%= text_area_tag :search_term, params[:search] %>
+			</p>
+			<p>
+			    <%= label_tag :language_id_equals, "Language Direction" %><br />
+			    <%= collection_select(:post, :source_language_id, Language.all, :id, :code ) %> >>
+			    <%= collection_select(:post, :target_language_id, Language.all, :id, :code, :include_blank => true ) %>
+			</p>	
+			<p>
+			    <%= label_tag :domain_id_equals, "Domain" %><br />
+			    <%= collection_select(:post, :domain_id, Domain.all, :id, :code, :include_blank => true) %>
+			</p>
+			 <p>
+				<%= label_tag :is_public, "Public (free) terms only" %>
+				<%= check_box_tag (:is_public, true) %>
+			 </p>
+			  <p>
+			    <%= label_tag :is_query, "Queries only" %>
+			    <%= check_box_tag (:is_query, true) %>
+			 </p>
+				<p>
+				<%= submit_tag "Search", :name => nil %>
+			</p>	
+<% end %>
