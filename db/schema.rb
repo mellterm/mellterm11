@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110121082437) do
+ActiveRecord::Schema.define(:version => 20110126110437) do
 
   create_table "domains", :force => true do |t|
     t.string   "code"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(:version => 20110121082437) do
     t.integer  "job_id"
   end
 
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "subscriber_id"
+    t.integer  "subscribee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["subscribee_id"], :name => "index_subscriptions_on_subscribee_id"
+  add_index "subscriptions", ["subscriber_id", "subscribee_id"], :name => "index_subscriptions_on_subscriber_id_and_subscribee_id", :unique => true
+  add_index "subscriptions", ["subscriber_id"], :name => "index_subscriptions_on_subscriber_id"
+
   create_table "terms", :force => true do |t|
     t.string   "source_content"
     t.string   "target_content"
@@ -67,12 +78,16 @@ ActiveRecord::Schema.define(:version => 20110121082437) do
     t.string   "skype"
     t.string   "time_zone"
     t.text     "notes"
-    t.integer  "rate"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.boolean  "admin",              :default => false
+    t.boolean  "admin",                 :default => false
+    t.string   "city_name"
+    t.integer  "native_language_id"
+    t.integer  "preferred_language_id"
+    t.integer  "provider_id"
+    t.integer  "credit_balance",        :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

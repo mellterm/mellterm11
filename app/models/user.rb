@@ -1,21 +1,25 @@
 # == Schema Information
-# Schema version: 20110109083719
+# Schema version: 20110126110437
 #
 # Table name: users
 #
-#  id                 :integer         not null, primary key
-#  name               :string(255)
-#  email              :string(255)
-#  phone              :string(255)
-#  skype              :string(255)
-#  time_zone          :string(255)
-#  notes              :text
-#  rate               :integer
-#  created_at         :datetime
-#  updated_at         :datetime
-#  encrypted_password :string(255)
-#  salt               :string(255)
-#  admin              :boolean
+#  id                    :integer         not null, primary key
+#  name                  :string(255)
+#  email                 :string(255)
+#  phone                 :string(255)
+#  skype                 :string(255)
+#  time_zone             :string(255)
+#  notes                 :text
+#  created_at            :datetime
+#  updated_at            :datetime
+#  encrypted_password    :string(255)
+#  salt                  :string(255)
+#  admin                 :boolean
+#  city_name             :string(255)
+#  native_language_id    :integer
+#  preferred_language_id :integer
+#  provider_id           :integer
+#  credit_balance        :integer         default(0)
 #
 
 # == Schema Information
@@ -39,9 +43,27 @@ require 'digest'
 
 class User < ActiveRecord::Base
 	attr_accessor	:password
-	attr_accessible :name, :email,:phone, :skype, :time_zone, :notes, :rate, :password, :password_confirmation 
+	attr_accessible :name, :email,:phone, :skype, :time_zone, 
+					:notes, :password, :password_confirmation,
+					:native_language_id, :preferred_language_id
+			
 	
-	has_many :terms, :dependent => :destroy
+	has_many :terms, 			:dependent => :destroy
+	
+	#rails assumes foreign key is user_id unless specified as here
+	has_many :subscriptions, 	:dependent => :destroy,
+								:foreign_key => "subscriber_id"
+				
+						
+	#reverse_subscriptions is virtual table same as subscriptions with interchanged columns
+	has_many :reverse_subscriptions, 	:dependent => :destroy,
+										:foreign_key => "subscribee_id",
+										:class_name => "Subscription"
+										
+										
+	#user gets to subscribees thru the subscriptions table
+	has_many :subscribees, :through => :subscriptions
+	has_many :subscribers, :through => :reverse_subscriptions
 	
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[1-z]+\z/i
 	phone_regex = /\A[\d+\-\s]+\z/
@@ -74,6 +96,20 @@ class User < ActiveRecord::Base
 		#=? used to escape SQL
 		Term.where("user_id= ?", self.id)
 	end
+	
+	
+	def subscribed_to?(subscribee)
+		self.subscriptions.find_by_subscribee_id(subscribee)
+	end
+	
+	def subscribe_to!(subscribee)
+		self.subscriptions.create!(:subscribee_id => subscribee.id)
+	end
+	
+	def unsubscribe_to!(subscribee)
+		self.subscriptions.find_by_subscribee_id(subscribee).destroy
+	end
+	
 	
 	
 	#class method self.authenticate is also ok

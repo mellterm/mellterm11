@@ -1,10 +1,11 @@
 # == Schema Information
-# Schema version: 20110121082437
+# Schema version: 20110125162515
 #
 # Table name: searches
 #
 #  id                 :integer         not null, primary key
-#  search_term        :string(255)
+#  source_content     :string(255)
+#  target_content     :string(255)
 #  source_language_id :integer
 #  target_language_id :integer
 #  domain_id          :integer
@@ -12,6 +13,8 @@
 #  is_query           :boolean
 #  created_at         :datetime
 #  updated_at         :datetime
+#  user_id            :integer
+#  job_id             :integer
 #
 
 class Search < ActiveRecord::Base
@@ -72,24 +75,5 @@ def conditions_parts
   private_methods(false).grep(/_conditions$/).map { |m| send(m) }.compact
 end
 
-
-
-
-
-
-
-
-	
-	def old_find_terms
-		
-		search = Term.search
-		search.source_content_like(source_content) unless source_content.blank?
-		search.domain_id_equals(domain_id) unless domain_id.blank?
-		search.source_language_id_equals(source_language_id) unless source_language_id.blank?
-		search.target_language_id_equals(target_language_id) unless target_language_id.blank?
-		search.is_public_is_false unless is_public.present?
-		search.is_query_is_false unless is_query?	
-		search.all
-	end
 
 end

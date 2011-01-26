@@ -257,6 +257,58 @@ describe User do
 		end	
 		end	
 		
+      describe "subscriptions" do
+        
+        before(:each) do
+			@user = User.create!(@attr.merge(:email=>"someone@anywhere.com"))
+			@subscribee = Factory(:user)	
+		end
+      
+        it "should have a subscriptions method" do
+            @user.should respond_to(:subscriptions)
+        end
+		
+		it "should have a subscribees method" do
+			@user.should respond_to(:subscribees)
+		end
+                                  
+   
+    
+		it "should subscribe_to another user" do
+			@user.subscribe_to!(@subscribee)
+			@user.should be_subscribed_to(@subscribee)
+		end
+		
+		it "should include the subscribee user in the subscribee array" do
+			@user.subscribe_to!(@subscribee)
+			@user.subscribees.should include(@subscribee)
+		end
+		
+		it "should have an unsubscribe_to! method" do
+			@user.should respond_to(:unsubscribe_to!)
+			
+		end
+		
+		it "should unsubscribe_to a user" do
+			@user.subscribe_to!(@subscribee)
+			@user.unsubscribe_to!(@subscribee)
+			@user.should_not be_subscribed_to(@subscribee)
+		end
+		
+		it "should have a reverse subscriptions method" do
+			@user.should respond_to(:reverse_subscriptions)
+		end
+		
+		it "should have a subscribers method" do
+			@user.should respond_to(:subscribers)
+		end
+		
+		it "should include the subscriber user in the subscriber array" do
+			@user.subscribe_to!(@subscribee)
+			@subscribee.subscribers.should include(@user)
+		end
+		
+	end
 	end
 	
 end
