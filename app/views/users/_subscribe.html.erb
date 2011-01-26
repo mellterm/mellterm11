@@ -1,0 +1,6 @@
+<%= form_for current_user.subscriptions.build(:subscribee_id => @user.id) do |f| %>
+<div><%= f.hidden_field :subscribee_id %></div>
+<div class="actions"><%= f.submit "Subscribe" %></div>
+<% end %>
+
+							

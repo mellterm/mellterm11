@@ -177,7 +177,7 @@ render_views
 				response.should have_selector('div.pagination')
 			end
 		
-			it "should display the term count by domain" do
+			it "should display the term count" do
 				
 				Factory(:domain, :code => "ELEC", :long_name=> "Electrical")
 				Factory(:language, :code => "de_de", :long_name=> "German")
@@ -199,6 +199,23 @@ render_views
 				response.should have_selector('td.sidebar', 
 												:content => @user.terms.count.to_s)
 			end
+			
+			it "should display the user's credit balance" do
+				get 'show', :id => @user
+				response.should have_selector('td.sidebar', 
+												:content => @user.credit_balance.to_s)
+			end
+			
+			describe "when signed in as another user" do
+			
+				it "(show page) should be successful" do
+					test_sign_in(Factory(:user, :email => Factory.next(:email)))
+					get 'show', :id => @user
+					response.should be_success
+				end
+				
+			end
+			
 			
 	end
 

@@ -6,7 +6,18 @@ require 'populator'
 		task :populate => :environment do
 			 
 			Rake::Task['db:reset'].invoke
-			[User, Term, Language, Domain].each(&:delete_all)
+			
+			make_users
+			make_terms
+			make_subscriptions
+
+		end
+	end
+
+
+	def make_users
+
+		[User, Term, Language, Domain].each(&:delete_all)
 			admin = User.create!(
 				:name => "Mellterm Admin",
 				:email => "admin@mellterm.net",
@@ -30,7 +41,7 @@ require 'populator'
 				notes = Faker::Lorem.sentences(1)
 				timezone = "UTC"
 
-			User.create!(
+				User.create!(
 				:name => name,
 				:email => email,
 				:password => password,
@@ -40,10 +51,13 @@ require 'populator'
 				:skype => skype,
 				:timezone => timezone,
 				:rate => rate
-			)
-			end
-			
-	6.times do |l|
+				)
+			end	
+	end
+	
+	def make_terms
+	
+		6.times do |l|
 		code = ["de_de", "en_gb", "en_en", "en_us", "fr_fr", "sp_sp"][l]
 		long_name = ["German, Germany", "English, England", "English, International", "English, USA",
 		"French, France", "Spanish, Spain"][l]
@@ -52,10 +66,10 @@ require 'populator'
 		:code => code,
 		:long_name => long_name
 		)			
-	end		
+		end		
 			
-	14.times do |l|
-		code = ["ELEC",
+		14.times do |l|
+			code = ["ELEC",
 				"GENTECH",
 				"AUTO", 
 				"LEGAL",
@@ -70,7 +84,7 @@ require 'populator'
 				"MARKET",
 				"BUSFINA"
 				][l]	
-		long_name = 
+			long_name = 
 				["Electrical Engineering & Electronics",
 				"Non-domain specific technical term",
 				"Automotive, Cars & Trucks",
@@ -112,7 +126,22 @@ require 'populator'
 				:is_public => is_public,
 				:created_at =>  created_at   
 			)	
+		end
 	end
+	
+	
+
 	end
-end
-end
+	
+	
+	
+	def make_subscriptions
+		
+		users = User.all
+		user = users.first
+		subscribees = users[1..50]	
+		subscribers = users[3..40]
+		
+		subscribees.each { |subscribee| user.subscribe_to!(subscribee)}
+		subscribers.each { |subscriber| subscriber.subscribe_to!(user)}
+	end

@@ -1,0 +1,20 @@
+<% @user ||= current_user %>
+<div class="stats">
+
+<table summary="User stats for subscriptions">
+	<tr>
+		<td>
+			<a href="<%= subscribees_user_path(@user) %>">
+					<span id="subscribees" class="stat">
+						<%= pluralize(@user.subscribees.count, "subscription") %> 
+					</span>
+			</a><br />		
+			<a href="<%= subscribers_user_path(@user) %>">
+					<span id="subscribers" class="stat">
+						<%= @user.subscribers.count %> subscribed to me
+					</span>
+			</a>		
+		</td>
+	</tr>
+</table>	
+</div>

@@ -1,7 +1,7 @@
 <h1>List Search Results</h1>
 <p>Find me in app/views/searches/show.html.erb</p>
 
-<% if @search %>
+<% if @search.terms %>
 			
 	<table class="search_term_results" summary = "Search terms" >	
 		<%= render @search.terms %>

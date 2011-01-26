@@ -5,6 +5,7 @@
 				<%= gravatar_for (@user) %>
 				<%= @user.name %> 
 			</h1>
+			<%= render 'subscribe_form' if signed_in? %>
 			<% if @user.terms.any? %>
 				
 			<table class="terms" summary = "User terms" >
@@ -21,15 +22,26 @@
 		<td class="sidebar round">
 			<strong>Name</strong> <%= @user.name %>  <br />
 			<strong>URL</strong> <%= link_to user_path(@user.id),user_path(@user.id) %><br />
+			<% if @user.native_language_id? %>
+				<strong>Native Language:</strong> <%= Language.find_by_id(@user.native_language_id) %><br/>	
+			<% end %>
+			<% if @user.provider_id? %>
+				<strong>Status: Term Provider</strong><br/>
+				<strong>ID:</strong><br/>	
+			<% end %>
 			<strong>Phone:</strong> <%= @user.phone %> <br/>
- 			<strong>Skype:</strong>	<%= @user.skype %><br />
+ 			<strong>Skype:</strong>	<%= @user.skype %> <br />
  			<% if @user.time_zone? %>
  				<strong>My time zone:</strong> <% @user.time_zone %><br/>
  			<% end %>
- 			<% if @user.rate? %>
-				<strong>My rate:</strong>   <%= @user.rate %> <br />
+			<% if @user == current_user %>
+				<strong>Current credit:</strong>
+				<%= @user.credit_balance.to_s %><br />
 			<% end %>
-			<strong>Total my terms:</strong>	<%= @user.terms.count %><br />
+			<strong>Terms I own:</strong>	<%= @user.terms.count %><br />
+			<strong>My subscriptions:</strong>
+			<%= render 'shared/subscriptions_stats' %>
+			
 		</td>
 	</tr>
 	

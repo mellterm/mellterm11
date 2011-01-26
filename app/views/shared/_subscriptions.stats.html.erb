@@ -1,0 +1,21 @@
+<% @user ||= current_user %>
+<div class="stats">
+
+<table summary="User states for subscriptions">
+	<tr>
+		<td>
+			<a href="<%= subscribees_user_path(@user) %>">
+					<span id="subscribees">
+						Subscribed to <%= @user.subscribees.count %>
+					</span>
+			</a>		
+		</td>
+		<td>
+			<a href="<%= subscribers_user_path(@user) %>">
+					<span id="subscribers">
+						<%= @user.subscribees.count %> subscribed to me
+					</span>
+			</a>		
+		</td>
+	</tr>		
+</div>

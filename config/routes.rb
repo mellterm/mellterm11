@@ -8,11 +8,25 @@ Mellterm11::Application.routes.draw do
   get "searches/show"
   
 
- 	resources :users
+ 	resources :users do
+	   member do
+	   #/users/1/subscribees, /users/1/subscribers
+         get :subscribees, :subscribers
+      end
+	
+	
+	
+	end
+	
+	
+	
+	
  	resources :sessions, :only => 	[:new, :create, :destroy]
  	resources :terms, :only => 		[:create, :destroy, :update, :show, :index, :edit]
  	resources :searches, :only =>	[:new, :create, :show]
- 	
+ 	resources :subscriptions, :only => [:create, :destroy]
+	
+	
 	root :to => "pages#home"
   	
 

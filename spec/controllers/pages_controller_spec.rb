@@ -4,26 +4,51 @@ describe PagesController do
 render_views
 
 before(:each) do
-	@base_title = "Mellterm Basic Job Man Application"
+	@base_title = "Mellterm Translation and Terminology"
 end
 
 describe "GET 'home'" do
-    it "should be successful" do
-      get 'home'
-      response.should be_success
-    end
+
+	describe "when not signed in" do
+	
+		it "should be successful" do
+			get 'home'
+		response.should be_success
+		end
   
+		it "should have the right title" do
+			get 'home'
+			response.should have_selector("title",
+			:content => "#{@base_title} | Home")
+		end
   
-  	it "should have the right title" do
-		get 'home'
-		response.should have_selector("title",
-		:content => "#{@base_title} | Home")
+		it "should have a non-blank body" do
+			get 'home'
+			response.body.should_not =~/<body>\s*<\/body>/
+		end
+
 	end
-  
-	it "should have a non-blank body" do
-		get 'home'
-		response.body.should_not =~/<body>\s*<\/body>/
+	
+	describe "when signed in" do
+	
+		before(:each) do
+		
+			@user = test_sign_in(Factory(:user))
+			other_user = Factory(:user, :email => Factory.next(:email))
+			other_user.subscribe_to!(@user)
+		end
+	
+		it "should have the right subscriber/subscribee counts" do
+			get 'home'
+			response.should have_selector('a', 	:href=> subscribees_user_path(@user),
+												:content=> "0 subscriptions")
+			response.should have_selector('a', 	:href=> subscribers_user_path(@user),
+												:content=> "1 subscribed to me")									
+		end
+	
 	end
+	
+	
 end		
 
 describe "GET 'developers'" do
