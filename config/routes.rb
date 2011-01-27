@@ -8,17 +8,6 @@ Mellterm11::Application.routes.draw do
   get "searches/show"
   
 
- 	resources :users do
-	   member do
-	   #/users/1/subscribees, /users/1/subscribers
-         get :subscribees, :subscribers
-      end
-	
-	
-	
-	end
-	
-	
 	
 	
  	resources :sessions, :only => 	[:new, :create, :destroy]
@@ -29,7 +18,6 @@ Mellterm11::Application.routes.draw do
 	
 	root :to => "pages#home"
   	
-
   	
 	match '/developers', :to => 'pages#developers' 
 	match '/profile', :to => 'pages#about' 
@@ -44,8 +32,15 @@ Mellterm11::Application.routes.draw do
   	match '/queryresult', :to => 'searches#show'
   	
   	resources :users do
-  		resources :terms
-  		end
+		member do
+			get 'subscribers'
+			get 'subscribees'
+		
+		end
+		
+		resources :terms
+		
+  	end
   	
   	
   # The priority is based upon order of creation:

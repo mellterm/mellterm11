@@ -4,12 +4,13 @@ describe UsersController do
 render_views
 
 	describe "GET 'index'" do
+		
 		describe "for non-signed in users" do
+			
 			it "should deny access" do
 				get 'index'
 				response.should redirect_to(signin_path)
 			end
-		
 		end
 
 		describe "for signed in users" do
@@ -76,7 +77,6 @@ render_views
 
 		
 	end
-
 
 	describe "GET 'show'" do
 		
@@ -261,36 +261,36 @@ describe "POST 'create'" do
 	
 	describe "success" do
 	
-			before(:each) do
+		before(:each) do
 				@attr = {   :name=> "New User", :email => "user@user.com", 
 							:phone=>"2222", :skype=>"", :time_zone=>"", 
 							:rate=>"", :notes =>"", :password=>"foobar", :password_confirmation=>"foobar"}
-			end
+		end
 	
-			it "should create a user" do
+		it "should create a user" do
 			lambda do
 			post :create, :user => @attr
 			end.should change(User, :count).by(1)
-			end
+		end
 		
-			it "should redirect to the user show page" do
+		it "should redirect to the user show page" do
 			post 'create', :user => @attr
 			response.should redirect_to(user_path(assigns(:user)))
-			end
+		end
 		
-			it 'should have a welcome message' do
+		it 'should have a welcome message' do
 				post :create, :user => @attr
 				flash[:success].should =~ /welcome to Mellterm!/i
-			end
+		end
 			
-			it "should sign the user in" do
+		it "should sign the user in" do
 				post :create, :user => @attr
 				controller.should be_signed_in	
-			end
+		end
   			
 				
 	end
-	end	
+end	
 	
 	describe "GET 'edit'" do
 		
@@ -314,11 +314,11 @@ describe "POST 'create'" do
 			gravatar_url = "http://gravatar.com/emails"
 			response.should have_selector("a", :href => gravatar_url,
 											:content => "change")
-	end
+		end
 		
 		
-		
-	end
+
+end
 	
 describe "PUT 'update'" do
 		
@@ -453,10 +453,48 @@ end
 			
 			
 		end
-		
-		
-		
 		end
 	
+	describe "subscribe pages" do
+
+		describe "when not signed in" do
 			
+			it "should protect subscribees" do
+				get :subscribees, :id => 1
+				response.should redirect_to(signin_path)
+			end
+		
+			it "should protect subscribers" do
+				get :subscribers, :id => 1
+				response.should redirect_to(signin_path)
+			end
+		
+		end 
+	
+		describe "when signed in" do
+			
+			before(:each) do
+				@user = test_sign_in(Factory(:user))
+				@other_user = Factory(:user, :email => Factory.next(:email))
+				@user.subscribe_to!(@other_user)
+			end
+				
+			#it "should show user subscribers" do
+			#	get :subscribees, :id => @other_user
+			#	response.should have_selector("a", 	:href => user_path(@other_user),
+			#										:content => @other_user.name)
+			#end
+			
+			#it "should show user subscribers" do
+			#	get :subscribers, :id => @user
+			#	response.should have_selector("a", 	:href => user_path(@user),
+			#										:content => @user.name)
+			#end
+			
+			
+		end
+	
+	end
+	
+		
 end

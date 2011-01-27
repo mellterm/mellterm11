@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	
 	#see below for filter methods
-	before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
+	before_filter :authenticate, :except => [:show, :new, :create]
 	before_filter :correct_user, :only => [:edit, :update]
 	before_filter :admin_user, :only => :destroy
 	
@@ -16,6 +16,24 @@ class UsersController < ApplicationController
 		@terms = @user.terms.paginate(:page => params[:page])
 	
 	end
+	
+	def subscribees
+		@title = "Subscribed to"
+		@user = User.find(params[:id])
+		@users = @user.subscribees.paginate(:page => params[:page])
+		render 'show_subs'
+
+	end
+	
+	
+	def subscribers
+		@title = "My Subscribers"
+		@user = User.find(params[:id])
+		@users = @user.subscribers.paginate(:page => params[:page])
+		render 'show_subs'
+
+	end
+	
 	
 	def new
 	@user = User.new
