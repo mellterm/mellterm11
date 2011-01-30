@@ -14,6 +14,8 @@ describe Subscription do
   		@subscriber.subscriptions.create!(@attr)
 		end
 		
+
+		
 	describe "subscriptions" do
 	
 		before(:each) do
@@ -37,7 +39,7 @@ describe Subscription do
 			@subscription.subscribee.should == @subscribee
 			
 		end
-	
+		
 	end	
 	
 
@@ -47,7 +49,7 @@ describe Subscription do
 			Subscription.new(@attr).should_not be_valid
 		end
 		
-		it "should require a followed id" do
+		it "should require a subscribee id" do
 			@subscriber.subscriptions.build.should_not be_valid
 		end
 		

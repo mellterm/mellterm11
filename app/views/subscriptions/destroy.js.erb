@@ -1,0 +1,2 @@
+$("subscribe_form").update("<%= escape_javascript(render('users/subscribe')) %>")
+$("subscribers").update('<%= "#{@user.subscribers.count} subscribed to me" %>')

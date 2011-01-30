@@ -38,8 +38,8 @@
 				<strong>Current credit:</strong>
 				<%= @user.credit_balance.to_s %><br />
 			<% end %>
-			<strong>Terms I own:</strong>	<%= @user.terms.count %><br />
-			<strong>My subscriptions:</strong>
+			<strong>Terms owned:</strong>	<%= @user.terms.count %><br />
+			<strong>Subscriptions held:</strong>
 			<%= render 'shared/subscription_stats' %>
 			
 		</td>

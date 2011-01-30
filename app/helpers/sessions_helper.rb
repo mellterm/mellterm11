@@ -34,6 +34,20 @@ module SessionsHelper
 	
 	private 
 	
+	def user_can_pay?
+		current_user.credit_balance!=0
+	end
+	
+	def credit_warning
+		flash.now[:notice] = "Please buy more credits!"
+	end
+	
+	def check_credit
+		 credit_warning unless user_can_pay?
+	end
+	
+	
+	
 	def user_from_remember_token
 		#* is used to unwrap above array [user.id, user.salt]
 		User.authenticate_with_salt(*remember_token)
