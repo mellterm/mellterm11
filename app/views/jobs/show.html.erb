@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @job.name %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%= @job.company_id %>
+</p>
+
+<p>
+  <b>Invoiced amount:</b>
+  <%= @job.invoiced_amount %>
+</p>
+
+<p>
+  <b>Currency:</b>
+  <%= @job.currency_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>

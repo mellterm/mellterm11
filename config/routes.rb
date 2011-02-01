@@ -1,6 +1,16 @@
 Mellterm11::Application.routes.draw do
   
 
+  resources :providers
+
+  resources :sources
+
+  resources :jobs
+
+  resources :companies
+
+  resources :currencies
+
   get "searches/new"
 
   get "searches/create"

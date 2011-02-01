@@ -10,6 +10,7 @@ require 'populator'
 			make_users
 			make_terms
 			make_subscriptions
+			make_currnecies
 
 		end
 	end
@@ -144,4 +145,18 @@ require 'populator'
 		
 		subscribees.each { |subscribee| user.subscribe_to!(subscribee)}
 		subscribers.each { |subscriber| subscriber.subscribe_to!(user)}
+	end
+	
+	
+	
+	def make_currencies
+		name = ["EUR", "USD", "GBP", "RMB"]
+		long_name = ["Euro", "US Dollars", "Canadian Dollars", "Chinese Yuan"]
+		
+		name.each do 
+		Currency.create!(
+		:name => name.pop,
+		:long_name => long_name.pop
+		) 
+		end
 	end

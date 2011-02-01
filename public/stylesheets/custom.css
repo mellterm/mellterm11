@@ -283,3 +283,8 @@ margin-bottom: 0;
 	color: #00ff00;
 }
 
+/* provider defaults view (_form) */
+.provider_defaults {
+	background-color: blue;
+}
+

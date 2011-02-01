@@ -41,7 +41,14 @@
 			<strong>Terms owned:</strong>	<%= @user.terms.count %><br />
 			<strong>Subscriptions held:</strong>
 			<%= render 'shared/subscription_stats' %>
-			
+		<% if @user.admin? %>
+		<div id="adminlinks">
+			<h2> Admin Tools </h2><br />	
+			<%= link_to "Sources", sources_path %><br />
+			<%= link_to "Companies", companies_path %><br />
+			<%= link_to "Jobs", jobs_path %><br />
+		</div>
+		<% end %>		
 		</td>
 	</tr>
 	

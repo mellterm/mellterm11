@@ -10,7 +10,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110126110437) do
+ActiveRecord::Schema.define(:version => 20110201035501) do
+
+  create_table "companies", :force => true do |t|
+    t.string   "code"
+    t.string   "long_name"
+    t.text     "notes"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "currencies", :force => true do |t|
+    t.string   "name"
+    t.string   "long_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "domains", :force => true do |t|
     t.string   "code"
@@ -20,9 +36,32 @@ ActiveRecord::Schema.define(:version => 20110126110437) do
     t.datetime "updated_at"
   end
 
+  create_table "jobs", :force => true do |t|
+    t.string   "name"
+    t.integer  "company_id"
+    t.float    "invoiced_amount"
+    t.integer  "currency_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "languages", :force => true do |t|
     t.string   "code"
     t.string   "long_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "providers", :force => true do |t|
+    t.string   "name"
+    t.integer  "source_language_id"
+    t.integer  "target_language_id"
+    t.text     "notes"
+    t.integer  "default_domain_id"
+    t.boolean  "default_is_query"
+    t.boolean  "default_is_public"
+    t.integer  "default_source_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,6 +78,15 @@ ActiveRecord::Schema.define(:version => 20110126110437) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "job_id"
+  end
+
+  create_table "sources", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "is_public"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subscriptions", :force => true do |t|
