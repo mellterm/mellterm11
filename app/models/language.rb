@@ -13,7 +13,7 @@
 class Language < ActiveRecord::Base
 	
 	has_many :terms
-	
+	has_many :providers
 
 		
 end

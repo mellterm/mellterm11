@@ -1,50 +1,70 @@
-<p id="notice"><%= notice %></p>
+<table class="profile" summary="Profile information">
+	<tr>
+		<td class="main">
+			<h1>
+				Provider Page
+			</h1>
+		
+		<div class="field">
+		<b>Name:</b>
+  		<%= @provider.name %>
+		</div>
+		
+		<div class="field">
+  			<b>Source language:</b>
+  			<%= Language.find_by_id(@provider.source_language_id).code %>
+		</div>
 
-<p>
-  <b>Name:</b>
-  <%= @provider.name %>
-</p>
-
-<p>
-  <b>Source language:</b>
-  <%= @provider.source_language_id %>
-</p>
-
-<p>
-  <b>Target language:</b>
-  <%= @provider.target_language_id %>
-</p>
-
-<p>
-  <b>Notes:</b>
-  <%= @provider.notes %>
-</p>
-
-<p>
-  <b>Default domain:</b>
-  <%= @provider.default_domain_id %>
-</p>
-
-<p>
-  <b>Default is query:</b>
+		<div class="field">
+  			<b>Target language:</b>
+  			<%= Language.find_by_id(@provider.target_language_id).code %>
+		</div>
+		<% if @provider.notes? %>
+		<div class="field">
+  			<b>Notes:</b>
+  			<%= @provider.notes %>
+		</div>
+		<% end %>	
+		<div class="field">
+  			<b>Default domain:</b>
+  			 <%= Domain.find_by_id(@provider.default_domain_id).code %>
+		</div>
+ 	
+		<div class="field">
+		 <b>Default is query:</b>
   <%= @provider.default_is_query %>
-</p>
+  		</div>
 
-<p>
+		<div class="field">
   <b>Default is public:</b>
   <%= @provider.default_is_public %>
-</p>
-
-<p>
-  <b>Default source:</b>
-  <%= @provider.default_source_id %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @provider.user_id %>
-</p>
-
-
+		</div>
+		
+		<div class="field">
+  		<b>Default source:</b>
+  		<%= Source.find_by_id(@provider.default_source_id).name %>
+		</div>
 <%= link_to 'Edit', edit_provider_path(@provider) %> |
 <%= link_to 'Back', providers_path %>
+		
+			
+</td>
+		
+		<td class="sidebar round">
+			<strong>Current User</strong> <br /><%= current_user.name %><br />
+			<strong>Provider Owner</strong> <br /><%= @provider.user_id %><br />
+			
+			<strong>URL</strong> <%= link_to user_path(current_user), current_user %><br />
+	
+			
+		</td>
+	</tr>
+	
+	
+</table>
+	
+	
+	
+	
+
+  

@@ -1,6 +1,9 @@
 class ProvidersController < ApplicationController
+
+	before_filter :authenticate
+	before_filter :authorized_user, :only => :destroy
+
   # GET /providers
-  # GET /providers.xml
   def index
     @providers = Provider.all
 
@@ -28,16 +31,14 @@ class ProvidersController < ApplicationController
   # POST /providers
   # POST /providers.xml
   def create
-    @provider = Provider.new(params[:provider])
 
-      if @provider.save
-       redirect_to(@provider, :notice => 'Provider was successfully created.') 
- 
-      else
+	@provider= current_user.providers.build(params[:provider])
+     if @provider.save
+       	redirect_to(@provider) 
+ 		flash.now[:success] = "Provider was successfully created!"
+     else
         render :action => "new" 
-
-      end
-
+     end
   end
 
   # PUT /providers/1
@@ -47,11 +48,11 @@ class ProvidersController < ApplicationController
 
 
       if @provider.update_attributes(params[:provider])
-       redirect_to(@provider, :notice => 'Provider was successfully updated.')
+       redirect_to(@provider, :success => 'Provider was successfully updated.')
 
       else
 		render :action => "edit" 
-   
+ 
       end
 
   end
@@ -59,9 +60,22 @@ class ProvidersController < ApplicationController
   # DELETE /providers/1
 
   def destroy
-    @provider = Provider.find(params[:id])
     @provider.destroy
-redirect_to(providers_url) 
+    flash[:success] = "Provider was successfuly deleted!"
+	redirect_to providers_path
 
   end
+  
+  private
+  	def authenticate
+		deny_access unless signed_in?
+	end
+  
+  	def authorized_user
+  		#only current user can delete own providers
+		@provider = Provider.find(params[:id])
+		redirect_to root_path unless current_user?(@provider.user)
+	end
+  
+  
 end

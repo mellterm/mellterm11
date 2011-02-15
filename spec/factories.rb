@@ -1,6 +1,6 @@
 Factory.define :user do |user|
-	user.name "Bob Dummy User"
-	user.email "dan@example.com"
+	user.name "Danny Dummy User"
+	user.email "dandare@example.com"
 	user.phone "1213123213"
 	user.password "foobar"
 	user.password_confirmation "foobar"
@@ -37,3 +37,17 @@ Factory.define :term do |term|
 	 term.association :domain
 end
 
+Factory.define :provider do |provider|
+	provider.name "Some Provider Name"
+	provider.source_language_id 1
+	provider.target_language_id 2
+	provider.notes           "some notes"
+	provider.default_domain_id  1
+  	provider.default_is_query   false
+  	provider.default_is_public  false
+  	provider.default_source_id  1
+	
+	provider.association :language
+	provider.association :domain
+	provider.association :user
+end

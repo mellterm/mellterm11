@@ -49,6 +49,8 @@ class User < ActiveRecord::Base
 			
 	
 	has_many :terms, 			:dependent => :destroy
+	has_many :providers, 		:dependent => :nullify			#creates anon providers (even) if a user is deleted
+	
 	
 	#rails assumes foreign key is user_id unless specified as here
 	has_many :subscriptions, 	:dependent => :destroy,

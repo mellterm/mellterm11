@@ -1,0 +1,23 @@
+<h1>Listing udcs</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @udcs.each do |udc| %>
+  <tr>
+  	<td><%= udc.code %></td>
+    <td><%= udc.default_udc_txt %></td>
+    <td><%= link_to 'Show', udc %></td>
+    <td><%= link_to 'Edit', edit_udc_path(udc) %></td>
+    <td><%= link_to 'Destroy', udc, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Udc', new_udc_path %>

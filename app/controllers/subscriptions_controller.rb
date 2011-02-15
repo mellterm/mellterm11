@@ -1,7 +1,6 @@
 class SubscriptionsController < ApplicationController
 	
 	before_filter :authenticate
-	before_filter :check_credit, :only => :create 
 
 	
 	#subscribe to

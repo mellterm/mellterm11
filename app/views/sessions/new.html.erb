@@ -1,5 +1,14 @@
 <h1>Sign In</h1>
 
+<% interface_languages = [	['   ', 'default'],
+							['English', 'en'], 
+							['Deutsch', 'de'], 
+							['中國', 'zh-CN'], 
+							['espanyol', 'es'],
+							['francais', 'fr']
+							]%>
+
+
 <%= form_for(:session, :url=> sessions_path ) do |f| %>
 	<div class="field">
 	<%= f.label :email %><br />
@@ -8,6 +17,10 @@
 	<div class="field">
 	<%= f.label :password %><br />
 	<%= f.password_field :password %>
+</div>
+<div class="field">
+	<%= f.label :language %><br />
+	<%= f.select :interface_language, interface_languages %>
 </div>
 <div class="actions">
 	<%= f.submit "Sign In" %>

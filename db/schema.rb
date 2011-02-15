@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110201035501) do
+ActiveRecord::Schema.define(:version => 20110215022046) do
 
   create_table "companies", :force => true do |t|
     t.string   "code"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20110201035501) do
     t.integer  "currency_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "provider_id"
   end
 
   create_table "languages", :force => true do |t|
@@ -64,7 +65,12 @@ ActiveRecord::Schema.define(:version => 20110201035501) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
+    t.integer  "default_udc_id"
+    t.string   "default_source_url"
   end
+
+  add_index "providers", ["user_id"], :name => "index_providers_on_user_id"
 
   create_table "searches", :force => true do |t|
     t.string   "source_content"
@@ -118,6 +124,13 @@ ActiveRecord::Schema.define(:version => 20110201035501) do
   add_index "terms", ["domain_id"], :name => "index_terms_on_domain_id"
   add_index "terms", ["source_language_id"], :name => "index_terms_on_source_language_id"
   add_index "terms", ["target_language_id"], :name => "index_terms_on_target_language_id"
+
+  create_table "udcs", :force => true do |t|
+    t.string   "code"
+    t.string   "default_udc_txt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

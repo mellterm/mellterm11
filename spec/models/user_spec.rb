@@ -216,6 +216,7 @@ describe User do
 				   	:password_confirmation =>"foobar"
 	   		}
 				@user = User.create!(@attr)
+				#create a load of terms
 				@t1 = Factory(:term, :user => @user, :domain_id => 1, :created_at => 1.day.ago)
 				@t2 = Factory(:term, :user => @user, :domain_id => 3, :created_at => 3.day.ago)
 				@t3 = Factory(:term, :user => @user, :domain_id => 2, :created_at => 2.day.ago)				
@@ -236,6 +237,49 @@ describe User do
 					end
 				end
 		
+		describe "provider associations" do
+	
+				before(:each) do
+					
+						@attr = { 	
+					:name => "A User", 
+				   	:email => "whateveruser@example.com", 
+				   	:phone => "023-476-292",
+				   	:skype => "blankskype",
+				   	:time_zone => "UTC",
+				   	:notes => "instructions",
+				   	:rate => 0.10,
+				   	:password =>"foobar",
+				   	:password_confirmation =>"foobar"
+	   		}
+					
+					
+					@user = User.create!(@attr)
+					
+					@provider1 = Factory(:provider, :user => @user, :default_domain_id => 3)
+					@provider2 = Factory(:provider, :user => @user, :default_domain_id => 2)
+					@provider3 = Factory(:provider, :user => @user, :default_domain_id => 1)
+				
+				end
+				
+			it "should have a providers attribute" do
+				@user.should respond_to(:providers)
+			end
+			
+			it "should have the right providers in the right order (by domain)" do
+				@user.providers.should == [@provider3, @provider2, @provider1]
+			end
+			
+			
+			it "should not destroy associated providers" do
+				@user.destroy
+				[@provider1, @provider2, @provider3].each do |provider|
+					Provider.find_by_id(provider.id).should_not be_nil
+			end
+end
+			
+		end
+				
 		
 		describe "term feed" do
 			

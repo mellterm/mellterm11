@@ -31,7 +31,7 @@ class SourcesController < ApplicationController
 
   
       if @source.save
-       	redirect_to(@source, :notice => 'Source was successfully created.') 
+       	redirect_to(@source, :success => 'Source was successfully created.') 
       else
  		render :action => "new" 
       end
@@ -44,7 +44,7 @@ class SourcesController < ApplicationController
 
 
       if @source.update_attributes(params[:source])
-      	redirect_to(@source, :notice => 'Source was successfully updated.')
+      	redirect_to(@source, :success => 'Source was successfully updated.')
 
       else
 		render :action => "edit" 

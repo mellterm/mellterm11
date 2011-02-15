@@ -13,4 +13,9 @@
 #
 
 class Source < ActiveRecord::Base
+	
+	attr_accessible :name, :description, :is_public, :url
+	
+	has_many :providers
+	
 end

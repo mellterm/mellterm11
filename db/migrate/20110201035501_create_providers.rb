@@ -13,6 +13,8 @@ class CreateProviders < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    add_index :providers, :user_id
   end
 
   def self.down

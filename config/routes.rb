@@ -1,6 +1,8 @@
 Mellterm11::Application.routes.draw do
   
 
+  resources :udcs
+
   resources :providers
 
   resources :sources
@@ -10,6 +12,7 @@ Mellterm11::Application.routes.draw do
   resources :companies
 
   resources :currencies
+  
 
   get "searches/new"
 

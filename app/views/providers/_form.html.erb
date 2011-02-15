@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+<% #TODO image column- use Paperclip %>
+
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -28,10 +30,15 @@
     <%= f.text_area :notes %>
   </div>
   
-  #form field goes here
+
 
   <div class="provider_defaults">
   	<h2>Default Settings for Items </h2>
+  	 <div class="field">
+  	 	<% #TODO Autcomplete for UDCs %>
+	    <%= f.label :default_udc_id %><br />
+	    <%= f.collection_select :default_udc_id, Udc.all(:order => "code"), :id, :code, {:include_blank => true} %>
+	  </div>
 	  <div class="field">
 	    <%= f.label :default_domain_id %><br />
 	    <%= f.collection_select :default_domain_id, Domain.all(:order => "code"), :id, :code %>
@@ -47,7 +54,13 @@
 	  <div class="field">
 	    <%= f.label :default_source_id %><br />
 	    <%= f.collection_select :default_source_id, Source.all(:order => "name"), :id, :name %>
+	    <%= link_to 'Create New Source', new_source_path %>
 	  </div>
+	   <div class="field">
+	    <%= f.label :default_source_url %><br />
+	    <%= f.text_field :default_source_url %>
+	  </div>
+	  
 </div>	
   <div class="actions">
     <%= f.submit %>

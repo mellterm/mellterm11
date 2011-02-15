@@ -1,5 +1,6 @@
 .container {
-width: 710px;
+	/* originally 710*/
+width: 810px;
 }
 body {
 background: #EECFA1;		
@@ -285,6 +286,6 @@ margin-bottom: 0;
 
 /* provider defaults view (_form) */
 .provider_defaults {
-	background-color: blue;
+	background-color: light-blue;
 }
 

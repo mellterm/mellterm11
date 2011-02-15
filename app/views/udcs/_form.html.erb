@@ -1,0 +1,26 @@
+<%= form_for(@udc) do |f| %>
+  <% if @udc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@udc.errors.count, "error") %> prohibited this udc from being saved:</h2>
+
+      <ul>
+      <% @udc.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="field">
+    	<%= f.label :code %><br />
+    	<%= f.text_field :code %>
+  	</div>
+	  <div class="field">
+    <%= f.label :udc_text %><br />
+    <%= f.text_area :default_udc_txt %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
