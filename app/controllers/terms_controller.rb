@@ -54,6 +54,15 @@ class TermsController < ApplicationController
 		
 	end
 	
+	#TODO AJAXIFY 
+	def show_form
+ 		if request.xhr?
+  			render 'show_form.js.erb', :layout => false
+  		else
+  			redirect_to root_path	
+		end	 
+	end
+	
 
 		
 	private

@@ -45,6 +45,7 @@ describe ProvidersController do
 					response.should render_template('new')
 				end	
 				
+				
 			end
 			
 			describe "success" do
@@ -60,8 +61,41 @@ describe ProvidersController do
 				end.should change(Provider, :count).by(1)
 				end
 				
-		end
+			end
+			
+			
 	end
+	
+	describe "GET 'show'" do
+		
+		before(:each) do
+			@user = Factory(:user)
+			test_sign_in(@user)
+			Factory(:language, :code => "de_de", :long_name=> "German")
+			Factory(:language, :code => "en_gb", :long_name=> "English")
+			@provider = Factory(:provider, :user => @user, 
+								:name => "Some Name", 
+								:source_language_id => 1,
+								:target_language_id => 2)
+		end
+		
+		it "should be successful" do
+			get 'show', :id => @provider.id  
+			response.should be_success
+		end
+		
+		
+		it "should have a link to create new term page" do
+			get :show, :id=>@provider.id
+			response.should have_selector('a', :content => "Create a new term" ) 
+		end
+		
+		
+	end	
+	
+	
+	
+	
 	
 	describe "DELETE 'destroy'" do
 
@@ -91,7 +125,7 @@ describe ProvidersController do
 					lambda do
 					delete :destroy, :id => @provider
 					flash[:success].should =~ /Provider was successfuly deleted/
-					response.should redirect_to(root_path)
+					response.should redirect_to(providers_path)
 				end.should change(Provider, :count).by(-1)
 				end
 					

@@ -32,22 +32,24 @@
  	
 		<div class="field">
 		 <b>Default is query:</b>
-  <%= @provider.default_is_query %>
+  			<%= @provider.default_is_query? ? 'yes' : 'no' %>
   		</div>
 
 		<div class="field">
-  <b>Default is public:</b>
-  <%= @provider.default_is_public %>
+  		<b>Public by default?:</b>
+  			<%= @provider.default_is_public? ? 'yes' : 'no' %>
 		</div>
 		
+		<% if @provider.default_source_id? %>
 		<div class="field">
   		<b>Default source:</b>
   		<%= Source.find_by_id(@provider.default_source_id).name %>
 		</div>
-<%= link_to 'Edit', edit_provider_path(@provider) %> |
-<%= link_to 'Back', providers_path %>
-		
-			
+		<% end %>
+	<%= link_to 'Edit', edit_provider_path(@provider) %> |
+	<%= link_to 'Back', providers_path %>
+	<br/>
+
 </td>
 		
 		<td class="sidebar round">
@@ -56,7 +58,10 @@
 			
 			<strong>URL</strong> <%= link_to user_path(current_user), current_user %><br />
 	
-			
+			<% #TODO Ajaxify these two links%>
+				<%= link_to "Create a new term", :controller => "terms", :action => "show_form", :remote => true %>
+			<div id="show"></div>
+				<%= link_to "Upload term file", '#' %>	
 		</td>
 	</tr>
 	

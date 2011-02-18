@@ -37,6 +37,12 @@ Factory.define :term do |term|
 	 term.association :domain
 end
 
+Factory.define :udc do |udc|
+	udc.code "400.11"
+	udc.default_udc_txt  "Sprogs and Fogs"
+end
+
+
 Factory.define :provider do |provider|
 	provider.name "Some Provider Name"
 	provider.source_language_id 1
@@ -45,9 +51,12 @@ Factory.define :provider do |provider|
 	provider.default_domain_id  1
   	provider.default_is_query   false
   	provider.default_is_public  false
-  	provider.default_source_id  1
-	
+  	
+  	provider.user_id 1
+  	
+  	provider.association :user
 	provider.association :language
 	provider.association :domain
-	provider.association :user
+	provider.association :udc
+
 end

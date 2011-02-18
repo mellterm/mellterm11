@@ -10,6 +10,8 @@
             <string>app\views\users\_fields.html.erb</string>
             <key>applica</key>
             <string>app\views\layouts\application.html.erb</string>
+            <key>application.html.erb</key>
+            <string>app\views\layouts\application.html.erb</string>
             <key>c</key>
             <string>public\stylesheets\custom.css</string>
             <key>custo</key>
@@ -38,6 +40,8 @@
             <string>app\views\pages\home.html.erb</string>
             <key>index.h</key>
             <string>app\views\users\index.html.erb</string>
+            <key>js.erb</key>
+            <string>app\views\subscriptions\create.js.erb</string>
             <key>layo</key>
             <string>spec\requests\layout_links_spec.rb</string>
             <key>layou</key>

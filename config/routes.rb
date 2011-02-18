@@ -20,7 +20,7 @@ Mellterm11::Application.routes.draw do
 
   get "searches/show"
   
-
+  
 	
 	
  	resources :sessions, :only => 	[:new, :create, :destroy]
@@ -43,7 +43,9 @@ Mellterm11::Application.routes.draw do
   	
   	match '/searches', :to => 'searches#new'
   	match '/queryresult', :to => 'searches#show'
-  	
+  	match 'show_form', :to => 'terms#show_form'
+
+
   	resources :users do
 		member do
 			get 'subscribers'
@@ -52,8 +54,15 @@ Mellterm11::Application.routes.draw do
 		end
 		
 		resources :terms
-		
   	end
+  	
+  	
+  	resources :providers do
+    	member do
+      		get 'show_form'
+    	end
+  	end
+
   	
   	
   # The priority is based upon order of creation:

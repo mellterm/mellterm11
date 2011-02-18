@@ -65,6 +65,14 @@ class ProvidersController < ApplicationController
 	redirect_to providers_path
 
   end
+   
+  	def show_form
+ 		if request.xhr?
+  			render 'show_form.js.erb', :layout => false
+		end	 
+	end
+  
+  
   
   private
   	def authenticate
