@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110215011943
+# Schema version: 20110218090210
 #
 # Table name: providers
 #
@@ -18,6 +18,7 @@
 #  image              :string(255)
 #  default_udc_id     :integer
 #  default_source_url :string(255)
+#
 
 
 class Provider < ActiveRecord::Base

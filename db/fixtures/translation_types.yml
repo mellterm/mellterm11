@@ -1,0 +1,15 @@
+type1:
+   id: 1
+   name: TERM
+
+type2:   
+   id: 2
+   name: SEGMENT
+   
+type3:   
+   id: 3
+   name: ENTITY
+   
+type4:   
+   id: 4
+   name: ABBREVIATION

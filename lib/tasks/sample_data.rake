@@ -10,9 +10,20 @@ require 'populator'
 			make_users
 			make_terms
 			make_subscriptions
-			make_currnecies
-
+			make_currencies
+			
 		end
+		
+		desc "Loads initial data needed by application."
+  		task :populate => :environment do
+  			
+  			require 'active_record/fixtures'
+  			Dir.glob(RAILS_ROOT + '/db/fixtures/*.yml').each do |file|
+  				base_name = File.basename(file, '.*')
+  				Fixtures.create_fixtures('db/fixtures', base_name)
+  			end
+  		end	
+		
 	end
 
 
@@ -70,7 +81,8 @@ require 'populator'
 		end		
 			
 		14.times do |l|
-			code = ["ELEC",
+			code = [
+				"ELEC",
 				"GENTECH",
 				"AUTO", 
 				"LEGAL",
@@ -83,7 +95,9 @@ require 'populator'
 				"TELECOM",
 				"TECHDOC",
 				"MARKET",
-				"BUSFINA"
+				"BUSFINA",
+				"PRJMAN",
+				"ENVIRON"
 				][l]	
 			long_name = 
 				["Electrical Engineering & Electronics",
@@ -99,7 +113,9 @@ require 'populator'
 				"Telecom(munications)",
 				"Language of technical documentation",
 				"Marketing, including slogans",
-				"Business Financial"
+				"Business Financial",
+				"Project Management",
+				"Environmental Technology"
 				][l]
 		
 		Domain.create!(
@@ -160,3 +176,9 @@ require 'populator'
 		) 
 		end
 	end
+	
+
+	
+	
+	
+	

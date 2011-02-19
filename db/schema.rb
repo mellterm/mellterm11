@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215022046) do
+ActiveRecord::Schema.define(:version => 20110219051355) do
 
   create_table "companies", :force => true do |t|
     t.string   "code"
@@ -107,23 +107,37 @@ ActiveRecord::Schema.define(:version => 20110215022046) do
   add_index "subscriptions", ["subscriber_id"], :name => "index_subscriptions_on_subscriber_id"
 
   create_table "terms", :force => true do |t|
-    t.string   "source_content"
-    t.string   "target_content"
-    t.integer  "source_language_id"
-    t.integer  "target_language_id"
-    t.integer  "domain_id"
     t.text     "notes"
-    t.integer  "source"
     t.boolean  "is_query"
     t.boolean  "is_public"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "source_tu_id"
+    t.integer  "target_tu_id"
+    t.integer  "source_id"
+    t.string   "source_url"
+    t.integer  "udc_id"
+    t.integer  "translation_type_id"
+    t.string   "definition"
   end
 
-  add_index "terms", ["domain_id"], :name => "index_terms_on_domain_id"
-  add_index "terms", ["source_language_id"], :name => "index_terms_on_source_language_id"
-  add_index "terms", ["target_language_id"], :name => "index_terms_on_target_language_id"
+  create_table "translation_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tus", :force => true do |t|
+    t.string   "content"
+    t.integer  "language_id"
+    t.string   "definition"
+    t.boolean  "is_source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tus", ["content"], :name => "index_tus_on_content"
 
   create_table "udcs", :force => true do |t|
     t.string   "code"

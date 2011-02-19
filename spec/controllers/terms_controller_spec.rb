@@ -32,7 +32,8 @@ describe TermsController do
 			   	:target_content => " ", 
 			   	:source_language_id => "de-de",
 			   	:target_language_id => "fr-fr",
-			   	:domain_id =>"elec"	
+			   	:domain_id =>"elec"
+			   		
 	   		}
 			end
 			

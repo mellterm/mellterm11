@@ -1,6 +1,8 @@
 Mellterm11::Application.routes.draw do
   
 
+  get "translation_types/new"
+
   resources :udcs
 
   resources :providers

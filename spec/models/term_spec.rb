@@ -38,6 +38,19 @@ describe Term do
 	end
 	
 	describe "term validations" do
+		before(:each) do
+		
+			@user = Factory(:user, :email => "test2@sample.com")
+			@attr = { 	
+				:source_content => "Irgendetwas", 
+			   	:target_content => "something or another", 
+			   	:source_language_id => 1,
+			   	:target_language_id => 2,
+			   	:domain_id =>1
+			   	
+	   		}
+		end
+		
 		
 		it "should have a user id" do
 			Term.new(@attr).should_not be_valid
@@ -51,6 +64,7 @@ describe Term do
 			@user.terms.build(:notes => "Ipsum lorum", :source => 1).should_not be_valid
 		end
 		
+	
 	end
 	
 

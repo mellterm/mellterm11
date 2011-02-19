@@ -31,6 +31,7 @@ Factory.define :term do |term|
 	 term.is_query true
 	 term.user_id 1
 	 term.domain_id 2
+	
 	 
 	 term.association :user
 	 term.association :language
