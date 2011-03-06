@@ -7,8 +7,10 @@ require 'populator'
 			 
 			Rake::Task['db:reset'].invoke
 			
+			make_translation_types
+			make_domains
 			make_users
-			make_terms
+			make_translations
 			make_subscriptions
 			make_currencies
 			
@@ -67,8 +69,10 @@ require 'populator'
 			end	
 	end
 	
-	def make_terms
-	
+	def make_translations
+		#to make a translation create two tus for source/target, each tu needs a language.
+		 
+		
 		6.times do |l|
 		code = ["de_de", "en_gb", "en_en", "en_us", "fr_fr", "sp_sp"][l]
 		long_name = ["German, Germany", "English, England", "English, International", "English, USA",
@@ -80,6 +84,89 @@ require 'populator'
 		)			
 		end		
 			
+			
+		25.times do |t|
+			
+			source_content =	Populator.words(2..3)
+			target_content =	Populator.words(2..3)
+			
+				SourceTu.create!(
+					:content => source_content,
+					:language_id => 1+rand(6)
+				)
+				
+				TargetTu.create!(
+					:content => target_content,
+					:language_id => 1+rand(6)	
+				)
+					
+		
+		end	
+
+		User.all(:limit => 6).each do |user|
+			25.times do 
+			
+			source_tu_id = 1+rand(SourceTu.count)
+			target_tu_id = 1+rand(TargetTu.count)
+			created_at =  2.days.ago..Time.now
+			is_query = [0,1].rand
+			is_public = [0,1].rand
+
+			
+			user.terms.create!(
+				
+				:source_tu_id => source_tu_id,
+				:target_tu_id => target_tu_id,
+			   	:is_query => is_query,
+				:is_public => is_public,
+				:translation_type_id => 1,
+				:created_at =>  created_at   
+			)
+							
+		end
+	end
+	
+
+	end
+	
+	
+	
+	def make_subscriptions
+		
+		users = User.all
+		user = users.first
+		subscribees = users[1..50]	
+		subscribers = users[3..40]
+		
+		subscribees.each { |subscribee| user.subscribe_to!(subscribee)}
+		subscribers.each { |subscriber| subscriber.subscribe_to!(user)}
+	end
+	
+	
+	
+	def make_currencies
+		name = ["EUR", "USD", "GBP", "RMB"]
+		long_name = ["Euro", "US Dollars", "Canadian Dollars", "Chinese Yuan"]
+		
+		name.each do 
+		Currency.create!(
+		:name => name.pop,
+		:long_name => long_name.pop
+		) 
+		end
+	end
+	
+	def make_translation_types
+		translation_types = ["Abbreviation", "Entity", "Segment", "Term"]
+		translation_types.each do
+			TranslationType.create!(
+			:name => translation_types.pop
+			)
+		end
+	end
+
+	def make_domains
+		
 		14.times do |l|
 			code = [
 				"ELEC",
@@ -122,63 +209,19 @@ require 'populator'
 		:code => code,
 		:long_name => long_name
 		)			
-	end
-	
-
-	User.all(:limit => 6).each do |user|
-		50.times do 
-			
-			source_content =	Populator.words(2..3)
-			target_content =	Populator.words(2..3)
-			created_at = 	2.months.ago..Time.now
-			is_query = [0,1].rand
-			is_public = [0,1].rand
-			user.terms.create!(
-				:source_content => source_content, 
-			   	:target_content => target_content, 
-			   	:source_language_id => 1+rand(6),
-			   	:target_language_id => 1+rand(6),
-			   	:domain_id => 1+rand(14),
-			   	:is_query => is_query,
-				:is_public => is_public,
-				:created_at =>  created_at   
-			)	
 		end
-	end
-	
-	
+		domain_id = rand(Domain.count)
+		term_id = rand(Term.count)
+		
+		DomainCube.create!(
+				:term_id => term_id,
+				:domain_id => domain_id
+			)
 
-	end
-	
-	
-	
-	def make_subscriptions
 		
-		users = User.all
-		user = users.first
-		subscribees = users[1..50]	
-		subscribers = users[3..40]
 		
-		subscribees.each { |subscribee| user.subscribe_to!(subscribee)}
-		subscribers.each { |subscriber| subscriber.subscribe_to!(user)}
-	end
-	
-	
-	
-	def make_currencies
-		name = ["EUR", "USD", "GBP", "RMB"]
-		long_name = ["Euro", "US Dollars", "Canadian Dollars", "Chinese Yuan"]
 		
-		name.each do 
-		Currency.create!(
-		:name => name.pop,
-		:long_name => long_name.pop
-		) 
-		end
-	end
-	
-
-	
+	end	
 	
 	
 	

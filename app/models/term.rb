@@ -21,21 +21,24 @@
 
 class Term < ActiveRecord::Base
 	#deprecated- will be replaced by or amended into Term_Translations
-	attr_accessible :source_content, :target_content, :source_language_id,:target_language_id, :domain_id, :notes, :source, :is_query, :is_public
+	attr_accessible  	:notes, :is_query, :is_public, :source_tu_id, 
+						:target_tu_id, :source_url, :source_id, :udc_id, :translation_type_id, :definition
 	
 	belongs_to :user
-	belongs_to :language
-	belongs_to :domain
+	belongs_to :udc
+	belongs_to :source
+	belongs_to :translation_type
 
+	belongs_to :source_tu
+	belongs_to :target_tu
 	
-	validates_presence_of :source_language_id, :target_language_id, :domain_id, :user_id
+	has_many :domain_cubes
+	has_many :domains, :through => :domain_cubes
 	
-	validates :source_content,  	:presence => true,
-									:length => {:minimum => 2}
-									
-									
-	validates :target_content,  	:presence => true,
-									:length => {:minimum => 2}
+	
+	validates_presence_of :user_id
+	
+
 																								
 	default_scope :order => 'terms.created_at DESC'
 end

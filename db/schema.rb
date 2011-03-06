@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110219051355) do
+ActiveRecord::Schema.define(:version => 20110306164706) do
 
   create_table "companies", :force => true do |t|
     t.string   "code"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(:version => 20110219051355) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "domain_cubes", :force => true do |t|
+    t.integer  "term_id"
+    t.integer  "domain_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "domain_cubes", ["domain_id"], :name => "index_domain_cubes_on_domain_id"
+  add_index "domain_cubes", ["term_id", "domain_id"], :name => "index_domain_cubes_on_term_id_and_domain_id", :unique => true
+  add_index "domain_cubes", ["term_id"], :name => "index_domain_cubes_on_term_id"
 
   create_table "domains", :force => true do |t|
     t.string   "code"
@@ -86,6 +97,16 @@ ActiveRecord::Schema.define(:version => 20110219051355) do
     t.integer  "job_id"
   end
 
+  create_table "source_tus", :force => true do |t|
+    t.string   "content"
+    t.integer  "language_id"
+    t.string   "definition"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "source_tus", ["content"], :name => "index_source_tus_on_content"
+
   create_table "sources", :force => true do |t|
     t.string   "name"
     t.string   "description"
@@ -105,6 +126,16 @@ ActiveRecord::Schema.define(:version => 20110219051355) do
   add_index "subscriptions", ["subscribee_id"], :name => "index_subscriptions_on_subscribee_id"
   add_index "subscriptions", ["subscriber_id", "subscribee_id"], :name => "index_subscriptions_on_subscriber_id_and_subscribee_id", :unique => true
   add_index "subscriptions", ["subscriber_id"], :name => "index_subscriptions_on_subscriber_id"
+
+  create_table "target_tus", :force => true do |t|
+    t.string   "content"
+    t.integer  "language_id"
+    t.string   "definition"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "target_tus", ["content"], :name => "index_target_tus_on_content"
 
   create_table "terms", :force => true do |t|
     t.text     "notes"

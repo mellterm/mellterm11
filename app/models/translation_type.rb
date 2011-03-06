@@ -10,4 +10,6 @@
 #
 
 class TranslationType < ActiveRecord::Base
+	
+	has_many :terms
 end

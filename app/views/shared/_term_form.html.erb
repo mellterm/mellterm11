@@ -1,25 +1,22 @@
 <%= form_for(@term) do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
-	<div class="field">
-		<%= f.label :source_language, "From" %><br /> 
-		<%= f.collection_select(:source_language_id, Language.all, :id, :code) %>
-	</div>
+	
+		<%= form_for(@tu) do |t| %>
 		<div class="field">
-		<%= f.label :source_content, "Source" %><br /> 
-		<%= f.text_area :source_content %>
-	</div>
+			<%= t.label :source_language, "From" %><br /> 
+			<%= t.collection_select(:language_id, Language.all, :id, :code) %>
+		</div>
 		<div class="field">
-		<%= f.label :target_language, "To" %><br /> 
-		<%= f.collection_select(:target_language_id, Language.all, :id, :code) %>
-	</div>
-	<div class="field">
-		<%= f.label :target_content, "Target" %><br />  
-		<%= f.text_area :target_content %>
-	</div>
-	<div class="field">
-		<%= f.label :domain_id, "Domain" %><br /> 
-		<%= f.collection_select(:domain_id, Domain.all, :id, :long_name) %>
-	</div>
+			<%= t.label :source_content, "Source" %><br /> 
+			<%= t.text_area :content %>
+		</div>
+		<div class="field">
+			<%= t.label :definition, "Definition" %><br /> 
+			<%= t.text_field :definition %>
+		</div>
+		<%= hidden_field_tag 'is_source', 'TRUE' %>
+		<% end %>
+
 	<div class="field">
 		<%= f.label :notes, "Notes" %><br />  
 		<%= f.text_area :notes %>
@@ -35,7 +32,5 @@
 	<div class="actions">
 		<%= f.submit "Submit Term" %>
 	</div>
-
-
 
 <% end %>

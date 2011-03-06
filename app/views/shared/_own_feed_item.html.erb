@@ -1,36 +1,49 @@
 <td class="term">
+	
+		<% source_language_content = SourceTu.find_by_id(term.source_tu_id).content %>
+			<% source_language = Language.find(SourceTu.find_by_id(term.source_tu_id).language_id).code  %>
+			<% target_language_content = TargetTu.find_by_id(term.target_tu_id).content %>
+			<% target_language = Language.find(TargetTu.find_by_id(term.target_tu_id).language_id).code  %>
+	
 	<% if term.is_public? %>	
 		<% if term.is_query? %>		
 			<span class="query">
-		<% end %>
+				
+	<% end %>
 	
 		<%= link_to term_path(term) do %>
-			<span class="source_content"><%= term.source_content %></span>
+			<span class="source_content"><%= source_language_content %></span>
 		<% end %>
 	
-		<span class="source_language"><%= Language.find(term.source_language_id).code %></span><br/>	
-		<span class="target_content"><%= term.target_content %></span>
-		<span class="target_language"><%= Language.find(term.target_language_id).code %></span><br />
+		<span class="source_language"> 
+		<%= source_language %></span><br/>	
+	<span class="target_content">
+		<%= target_language_content%></span>
+	<span class="target_language">
+		<%= target_language %></span><br />
 	
-		<% if term.is_query? %>		
+	<% if term.is_query? %>		
 			</span>
-		<% end %>
+	<% end %>
 									
-	<% else %>
+	<% else #if term not public%>
  
-		<span class="source_content"><%= term.source_content  %></span>
-		<span class="source_language"><%= Language.find(term.source_language_id).code %></span>
-		<br/>
+		<span class="source_content">
+			<%= source_language_content %></span>
+		<span class="source_language">
+		<%= source_language %> </span>
+	<br/>
 		<%= link_to do %>
 			<span class="hidden_target_content"><%= "Click to purchase" %></span>
 		<% end %>
-		<span class="target_language"><%= Language.find(term.target_language_id).code %></span>
-		<br />
+			<span class="target_language">
+				<%= target_language %>	
+			</span>
+			<br />
 	<% end %>
 	
-	<span class="domain"><%= Domain.find(term.domain_id).code %> | 
-						<%= Domain.find(term.domain_id).long_name %>
-				</span><br/>		
+	<span class="domain">Domains here: #
+	</span><br/>		
 	<span class="timestamp">
 			First created <%= time_ago_in_words(term.created_at) %> ago.<br/>
 			Last updated <%= time_ago_in_words(term.updated_at) %> ago.

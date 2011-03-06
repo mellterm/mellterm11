@@ -1,41 +1,62 @@
-<h1>Detailed Term Information </h1>
-<p>
-
+		<h1>Detailed Term Information </h1>
+		<p>
+	
+			<% source_language_content = SourceTu.find_by_id(@term.source_tu_id).content %>
+			<% source_language = Language.find(SourceTu.find_by_id(@term.source_tu_id).language_id).code  %>
+			<% target_language_content = TargetTu.find_by_id(@term.target_tu_id).content %>
+			<% target_language = Language.find(TargetTu.find_by_id(@term.target_tu_id).language_id).code  %>
 <table class="profile" summary="Detailed term information">
 	<tr>
-		<td class="term">
+		<td class="main">
 			
 	<% if @term.is_public? %>	
 		<% if @term.is_query? %>		
 			<span class="query">
+				
 	<% end %>
 	
-	<span class="source_content">Source term: <%= @term.source_content %></span>	
-	<span class="source_language">Source language: <%= Language.find(@term.source_language_id).code %></span><br/>	
-	<span class="target_content">Target term: <%= @term.target_content %></span>
-	<span class="target_language">Target language: <%= Language.find(@term.target_language_id).code %></span><br />
+	<span class="source_content">
+		<%= source_language_content %></span>	
+	<span class="source_language"> 
+		<%= source_language %></span><br/>	
+	<span class="target_content">
+		<%= target_language_content%></span>
+	<span class="target_language">
+		<%= target_language %></span><br />
+	
 	<% if @term.notes? %>
 	<span class="notes">Notes: <%= @term.notes %></span><br />
 	<% end %>		
+	<% if @term.source_url? %>
+	<span class="notes">Source: <%= @term.source_url %></span><br />
+	<% end %>
+	
+	
+	
 	<% if @term.is_query? %>		
 			</span>
 	<% end %>
 									
-	<% else %>
+	<% else #if term not public%>
  
-	<span class="source_content">Source term: <%= @term.source_content  %></span>
-	<span class="source_language">Source language: <%= Language.find(@term.source_language_id).code %></span>
+		<span class="source_content">
+			<%= source_language_content %></span>
+		<span class="source_language">
+		<%= source_language %> </span>
 	<br/>
 		<%= link_to do %>
 			<span class="hidden_target_content"><%= "Click to purchase" %></span>
 		<% end %>
-			<span class="target_language">Target language:<%= Language.find(@term.target_language_id).code %></span>
+			<span class="target_language">
+				<%= target_language %>	
+			</span>
 			<br />
 	<% end %>
 	
-	<span class="domain">Domain: <%= Domain.find(@term.domain_id).code %> | 
-						<%= Domain.find(@term.domain_id).long_name %>						
+	<span class="domain">Domains here: #
 	</span><br/>
+	
+	
 	<span class="timestamp">
 			First created <%= time_ago_in_words(@term.created_at) %> ago.<br/>
 			Last updated <%= time_ago_in_words(@term.updated_at) %> ago.
@@ -44,5 +65,12 @@
 
 		<%= link_to "Back to my terms page", user_terms_path(current_user) %>
 	
+		
+</td>
+		
+		<td class="sidebar round">
+			
+					
+		</td>
 		</tr>
 	</table>

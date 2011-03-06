@@ -12,4 +12,5 @@
 
 class Udc < ActiveRecord::Base
 	has_many :providers
+	has_many :terms
 end

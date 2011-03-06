@@ -12,6 +12,7 @@
 #
 
 class Domain < ActiveRecord::Base
-	has_many :terms
+	has_many :domain_cubes
 	has_many :providers
+	has_many :terms, :through => :domain_cubes
 end
