@@ -8,9 +8,9 @@ require 'populator'
 			Rake::Task['db:reset'].invoke
 			
 			make_translation_types
-			make_domains
 			make_users
 			make_translations
+			make_domains
 			make_subscriptions
 			make_currencies
 			
@@ -209,16 +209,16 @@ require 'populator'
 		:code => code,
 		:long_name => long_name
 		)			
-		end
-		domain_id = rand(Domain.count)
-		term_id = rand(Term.count)
+		
+		domain_id = 1+rand(Domain.count)
+		term_id = 1+rand(Term.count)
 		
 		DomainCube.create!(
 				:term_id => term_id,
 				:domain_id => domain_id
 			)
 
-		
+		end
 		
 		
 	end	

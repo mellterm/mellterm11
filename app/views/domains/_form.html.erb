@@ -1,0 +1,30 @@
+<% form_for @domain, :html => { :multipart => true } do |f| %>
+  <% if @domain.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@domain.errors.count, "error") %> prohibited this currency from being saved:</h2>
+
+      <ul>
+      <% @domain.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :long_name %><br />
+    <%= f.text_field :long_name %>
+  </div>
+  
+ <div class="field">
+  	<%= f.file_field :photo %>
+ </div>	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

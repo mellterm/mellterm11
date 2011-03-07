@@ -24,6 +24,8 @@
             <string>public\stylesheets\custom.css</string>
             <key>custom.css</key>
             <string>public\stylesheets\custom.css</string>
+            <key>development</key>
+            <string>config\environments\development.rb</string>
             <key>edit.</key>
             <string>app\views\users\edit.html.erb</string>
             <key>enviro</key>

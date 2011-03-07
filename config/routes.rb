@@ -15,6 +15,7 @@ Mellterm11::Application.routes.draw do
 
   resources :currencies
   
+  resources :domains
 
   get "searches/new"
 
@@ -23,7 +24,6 @@ Mellterm11::Application.routes.draw do
   get "searches/show"
   
   
-	
 	
  	resources :sessions, :only => 	[:new, :create, :destroy]
  	resources :terms, :only => 		[:create, :destroy, :update, :show, :index, :edit]
