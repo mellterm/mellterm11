@@ -1,13 +1,13 @@
 class DomainsController < ApplicationController
 
 	def index
-		@domains = Domain.all
+		@domains = Domain.paginate(:page => params[:page])
   	end
 
   	def show
   		@domain = Domain.find(params[:id])
-		@title = @domain.long_name	
-  	
+		@title = @domain.long_name
+		@domain_terms = @domain.terms.paginate(:page => params[:page])
   	end
   
   	def new

@@ -16,13 +16,16 @@
 #
 
 class Domain < ActiveRecord::Base
+	
+
 	has_many :domain_cubes
-	has_many :providers
-	has_many :terms, :through => :domain_cubes
+	has_many :translations, :through => :domain_cubes
 	
 	
 	has_attached_file 	:photo,
 						:styles => { :medium => "150x150>", :grav => "96x96>" },
+						:default_url => '/assets/domains/temple.png',
+
 						:url => "/assets/domains/:id/:style/:basename.:extension",
 						:path => ":rails_root/public/assets/domains/:id/:style/:basename.:extension"
 		

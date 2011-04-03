@@ -1,16 +1,16 @@
 <td class="term">
 
-    Name <%= provider.name %><br/>
+    Name <%= provider.provider_name %><br/>
     Source Language <%= provider.source_language_id %><br/>
     Target Lang <%= provider.target_language_id %><br/>
-    Notes<%= provider.notes %><br/>
+
     Domain <%= provider.default_domain_id %><br/>
-    is query?<%= provider.default_is_query %><br/>
+   
     is public?<%= provider.default_is_public %><br/>
     source id<%= provider.default_source_id %><br/>
     user id<%= provider.user_id %><br/>
-    source url<%= provider.default_source_url %><br/>	
-    def udc <%= provider.default_udc_id  %>
+
+
 	</td>
 	<td>
 	<%= link_to 'Show', provider %>

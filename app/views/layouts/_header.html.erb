@@ -5,12 +5,11 @@
 						<li><%= link_to "Home", root_path %></li>
 						<% if signed_in? %>
 							<li><%= link_to "My Profile", user_path(current_user) %></li>
-							<li><%= link_to "Users", users_path %></li>
-							<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+							<li><%= link_to "Providers", providers_path %></li>
+							<li><%= link_to "Translate", translate_path %></li>
 						<% end %>
-						<li><%= link_to "Developers", developers_path %></li>
-						<li><%= link_to "About", profile_path %></li>	
-						<li><%= link_to "Mellterm", mellterm_path %></li>
+						<li><%= link_to "Search", new_search_path %></li>
+						<li><%= link_to "Users", users_path %></li>	
 						<% if signed_in? %>
 							<li><%= link_to "Sign Out", signout_path %>
 						<% else %>	

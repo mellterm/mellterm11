@@ -1,4 +1,26 @@
-<h1><%= @title %></h1>
-
-<%= image_tag @domain.photo.url(:grav) %>
-
+<table class="domains" summary="Profile information">
+	<tr>
+		<td class="main">
+			<h1><%= @title %></h1>
+			<%= image_tag @domain.photo.url(:medium) %>
+			<p>
+				Add some stuff about the particular domain here.
+				(new description column in db?)
+				</p>
+<% if @domain_terms.any? %>
+	<table class="terms" summary="Domain's own terms">
+	
+	<% #TODO rewrite views in HAML,,,,create new TERM look %>	
+		<% for term in @domain_terms %>
+			<tr>		
+			<%= render 'shared/own_feed_item', :term => term %>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate @domain_terms %>	
+<% end %>
+</td>
+	</tr>
+	
+	
+	</table>

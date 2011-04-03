@@ -3,15 +3,7 @@ Mellterm11::Application.routes.draw do
 
   get "translation_types/new"
 
-  resources :udcs
-
-  resources :providers
-
   resources :sources
-
-  resources :jobs
-
-  resources :companies
 
   resources :currencies
   
@@ -26,7 +18,6 @@ Mellterm11::Application.routes.draw do
   
 	
  	resources :sessions, :only => 	[:new, :create, :destroy]
- 	resources :terms, :only => 		[:create, :destroy, :update, :show, :index, :edit]
  	resources :searches, :only =>	[:new, :create, :show]
  	resources :subscriptions, :only => [:create, :destroy]
 	
@@ -34,9 +25,10 @@ Mellterm11::Application.routes.draw do
 	root :to => "pages#home"
   	
   	
-	match '/developers', :to => 'pages#developers' 
-	match '/profile', :to => 'pages#about' 
+	match '/hiring', :to => 'pages#hiring' 
+	match '/providers', :to => 'providers#index'
 	match '/mellterm', :to => 'pages#mellterm' 
+	match '/translate', :to=> 'pages#translate'
 	match '/terms_and_conditions', :to => 'pages#terms_and_conditions' 
  
 	match '/signup', :to => 'users#new' 
@@ -46,7 +38,7 @@ Mellterm11::Application.routes.draw do
   	match '/searches', :to => 'searches#new'
   	match '/queryresult', :to => 'searches#show'
   	match 'show_form', :to => 'terms#show_form'
-
+	match '/translationentry', :to => 'terms#new'
 
   	resources :users do
 		member do
@@ -55,7 +47,10 @@ Mellterm11::Application.routes.draw do
 		
 		end
 		
-		resources :terms
+		resources :translations
+		resources :documents
+		resources :companies
+		resources :providers
   	end
   	
   	

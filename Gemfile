@@ -7,6 +7,7 @@ gem 'will_paginate', '3.0.pre2'
 gem 'meta_search', '0.9.10'
 gem 'rd_searchlogic'
 gem 'paperclip', '2.3.8'
+gem 'acts_as_tree'
 
 group :development do
   gem 'rspec-rails', '2.3.0'

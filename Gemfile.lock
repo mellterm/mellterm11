@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
+    acts_as_tree (0.1.1)
     annotate-models (1.0.4)
     arel (2.0.6)
     builder (2.1.2)
@@ -108,6 +109,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_tree
   annotate-models (= 1.0.4)
   factory_girl_rails (= 1.0)
   faker (= 0.3.1)

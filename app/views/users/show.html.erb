@@ -6,7 +6,7 @@
 				<%= @user.name %> 
 			</h1>
 			<%= render 'subscribe_form' if signed_in? %>
-			<% if @user.terms.any? %>
+			<% if @user.providers.any? %>
 				
 			<table class="terms" summary = "User terms" >
 			

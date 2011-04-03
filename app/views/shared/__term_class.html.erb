@@ -1,6 +1,8 @@
-<% if object.is_public? %>	
+<% if object.is_public? %>
+	
+
 	<% if object.is_query? %>		
-			<span class="query">
+		<span class="query">
 	<% end %>
 	
 	<%= link_to term_path(object) do %>
@@ -19,7 +21,8 @@
  	<% if object.is_query? %>		
 			<span class="query">
 	<% end %>
-	<span class="source_content"><%= SourceTu.find_by_id(object.source_tu_id).content  %></span>
+	<span class="source_content">
+		<%= SourceTu.find_by_id(object.source_tu_id).content %></span>
 	<span class="source_language"><%= Language.find(SourceTu.find_by_id(object.source_tu_id).language_id).code  %></span>
 	<br/>
 		<%= link_to do %>

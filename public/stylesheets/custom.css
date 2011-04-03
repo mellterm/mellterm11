@@ -85,10 +85,10 @@ display: block;
 text-align: center;
 width: 190px;
 color: #fff;
-background: #B22222;
-font-size: 150%;
+background: #E3170D; <!--#B22222 -!>
+font-size: 110%;
 font-weight: bold;
-padding: 20px;
+padding: 10px;
 	
 	
 }
@@ -288,4 +288,41 @@ margin-bottom: 0;
 .provider_defaults {
 	background-color: light-blue;
 }
+
+
+/* TERM form experimental */
+.termmodelinform {
+	padding: 5px;
+	background-color: #556B2F;
+}
+
+.sourcetumodelinform {
+
+	padding: 5px;
+	background-color: #BCEE68;
+}
+
+.targettumodelinform {
+	padding: 5px;
+	background-color: #9BC4E2;
+}
+
+
+.domaincubesinform {
+	padding: 5px;
+	background-color: #385E0F;
+	
+}
+
+.termsourceinform {
+	padding: 5px;
+	background-color: #E8F1D4;
+	
+}
+
+.translationtypeinform {
+	
+}
+
+/* page layouts */
 

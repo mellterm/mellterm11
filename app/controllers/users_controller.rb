@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@title = @user.name	
-		@terms = @user.terms.paginate(:page => params[:page])
+		@terms = @user.providers.first.translations.paginate(:page => params[:page])
 	
 	end
 	

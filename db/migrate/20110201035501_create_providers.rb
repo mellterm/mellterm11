@@ -1,16 +1,14 @@
 class CreateProviders < ActiveRecord::Migration
   def self.up
     create_table :providers do |t|
-      t.string :name
+      t.string :provider_name
+      t.string :description
       t.integer :source_language_id
       t.integer :target_language_id
-      t.text :notes
       t.integer :default_domain_id
-      t.boolean :default_is_query
       t.boolean :default_is_public
       t.integer :default_source_id
       t.integer :user_id
-
       t.timestamps
     end
     
@@ -21,3 +19,4 @@ class CreateProviders < ActiveRecord::Migration
     drop_table :providers
   end
 end
+

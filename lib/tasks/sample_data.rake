@@ -4,15 +4,13 @@ require 'populator'
 	namespace :db do
 		desc "Fill database with sample data"
 		task :populate => :environment do
-			 
 			Rake::Task['db:reset'].invoke
 			
-			make_translation_types
 			make_users
 			make_translations
-			make_domains
 			make_subscriptions
 			make_currencies
+	
 			
 		end
 		
@@ -31,7 +29,7 @@ require 'populator'
 
 	def make_users
 
-		[User, Term, Language, Domain].each(&:delete_all)
+		[User, Translation, Language, Domain].each(&:delete_all)
 			admin = User.create!(
 				:name => "Mellterm Admin",
 				:email => "admin@mellterm.net",
@@ -104,27 +102,31 @@ require 'populator'
 		end	
 
 		User.all(:limit => 6).each do |user|
+			
+			provider = user.providers.create! (
+				:provider_name => "A provider",
+				:description =>  "A description of a provider"
+			)
+			
 			25.times do 
 			
 			source_tu_id = 1+rand(SourceTu.count)
 			target_tu_id = 1+rand(TargetTu.count)
 			created_at =  2.days.ago..Time.now
-			is_query = [0,1].rand
 			is_public = [0,1].rand
-
+			source_url = "http://www.somewhere.com"
+			translation_type = "term"
 			
-			user.terms.create!(
+				provider.translations.create!(
 				
 				:source_tu_id => source_tu_id,
 				:target_tu_id => target_tu_id,
-			   	:is_query => is_query,
 				:is_public => is_public,
-				:translation_type_id => 1,
+				:translation_type => translation_type,
 				:created_at =>  created_at   
-			)
-							
+				)
+			end				
 		end
-	end
 	
 
 	end
@@ -156,66 +158,57 @@ require 'populator'
 		end
 	end
 	
-	def make_translation_types
-		translation_types = ["Abbreviation", "Entity", "Segment", "Term"]
-		translation_types.each do
-			TranslationType.create!(
-			:name => translation_types.pop
-			)
-		end
-	end
 
 	def make_domains
 		
-		14.times do |l|
-			code = [
-				"ELEC",
-				"GENTECH",
-				"AUTO", 
-				"LEGAL",
-				"COMPUTING",
-				"CAD",
-				"GENERAL",
-				"MACHINE",
-				"ENERGY",
-				"BUILD",
-				"TELECOM",
-				"TECHDOC",
-				"MARKET",
-				"BUSFINA",
-				"PRJMAN",
-				"ENVIRON"
-				][l]	
-			long_name = 
-				["Electrical Engineering & Electronics",
-				"Non-domain specific technical term",
-				"Automotive, Cars & Trucks",
-				"Legal, Patents",
-				"Computers: Systems, Networks, hardware",
-				"Computer Aided Design",
-				"General usage",
-				"Mechanical Engineering",
-				"Energy / Power Generation",
-				"Construction / Civil Engineering",
-				"Telecom(munications)",
-				"Language of technical documentation",
-				"Marketing, including slogans",
-				"Business Financial",
-				"Project Management",
-				"Environmental Technology"
-				][l]
+		mydomains = [
+			["004",  "Data processing & computer science"],
+			["537" , "Electricity & electronics"],
+			["388" , "Ground transportation/automotive engineering"],
+			["625" , "Engineering of railroads"],
+			["608" , "Inventions & patents"],
+			["340" , "Law"],
+			["350" , "Public administration & military science"],
+			["005" , "Computer programming, programs & data"],
+			["007" , "Computer Aided Design"],
+			["600" , "Technology"],
+			["430" ,"German & related languages"],
+			["531" , "Classical mechanics; solid mechanics"]
+		]
 		
-		Domain.create!(
-		:code => code,
-		:long_name => long_name
+
+		12.times do |i|
+			Domain.create!(
+			:code => mydomains[i][0],
+			:long_name => mydomains[i][1]
 		)			
+		end
 		
-		domain_id = 1+rand(Domain.count)
-		term_id = 1+rand(Term.count)
+		domain_id = (1..(Domain.count)).to_a
+		translation_id = (1..(Translation.count)).to_a
 		
+		translations_domains = [
+		[1,3],
+		[1,2],
+		[5,3],
+		[2,7],
+		[2,1],
+		[3,9],
+		[4,11],
+		[5,10],
+		[6,4],
+		[7,1],
+		[8,2],
+		[9,11],
+		[10,12],
+		[15,2]
+	]
+		
+		
+		14.times do |n|
 		DomainCube.create!(
-				:term_id => term_id,
-				:domain_id => domain_id
+				:translation_id => translations_domains[n][0],
+				:domain_id => translations_domains[n][1]
 			)
 
 		end

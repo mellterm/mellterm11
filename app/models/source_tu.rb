@@ -15,8 +15,9 @@ class SourceTu < ActiveRecord::Base
 
 	attr_accessible :content, :language_id, :definition, :is_source
 	
-	has_many :terms
-	has_many :target_tus, :through => :terms
+	has_many :translations
+	has_many :target_tus, :through => :translations
+	
 	
 	validates :content,  			:presence => true,
 									:length => {:minimum => 2}

@@ -1,16 +1,30 @@
 <% if signed_in? %>
-
+	
+	<table>
+	<tr>
+		Hello, welcome to mellterm.
+		A place where you can share term and segment translations, receive regular term updates
+		from providers, and submit documents for translation, and also enter terms and segments
+		en masse.
+	</tr>
+	</table>
 	<table class="front" summary="For signed-in users">
 		<tr>
 			<td class="main">
-				<h1 class="searchterm">Need Term?</h1>
-				<%= link_to "Search terms!", searches_path, :class => "search_button round" %>
-				
-				<h1 class="term">Got Term?</h1>
-				<%= render 'shared/term_form' %>
-				
-				
-				<h1 class="searchfeed">Your Latest Feeds</h1>
+			
+				<h1 class="bold">Need Translation?</h1>
+				<%= link_to "Search translations!", searches_path, :class => "search_button round" %>
+				<br/>
+				<h1 class="bold">Got Translation?</h1>
+				<%= link_to "Enter translations", translationentry_path, :class => "search_button round" %>
+				<br/>
+				<h1 class="bold">Submit a Document for Translation</h1>
+				<br/>
+				<h1 class="bold">Upload a Memory/Term List</h1>
+				<br/>
+				<h1 class="bold">Subscribe to a Translation Provider</h1>
+				<br/>
+				<h1 class="searchfeed">Your Latest Translation Feeds</h1>
 				
 				<%= render 'shared/feed' %>
 		

@@ -12,8 +12,7 @@
 
 class Language < ActiveRecord::Base
 	
-	has_many :terms
-	has_many :providers
+	has_many :translations
 
 		
 end

@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
 	
 	def feed
 		#=? used to escape SQL
-		Term.where("user_id= ?", self.id)
+		Translation.where("user_id= ?", self.id)
 	end
 	
 	

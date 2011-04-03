@@ -1,15 +1,18 @@
-<h1>DOMAINS</h1>
-
+<table class="domains" summary="Profile information">
+	<tr>
+		<td class="main">
+			<h1>All Domains</h1>
+			Put some localizable content about domains here
 <table>
   <tr>
-  	<th>Image</th>
-    <th>Code</th>
+  	<th></th>
+    <th>Dewey Code</th>
     <th>Long name</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
+<%= will_paginate %>
 <% @domains.each do |domain| %>
   <tr>
   	<td><%= image_tag domain.photo.url(:grav) %></td>
@@ -23,5 +26,11 @@
 </table>
 
 <br />
-
+<%= will_paginate %>
 <%= link_to 'New domain', new_domain_path %>
+</td> <!-- end main class>
+
+	</tr>
+	
+	
+</table>

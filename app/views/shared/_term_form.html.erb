@@ -1,36 +1,95 @@
-<%= form_for(@term) do |f| %>
-	<%= render 'shared/error_messages', :object => f.object %>
+<%= form_for(@term) do |termform| %>
+	<%= render 'shared/error_messages', :object => termform.object %>
 	
-		<%= form_for(@tu) do |t| %>
+		
+	<div class="sourcetumodelinform">	
+	<%= termform.fields_for :source_tu do |stuform| %>
 		<div class="field">
-			<%= t.label :source_language, "From" %><br /> 
-			<%= t.collection_select(:language_id, Language.all, :id, :code) %>
+			<%= stuform.label :source_language, "SL" %><br /> 
+			<%= stuform.collection_select(:language_id, Language.all, :id, :code) %>
 		</div>
 		<div class="field">
-			<%= t.label :source_content, "Source" %><br /> 
-			<%= t.text_area :content %>
+			<%= stuform.label :source_content, "Source Term/Text" %><br /> 
+			<%= stuform.text_area :content, :rows => 3 %>
 		</div>
 		<div class="field">
-			<%= t.label :definition, "Definition" %><br /> 
-			<%= t.text_field :definition %>
+			<%= stuform.label :definition, "Definition" %><br /> 
+			<%= stuform.text_field :definition %>
 		</div>
-		<%= hidden_field_tag 'is_source', 'TRUE' %>
-		<% end %>
-
-	<div class="field">
-		<%= f.label :notes, "Notes" %><br />  
-		<%= f.text_area :notes %>
+	<% end %>
 	</div>
-	<div class="field">
-		<%= f.check_box :is_public %>
-		<%= f.label :is_public, "Public" %> 
-	</div>
+	<br/>
+	<div class="targettumodelinform">	
+	<%= termform.fields_for :target_tu do |ttuform| %>
 		<div class="field">
-		<%= f.check_box :is_query %>
-		<%= f.label :is_query, "Query" %> 
+			<%= ttuform.label :target_language, "TL" %><br /> 
+			<%= ttuform.collection_select(:language_id, Language.all, :id, :code) %>
+		</div>
+		<div class="field">
+			<%= ttuform.label :source_content, "Target Term/Text" %><br /> 
+			<%= ttuform.text_area :content, :rows => 3 %>
+		</div>
+		<div class="field">
+			<%= ttuform.label :definition, "Definition" %><br /> 
+			<%= ttuform.text_field :definition %>
+		</div>
+	<% end %>
 	</div>
+	
+	<div class="termsourceinform">
+			<div class="field">
+				<%= termform.label :source_id, "Choose a Source" %>	
+				<%= termform.collection_select(:source_id, Source.all, :id, :name)%>
+				<%= link_to 'Create New Source', new_source_path %>
+			</div>
+			
+			<br/>
+		<div class="field">
+			<%= termform.label :source_url, "Add a Source URL/Description" %><br /> 
+			<%= termform.text_field :source_url %>
+		</div>
+	</div>	
+	
+	<div class="termmodelinform">
+		<div class="field">
+		<%= termform.label :notes, "Notes" %><br />  
+		<%= termform.text_area :notes,  :rows => 5 %>
+		</div>
+		<div class="field">
+		<%= termform.check_box :is_public %>
+		<%= termform.label :is_public, "Is Public" %> 
+		</div>
+		<div class="field">
+		<%= termform.check_box :is_query %>
+		<%= termform.label :is_query, "Is Query" %> 
+		</div>
+	</div>
+	
+	
+	<div class="translationtypeinform">
+		<div class="field">
+		<%= termform.radio_button :translation_type, 1, :checked => true %> 
+  		<%= termform.label :translation_type, 'Term', :value => 1 %>
+		<%= termform.radio_button :translation_type, 2 %> 
+  		<%= termform.label :translation_type, 'Segment', :value => 2 %>	
+		<%= termform.radio_button :translation_type, 3 %> 
+  		<%= termform.label :translation_type, 'Abbreviation', :value => 3 %>
+		<%= termform.radio_button :translation_type, 4 %> 
+  		<%= label :translation_type, 'Entity', :value => 4 %>
+		</div>
+	</div>	
+		
+	<div class="domaincubesinform">
+		<%= termform.fields_for :domains do |d| %>
+			<div class="field">
+				<%= d.label :code, "Domain" %>
+				<%= d.collection_select(:domain_id, Domain.all, :id, :long_name)%>
+			</div>
+			<% end %>	
+	</div>
+	<br/>
 	<div class="actions">
-		<%= f.submit "Submit Term" %>
+		<%= termform.submit "Submit Term" %>
 	</div>
 
 <% end %>

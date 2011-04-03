@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110306180438) do
+ActiveRecord::Schema.define(:version => 20110403043729) do
 
   create_table "companies", :force => true do |t|
     t.string   "code"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(:version => 20110306180438) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "documents", :force => true do |t|
+    t.string   "name"
+    t.string   "document_type"
+    t.integer  "user_id"
+    t.integer  "provider_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "documents", ["provider_id"], :name => "index_documents_on_provider_id"
 
   create_table "domain_cubes", :force => true do |t|
     t.integer  "term_id"
@@ -51,16 +62,6 @@ ActiveRecord::Schema.define(:version => 20110306180438) do
     t.datetime "photo_updated_at"
   end
 
-  create_table "jobs", :force => true do |t|
-    t.string   "name"
-    t.integer  "company_id"
-    t.float    "invoiced_amount"
-    t.integer  "currency_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "provider_id"
-  end
-
   create_table "languages", :force => true do |t|
     t.string   "code"
     t.string   "long_name"
@@ -69,20 +70,16 @@ ActiveRecord::Schema.define(:version => 20110306180438) do
   end
 
   create_table "providers", :force => true do |t|
-    t.string   "name"
+    t.string   "provider_name"
+    t.string   "description"
     t.integer  "source_language_id"
     t.integer  "target_language_id"
-    t.text     "notes"
     t.integer  "default_domain_id"
-    t.boolean  "default_is_query"
     t.boolean  "default_is_public"
     t.integer  "default_source_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
-    t.integer  "default_udc_id"
-    t.string   "default_source_url"
   end
 
   add_index "providers", ["user_id"], :name => "index_providers_on_user_id"
@@ -141,45 +138,22 @@ ActiveRecord::Schema.define(:version => 20110306180438) do
 
   add_index "target_tus", ["content"], :name => "index_target_tus_on_content"
 
-  create_table "terms", :force => true do |t|
-    t.text     "notes"
-    t.boolean  "is_query"
-    t.boolean  "is_public"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
+  create_table "translations", :force => true do |t|
     t.integer  "source_tu_id"
     t.integer  "target_tu_id"
+    t.boolean  "is_public",        :default => false
+    t.integer  "provider_id"
+    t.integer  "company_id"
     t.integer  "source_id"
     t.string   "source_url"
-    t.integer  "udc_id"
-    t.integer  "translation_type_id"
-    t.string   "definition"
-  end
-
-  create_table "translation_types", :force => true do |t|
-    t.string   "name"
+    t.integer  "document_id"
+    t.integer  "user_id"
+    t.string   "translation_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "tus", :force => true do |t|
-    t.string   "content"
-    t.integer  "language_id"
-    t.string   "definition"
-    t.boolean  "is_source"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tus", ["content"], :name => "index_tus_on_content"
-
-  create_table "udcs", :force => true do |t|
-    t.string   "code"
-    t.string   "default_udc_txt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "translations", ["user_id"], :name => "index_translations_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

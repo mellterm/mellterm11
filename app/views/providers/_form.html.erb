@@ -14,8 +14,12 @@
 <% #TODO image column- use Paperclip %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :provider_name %><br />
+    <%= f.text_field :provider_name %>
+  </div>
+    <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
   </div>
   <div class="field">
     <%= f.label :source_language_id %>
@@ -25,27 +29,15 @@
     <%= f.label :target_language_id %>
     <%= f.collection_select :target_language_id, Language.all, :id, :code %>
   </div>
-  <div class="field">
-    <%= f.label :notes %><br />
-    <%= f.text_area :notes %>
-  </div>
+
   
 
 
   <div class="provider_defaults">
-  	<h2>Default Settings for Items </h2>
-  	 <div class="field">
-  	 	<% #TODO Autcomplete for UDCs %>
-	    <%= f.label :default_udc_id %><br />
-	    <%= f.collection_select :default_udc_id, Udc.all(:order => "code"), :id, :code, {:include_blank => true} %>
-	  </div>
+  	<h2>Default Settings for Translations </h2>
 	  <div class="field">
 	    <%= f.label :default_domain_id %><br />
-	    <%= f.collection_select :default_domain_id, Domain.all(:order => "code"), :id, :code %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :query_by_default %><br />
-	    <%= f.check_box :default_is_query %>
+	    <%= f.collection_select :default_domain_id, Domain.all(:order => "code"), :id, :long_name %>
 	  </div>
 	  <div class="field">
 	    <%= f.label :public_by_default %><br />
@@ -55,10 +47,6 @@
 	    <%= f.label :default_source_id %><br />
 	    <%= f.collection_select :default_source_id, Source.all(:order => "name"), :id, :name %>
 	    <%= link_to 'Create New Source', new_source_path %>
-	  </div>
-	   <div class="field">
-	    <%= f.label :default_source_url %><br />
-	    <%= f.text_field :default_source_url %>
 	  </div>
 	  
 </div>	

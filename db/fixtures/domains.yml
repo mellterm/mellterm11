@@ -1,0 +1,135 @@
+domain1:
+   id: 1
+   code: 004
+   long_name: Data processing & computer science
+   
+domain2:
+   id: 2
+   code: 537
+   long_name: Electricity & electronics
+   
+domain3:
+   id: 3
+   code: 600
+   long_name: Technology
+   
+domain4:
+   id: 4
+   code: 388
+   long_name: Ground transportation/automotive engineering
+
+domain5:
+   id: 5
+   code: 625
+   long_name: Engineering of railroads
+   
+domain6:
+   id: 6
+   code: 608
+   long_name: Inventions & patents
+   
+domain7:
+   id: 7
+   code: 340
+   long_name: Law
+   
+domain8:
+   id: 8
+   code: 350
+   long_name: Public administration & military science          	           
+ 
+domain9:
+   id: 9
+   code: 005
+   long_name: Computer programming, programs & data
+   
+domain10:
+   id: 10
+   code: 007
+   long_name: Computer Aided Design
+   
+domain11:
+   id: 11
+   code: 430
+   long_name: German & related languages
+   
+domain12:
+   id: 12
+   code: 531
+   long_name: Classical mechanics; solid mechanics
+ 
+domain13:
+   id: 13
+   code: 532
+   long_name: Fluid mechanics; liquid mechanics
+   
+domain14:
+   id: 14
+   code: 533
+   long_name: Gas mechanics
+
+domain15:
+   id: 15
+   code: 624
+   long_name: Civil Engineering   
+
+domain16:
+   id: 16
+   code: 678
+   long_name: Sanitary & municipal engineering
+
+domain17:
+   id: 17
+   code: 690
+   long_name: Buildings
+   
+domain18:
+   id: 18
+   code: 636
+   long_name: Energy/Power Generation
+   
+domain19:
+   id: 19
+   code: 694
+   long_name: Wood construction & carpentry
+
+domain20:
+   id: 20
+   code: 384
+   long_name: Communications; telecommunication
+   
+domain21:
+   id: 21
+   code: 007
+   long_name: Technical documentation   
+
+domain22:
+   id: 22
+   code: 330
+   long_name: Economics   
+
+domain23:
+   id: 23
+   code: 380
+   long_name: Commerce      
+
+domain24:
+   id: 24
+   code: 331
+   long_name: Finance     
+
+domain25:
+   id: 25
+   code: 381
+   long_name: Advertising & Marketing
+   
+domain24:
+   id: 26
+   code: 382
+   long_name: Project Management
+
+domain24:
+   id: 27
+   code: 354
+   long_name: Administration of economy & environment   
+                         
