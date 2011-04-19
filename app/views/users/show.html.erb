@@ -1,21 +1,20 @@
 <table class="profile" summary="Profile information">
 	<tr>
 		<td class="main">
+			<div id="userpanel" class="round">
 			<h1>
 				<%= gravatar_for (@user) %>
 				<%= @user.name %> 
 			</h1>
+			</div>
 			<%= render 'subscribe_form' if signed_in? %>
 			<% if @user.providers.any? %>
 				
-			<table class="terms" summary = "User terms" >
+				<table class="terms" summary = "User terms" >
 			
-					<%= render @terms %>
+					<%= render @providers %>
+				</table>
 					
-			</table>
-			<%= will_paginate @terms %>
-			
-			
 			<% end %>
 		</td>
 		
@@ -38,7 +37,15 @@
 				<strong>Current credit:</strong>
 				<%= @user.credit_balance.to_s %><br />
 			<% end %>
-			<strong>Terms owned:</strong>	<%= @user.terms.count %><br />
+			<% if @user.providers.any? %>
+				<strong>Subscriptions held:</strong>
+					<%= render 'shared/provider_stats' %>
+			<% else %>
+				No Providers yet. Create one!
+				<% link_to new_provider(user) %>		
+			<% end %>		
+				
+			
 			<strong>Subscriptions held:</strong>
 			<%= render 'shared/subscription_stats' %>
 		<% if @user.admin? %>
@@ -46,7 +53,7 @@
 			<h2> Admin Tools </h2><br />	
 			<%= link_to "Sources", sources_path %><br />
 			<%= link_to "Companies", companies_path %><br />
-			<%= link_to "Jobs", jobs_path %><br />
+			<%= link_to "Documents", documents_path %><br />
 		</div>
 		<% end %>		
 		</td>

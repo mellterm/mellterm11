@@ -1,0 +1,12 @@
+<% if object.translation_type = "Translation"%>
+	<% if object.is_public? %>
+		<% if object.source_url? %>
+			<span class="source_url"><%= object.source_url %></span>
+		<% if object.source_tu_id? %>
+			<%= link_to translation_path(object) do %>
+				<span class="source_content"><%= SourceTu.find_by_id(object.source_tu_id).content %></span><br/>	
+		<% end %>
+		<% end %>
+		<% end %>
+		<% end %>
+		<% end %>

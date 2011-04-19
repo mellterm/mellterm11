@@ -1,0 +1,48 @@
+%tr
+  - form_for @translation do |t|  
+    =t.fields_for :source_tu do |su| 
+      .field
+      =su.label :source_language, "From"
+      =su.collection_select(:language_id, Language.all, :id, :code)
+      .field
+      =su.label :source_content, "Source Term/Segment"
+      %br/
+      =su.text_field :content
+
+    =t.fields_for :target_tu do |tu| 
+      .field
+      =tu.label :target_language, "To"
+      =tu.collection_select(:language_id, Language.all, :id, :code)
+      .field
+      =tu.label :target_content, "Target Term/Segment"
+      %br/
+      =tu.text_field :content
+     
+    =t.fields_for :domain do |dom| 
+      .field
+      =dom.label :domain, "Domain"
+      =dom.collection_select(:domain_id, Domain.all, :id, :long_name)		
+    = link_to 'Add Domain'
+      
+    .field
+    =t.label :source_url, "Enter a Source(URL/Reference)"
+    =t.text_field :source_url
+    %br/
+    = link_to 'Create source', new_source_url
+  	
+    .field
+    = t.radio_button :is_public, 1
+    = t.label :is_public, "Public to all?"
+  
+    .field
+    Translation Type
+    = t.radio_button :translation_type, 1
+    = t.label :translation_type, "Term"
+    = t.radio_button :translation_type, 2
+    = t.label :translation_type, "Segment"
+
+    .field
+    =t.submit "Submit Translation"
+    %br/
+%tr
+  Second term entry goes here 	

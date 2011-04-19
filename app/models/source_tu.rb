@@ -13,10 +13,12 @@
 
 class SourceTu < ActiveRecord::Base
 
-	attr_accessible :content, :language_id, :definition, :is_source
-	
+	#attr_accessible :content, :language_id, :definition
+		
 	has_many :translations
 	has_many :target_tus, :through => :translations
+	
+	#has_one :language, :dependent => destroy
 	
 	
 	validates :content,  			:presence => true,

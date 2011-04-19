@@ -1,0 +1,6 @@
+=if object.translation_type = "Translation" 
+  =if object.is_public?
+    =if object.source_url?	
+      %span.source_url= object.source_url	
+    =if object.source_tu_id?	
+      %span.source_tu= SourceTu.find_by_id(object.source_tu_id).content 	

@@ -7,34 +7,26 @@
 		
 		<div class="field">
 		<b>Name:</b>
-  		<%= @provider.name %>
+  		<%= @provider.provider_name %>
 		</div>
-		
+		<% if @provider.source_language_id? %>
 		<div class="field">
   			<b>Source language:</b>
   			<%= Language.find_by_id(@provider.source_language_id).code %>
 		</div>
-
+		<% end %>	
+		<% if @provider.target_language_id? %>
 		<div class="field">
   			<b>Target language:</b>
   			<%= Language.find_by_id(@provider.target_language_id).code %>
 		</div>
-		<% if @provider.notes? %>
-		<div class="field">
-  			<b>Notes:</b>
-  			<%= @provider.notes %>
-		</div>
-		<% end %>	
+		<% end %>
+		<% if @provider.default_domain_id? %>	
 		<div class="field">
   			<b>Default domain:</b>
   			 <%= Domain.find_by_id(@provider.default_domain_id).code %>
 		</div>
- 	
-		<div class="field">
-		 <b>Default is query:</b>
-  			<%= @provider.default_is_query? ? 'yes' : 'no' %>
-  		</div>
-
+ 		<% end %>
 		<div class="field">
   		<b>Public by default?:</b>
   			<%= @provider.default_is_public? ? 'yes' : 'no' %>

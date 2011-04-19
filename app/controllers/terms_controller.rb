@@ -20,7 +20,7 @@ class TermsController < ApplicationController
 		end
 	
 		def new
-			@term=  current_user.terms.new
+			@term= current_user.translations.new
 			#@source_tu = @term.source_tu.build
 			#@target_tu = @term.target_tu.build
 			3.times {@term.domains.build}

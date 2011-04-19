@@ -1,0 +1,12 @@
+%table.profile{:summary => "Create New Translation"}
+  %tr
+    %td.main
+      %h1 Enter One or More Translations
+      %table.multitermentry{:summary => "Multiple Term Entry Form"} 
+        .form
+          = render :partial => "shared/translation_form"
+    %td.sidebar.round
+      %p Search for existing terms
+      = render :partial => "shared/basic_term_search"
+
+    

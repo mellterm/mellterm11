@@ -1,0 +1,14 @@
+<h1>
+	<% #gravatar_for current_user %> 
+	Your Translations 
+</h1>
+<% if @translations.any? %>
+	<table class="terms" summary="User own terms">	
+		<% for trans in @translations %>
+			<tr>
+				<%= render 'shared/translation_class', :object => trans %>
+			</tr>
+		<% end %>
+	</table>		
+<% end %>
+

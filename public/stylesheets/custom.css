@@ -150,6 +150,7 @@ padding: 1em;
 vertical-align: top;
 background: #ffc;
 }
+
 .profile img.gravatar {
 border: 1px solid #999;
 }
@@ -230,6 +231,22 @@ list-style: none;
 .source_language, .target_language {
 	font-style:italic;
 }
+
+/* Panel Styling */
+
+
+#userpanel {
+	background-color: #556B2F;
+	padding: 10px;
+}
+
+#adminlinks {
+	font-family: "Courier";
+	padding: 10px;
+	background-color: #3D59AB;
+}
+
+
 
 /* Term styling */
 
@@ -325,4 +342,8 @@ margin-bottom: 0;
 }
 
 /* page layouts */
+
+
+
+
 

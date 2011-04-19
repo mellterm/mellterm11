@@ -1,0 +1,44 @@
+<tr>
+<% for provider in object %>
+	<% for translation in provider.translations %>
+		<td class="term">	
+			<% if translation.is_public? %>
+				<%= link_to provider_translation_path(provider, translation) do %>
+					<span class="source_content">
+					<%= SourceTu.find_by_id(translation.source_tu_id).content %></span>
+			<% end %>
+		<% else %>
+				<span class="source_content">
+					<%= SourceTu.find_by_id(translation.source_tu_id).content %>
+				</span>	
+			<% end #end public1 %>	
+		
+		<span class="source_language">
+			<%= Language.find(SourceTu.find_by_id(translation.source_tu_id).language_id).code %></span><br/>	
+		<% if translation.is_public? %>
+			<span class="target_content">
+				<%= TargetTu.find_by_id(translation.target_tu_id).content %>
+			</span>
+		<% else %>
+			<%= link_to do %>
+				<span class="hidden_target_content"><%= "Click to purchase" %></span>
+			<% end %>
+		<% end #end public2 %>
+			
+		<span class="target_language">
+		<%= Language.find(TargetTu.find_by_id(translation.target_tu_id).language_id).code %></span><br />
+		</span>
+		<br />
+		
+		<span class="timestamp">
+			First created <%= time_ago_in_words(translation.created_at) %> ago.<br/>
+			Last updated <%= time_ago_in_words(translation.updated_at) %> ago.
+		</span>
+	</td>
+		
+</tr>	
+	<% user = provider.user rescue User.find(provider.user_id) #workaround lesson11 %>
+	
+	
+<% end #end translations loop %>	
+<% end #end providersloop %>

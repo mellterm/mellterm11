@@ -48,8 +48,8 @@ class User < ActiveRecord::Base
 					:native_language_id, :preferred_language_id
 			
 	
-	has_many :terms, 			:dependent => :destroy
-	has_many :providers, 		:dependent => :nullify			#creates anon providers (even) if a user is deleted
+	has_many :translations, 			:dependent => :destroy
+	has_many :providers, 				:dependent => :nullify			#creates anon providers (even) if a user is deleted
 	
 	
 	#rails assumes foreign key is user_id unless specified as here

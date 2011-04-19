@@ -18,6 +18,8 @@ class TargetTu < ActiveRecord::Base
 	has_many :translations
 	has_many :source_tus, :through => :translations
 	
+	has_one :language, :dependent => destroy
+	
 	validates :content,  			:presence => true,
 									:length => {:minimum => 2}
 	validates :language_id, 		:presence => true

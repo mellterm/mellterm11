@@ -19,15 +19,11 @@
 #
 
 class Translation < ActiveRecord::Base
+	attr_accessible :source_tu_id, :is_public, :source_id, :source_url, :translation_type
 	
 	
-	TRANSLATION_TYPES = %w{term segment}
-  
-  	validates_inclusion_of 	:translation_type,  :in => TRANSLATION_TYPES, 
-  							:message => "must be one of: #{TRANSLATION_TYPES.join(', ')}" 
-	
-	belongs_to :source_tu, :foreign_key => "source_id"
-	belongs_to :target_tu, :foreign_key => "target_id"
+	belongs_to :source_tu
+	belongs_to :target_tu
 	
 	has_many :domain_cubes
 	has_many :domains, :through => :domain_cubes
@@ -39,4 +35,5 @@ class Translation < ActiveRecord::Base
   	belongs_to :provider			#user.provider.translation
   	belongs_to :user				
 	
+  	accepts_nested_attributes_for :source_tu, :target_tu, :source, :domain 
 end

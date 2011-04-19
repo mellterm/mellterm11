@@ -8,6 +8,7 @@ gem 'meta_search', '0.9.10'
 gem 'rd_searchlogic'
 gem 'paperclip', '2.3.8'
 gem 'acts_as_tree'
+gem 'haml'
 
 group :development do
   gem 'rspec-rails', '2.3.0'

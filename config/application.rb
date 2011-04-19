@@ -30,7 +30,10 @@ module Mellterm11
      config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 	
-
+    config.generators do |g|
+    	g.template_engine :haml
+    	g.test_framework :rspec, :fixture => false
+	end
     
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)

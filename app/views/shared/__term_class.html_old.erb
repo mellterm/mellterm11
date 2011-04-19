@@ -1,26 +1,23 @@
-<% if object.is_public? %>
+<% if object.translation_type = "Translation"%>
+	<% if object.is_public? %>
+		<% if object.source_url? %>
+			<span class="source_url"><%= object.source_url %></span>
+		<% if object.source_tu_id? %>
+			<%= link_to translation_path(object) do %>
+				<span class="source_content"><%= SourceTu.find_by_id(object.source_tu_id).content %></span>
+		<% end %>
+		<span class="source_language">
+			<%= Language.find(SourceTu.find_by_id(object.source_tu_id).language_id).code %></span><br/>	
 	
-
-	<% if object.is_query? %>		
-		<span class="query">
-	<% end %>
-	
-	<%= link_to term_path(object) do %>
-	<span class="source_content"><%= SourceTu.find_by_id(object.source_tu_id).content %></span>
-	<% end %>
-	
-	<span class="source_language"><%= Language.find(SourceTu.find_by_id(object.source_tu_id).language_id).code %></span><br/>	
-	<span class="target_content"><%= TargetTu.find_by_id(object.target_tu_id).content %></span>
+			
+			
+			<span class="target_content"><%= TargetTu.find_by_id(object.target_tu_id).content %></span>
 	<span class="target_language"><%= Language.find(TargetTu.find_by_id(object.target_tu_id).language_id).code %></span><br />
 	
-	<% if object.is_query? %>		
-			</span>
-	<% end %>
+
 									
 <% else %>
- 	<% if object.is_query? %>		
-			<span class="query">
-	<% end %>
+ 
 	<span class="source_content">
 		<%= SourceTu.find_by_id(object.source_tu_id).content %></span>
 	<span class="source_language"><%= Language.find(SourceTu.find_by_id(object.source_tu_id).language_id).code  %></span>
@@ -31,9 +28,7 @@
 			<span class="target_language"> <%= Language.find(TargetTu.find_by_id(object.target_tu_id).language_id).code %></span>
 			<br />
 			
-	<% if object.is_query? %>		
-			</span>
-	<% end %>		
+	
 	<% end %>
 		
 	<span class="timestamp">
@@ -43,11 +38,9 @@
 	</td>
 		
 		<% user = object.user rescue User.find(object.user_id) #workaround lesson11 %>
-		<% if current_user?(user)%>
-<td>
-	<%= link_to "delete", object, 		:method => :delete,
-									 	:confirm => "Are you sure?"
- 										%>
-									 										 	
-</td>
+
+<% if current_user?(user)%>
+	<td>
+		<%= link_to "delete", object, :method => :delete, :confirm => "Are you sure?" %>				 
+	</td>
 <% end %>
