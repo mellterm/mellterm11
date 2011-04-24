@@ -35,5 +35,5 @@ class Translation < ActiveRecord::Base
   	belongs_to :provider			#user.provider.translation
   	belongs_to :user				
 	
-  	accepts_nested_attributes_for :source_tu, :target_tu, :source, :domain 
+  	accepts_nested_attributes_for :source_tu, :target_tu, :source 
 end

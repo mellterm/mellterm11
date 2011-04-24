@@ -74,13 +74,15 @@ describe ProvidersController do
 			Factory(:language, :code => "de_de", :long_name=> "German")
 			Factory(:language, :code => "en_gb", :long_name=> "English")
 			@provider = Factory(:provider, :user => @user, 
-								:name => "Some Name", 
+								:provider_name => "I am a Provider",
+								:provider_descripion => "I collect terms for Automotive in German and English" 
 								:source_language_id => 1,
-								:target_language_id => 2)
+								:target_language_id => 2,
+								:default_source_id => 1)
 		end
 		
 		it "should be successful" do
-			get 'show', :id => @provider.id  
+			get :show, :id => @provider.id  
 			response.should be_success
 		end
 		
@@ -89,9 +91,22 @@ describe ProvidersController do
 			get :show, :id=>@provider.id
 			response.should have_selector('a', :content => "Create a new term" ) 
 		end
+	
+	
+		it "should render a form to create a translation" do
+			get :show, :id=>@provider.id
+			render("shared/_translation_form"), :locals => {:translation => @translation}
+			response.should have_selector("form[method=post]"), :action => provider_translations.path do
+				|form| 
+				form.should have_selector("input[type=submit]")
+			end
+		end	
 		
 		
-	end	
+		
+			
+		
+	end #end show	
 	
 	
 	

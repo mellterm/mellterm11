@@ -3,33 +3,34 @@ class ProvidersController < ApplicationController
 	before_filter :authenticate
 	before_filter :authorized_user, :only => :destroy
 
-  # GET /providers
   def index
-    @providers = Provider.all
-
+    	@providers = Provider.all
   end
 
-  # GET /providers/1
 
   def show
-    @provider = Provider.find(params[:id])
-  
+  	#basic provider-specific search
+  	if params[:search]
+  		@stid = SourceTu.find_by_content("%#{params[:search]}%").id
+  		@translations = @provider.translations.find_all_by_source_tu_id(stid)
+  		@translation = @provider.translations.build
+  	else		
+  	    @provider = Provider.find(params[:id])
+  	    @translations = @provider.translations.find(:all, :order => "created_at DESC")
+  	    @title = @provider.provider_name    
+   end
   end
 
-  # GET /providers/new
  
   def new
     @provider = Provider.new
 
   end
 
-  # GET /providers/1/edit
   def edit
     @provider = Provider.find(params[:id])
   end
 
-  # POST /providers
-  # POST /providers.xml
   def create
 
 	@provider= current_user.providers.build(params[:provider])

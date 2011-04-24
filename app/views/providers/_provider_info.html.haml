@@ -1,0 +1,28 @@
+%table.providerinfo
+  %tr
+    %h3 Provider Information
+    %strong Current User
+    = current_user.name
+    %br/	
+    %strong Provider
+    = @provider.provider_name
+    %br/
+    %strong Description
+    = @provider.description
+    %br/
+    = if @provider.source_language_id?
+      %strong Source language
+      = Language.find_by_id(@provider.source_language_id).code
+      %br/
+    = if @provider.source_language_id?
+      %strong Target language
+      = Language.find_by_id(@provider.target_language_id).code
+      %br/
+    - if @provider.default_domain_id?
+      %strong Default domain
+      = Domain.find(@provider.default_domain_id).long_name
+      %br/
+    - if @provider.default_source_id?
+      %strong Default Source
+      = Source.find_by_id(@provider.default_source_id).name
+	

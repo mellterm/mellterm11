@@ -13,12 +13,12 @@
 
 class TargetTu < ActiveRecord::Base
 	
-	attr_accessible :content, :language_id, :definition, :is_source
+	attr_accessible :content, :language_id, :definition
 	
 	has_many :translations
 	has_many :source_tus, :through => :translations
 	
-	has_one :language, :dependent => destroy
+	belongs_to :language
 	
 	validates :content,  			:presence => true,
 									:length => {:minimum => 2}

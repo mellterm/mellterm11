@@ -7,9 +7,10 @@ require 'populator'
 			Rake::Task['db:reset'].invoke
 			
 			make_users
-			make_translations
-			make_subscriptions
-			make_currencies
+			make_domaincubes
+			#make_translations
+			#make_subscriptions
+			#make_currencies
 	
 			
 		end
@@ -160,61 +161,22 @@ require 'populator'
 	
 
 	def make_domains
-		
-		mydomains = [
-			["004",  "Data processing & computer science"],
-			["537" , "Electricity & electronics"],
-			["388" , "Ground transportation/automotive engineering"],
-			["625" , "Engineering of railroads"],
-			["608" , "Inventions & patents"],
-			["340" , "Law"],
-			["350" , "Public administration & military science"],
-			["005" , "Computer programming, programs & data"],
-			["007" , "Computer Aided Design"],
-			["600" , "Technology"],
-			["430" ,"German & related languages"],
-			["531" , "Classical mechanics; solid mechanics"]
-		]
-		
-
-		12.times do |i|
-			Domain.create!(
-			:code => mydomains[i][0],
-			:long_name => mydomains[i][1]
-		)			
-		end
+	#domains now in domains.yml
 		
 		domain_id = (1..(Domain.count)).to_a
 		translation_id = (1..(Translation.count)).to_a
-		
-		translations_domains = [
-		[1,3],
-		[1,2],
-		[5,3],
-		[2,7],
-		[2,1],
-		[3,9],
-		[4,11],
-		[5,10],
-		[6,4],
-		[7,1],
-		[8,2],
-		[9,11],
-		[10,12],
-		[15,2]
-	]
-		
-		
-		14.times do |n|
-		DomainCube.create!(
-				:translation_id => translations_domains[n][0],
-				:domain_id => translations_domains[n][1]
-			)
-
-		end
-		
+	
 		
 	end	
 	
-	
+	def make_domaincubes 	
+
+		15.times do |n|
+			DomainCube.create!(
+				:translation_id => n,
+				:domain_id => n
+			)
+
+		end
+	end		
 	

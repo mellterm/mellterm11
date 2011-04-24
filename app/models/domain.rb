@@ -31,4 +31,10 @@ class Domain < ActiveRecord::Base
 		
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']	
 	#validates_attachement_size :photo, :less_than => 5.megabytes
+	
+	def codewithlongname
+		"#{self[:code]} | #{self[:long_name]}"	
+	end	
+	
+	
 end

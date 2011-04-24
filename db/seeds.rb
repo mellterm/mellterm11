@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+Currency.delete_all
+currencies = Currency.create!([	{:name=> 'EUR', :long_name => 'Euro'}, 
+								{:name => 'USD', :long_name => 'US Dollar'}
+							])

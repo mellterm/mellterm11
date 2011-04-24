@@ -1,6 +1,6 @@
 .container {
 	/* originally 710*/
-width: 810px;
+width: 850px;
 }
 body {
 background: #EECFA1;		
@@ -15,13 +15,20 @@ background: #fff;
 }
 section {
 margin-top: 1em;
-font-size: 120%;
+font-size: 100%;
 padding: 20px;
 background: #fff;
 }
 section h1 {
-font-size: 200%;
+font-size: 170%;
 }
+section h2 {
+font-size: 140%;
+}
+section h3 {
+font-size: 110%;
+}
+
 /* Links */
 a {
 color: #09c;
@@ -301,10 +308,7 @@ margin-bottom: 0;
 	color: #00ff00;
 }
 
-/* provider defaults view (_form) */
-.provider_defaults {
-	background-color: light-blue;
-}
+
 
 
 /* TERM form experimental */

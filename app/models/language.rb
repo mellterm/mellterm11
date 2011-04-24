@@ -14,5 +14,8 @@ class Language < ActiveRecord::Base
 	
 	has_many :translations
 	
+	has_many :source_tus
+	has_many :target_tus
+	
 		
 end

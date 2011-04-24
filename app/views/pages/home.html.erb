@@ -11,21 +11,14 @@
 	<table class="front" summary="For signed-in users">
 		<tr>
 			<td class="main">
-			
-				<h1 class="bold">Need Translation?</h1>
-				<%= link_to "Search translations!", searches_path, :class => "search_button round" %>
+				<h1>What would you like to do today?</h1> 
+				<%= link_to "Search All User Translations", searches_path, :class => "search_button round" %>
 				<br/>
-				<h1 class="bold">Got Translation?</h1>
 				<%= link_to "Enter translations", translationentry_path, :class => "search_button round" %>
-				<br/>
-				<h1 class="bold">Submit a Document for Translation</h1>
-				<br/>
-				<h1 class="bold">Upload a Memory/Term List</h1>
 				<br/>
 				<h1 class="bold">Subscribe to a Translation Provider</h1>
 				<br/>
-				<h1 class="searchfeed">Your Latest Translation Feeds</h1>
-				
+				<h1 class="searchfeed">Your Latest Translation Feeds</h1>		
 				<%= render 'shared/feed' %>
 		
 				

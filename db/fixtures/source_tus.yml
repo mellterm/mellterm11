@@ -1,0 +1,89 @@
+stu1:
+  id: 1
+  content: zwingend notwendig
+  language_id: de
+  definition:
+
+stu2:
+  id: 2
+  content: Zylinderkopfhaube
+  language_id: de
+  definition: 
+
+stu3:
+  id: 3
+  content: Vorschriften
+  language_id: de
+  definition:
+  
+stu4:
+  id: 4
+  content: Spezifizierung der Dichtprüfung
+  language_id: de
+  definition:
+  
+stu5:
+  id: 5
+  content: Norm
+  language_id: de
+  definition:
+  
+stu6:
+  id: 6
+  content: Konzernseinheitsaufnahmepunkte
+  language_id: de_de
+  definition:
+  
+stu7:
+  id: 7
+  content: Technische Informationen
+  language_id: de
+  definition:
+  
+stu8:
+  id: 8
+  content: Wirkleistung
+  language_id: de
+  definition:
+  
+stu9:
+  id: 9
+  content: Gerät
+  language_id: de
+  definition:
+  
+stu10:
+  id: 10
+  content: agence de control
+  language_id: fr
+  definition:
+  
+stu11:
+  id: 11
+  content: Bild anzeigen
+  language_id: de
+  definition:
+  
+stu12:
+  id: 12
+  content: Bewertungszeitraum
+  language_id: de
+  definition:
+  
+stu13:
+  id: 13
+  content: bestätigt
+  language_id: de
+  definition:                        
+
+stu14:
+  id: 14
+  content: Betriebssystem
+  language_id: de
+  definition:
+  
+stu15:
+  id: 15
+  content: Bildminiatur-skalierung (in %)
+  language_id: de
+  definition:     

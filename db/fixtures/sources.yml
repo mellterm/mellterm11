@@ -1,0 +1,34 @@
+vwmemory:
+  id: 1
+  name: VW676676.tmx
+  description: company-supplied reference memory
+  is_public: false 
+  url:
+
+elecmemory:
+  id: 2
+  name: ELEC.tmx
+  description: reference memory
+  is_public: false 
+  url:
+
+mslangportal:
+  id: 3
+  name: Microsof Lang Portal
+  description: term lookup website
+  is_public: false 
+  url:
+
+hauniterm:
+  id: 4
+  name: HAUNI.mtb
+  description: company-supplied termbase
+  is_public: false 
+  url:
+  
+linguee:
+  id: 5
+  name: Linguee.com
+  description: term lookup website
+  is_public: true 
+  url:  

@@ -11,7 +11,9 @@ class TranslationsController < ApplicationController
 			
 		end
 	
-	
+	def show
+			@translation = Translation.find(params[:id])
+		end
 	
 	def new
 		@translation= current_user.translations.new

@@ -1,0 +1,40 @@
+german:
+  id: 1
+  code: de
+  long_name: German (global)
+  
+german_de:
+  id: 2
+  code: de_de
+  long_name: German (Germany)
+ 
+german_at:
+  id: 3
+  code: de_at
+  long_name: German (Austria)
+ 
+english:
+  id: 4
+  code: en
+  long_name: English (global)
+ 
+english_gb:
+  id: 5
+  code: en_gb
+  long_name: English (UK)
+
+english_us:
+  id: 6
+  code: en_us
+  long_name: English (US)            
+
+spanish:
+  id: 7
+  code: es
+  long_name: Spanish (global)   
+  
+french:
+  id: 8
+  code: fr
+  long_name: French (global)
+    

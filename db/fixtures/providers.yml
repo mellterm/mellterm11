@@ -1,0 +1,89 @@
+user1_1:
+  id: 1
+  provider_name: Cars and Trucks
+  description: Terms from leading car manufacturer
+  source_language_id: german
+  target_language_id: english_us
+  default_domain_id: 4
+  default_is_public: false
+  default_source_id: 1
+  user_id: 1
+
+user1_2:
+  id: 2
+  provider_name: Electricals
+  description: Terms from component manufacturer
+  source_language_id: german
+  target_language_id: english
+  default_domain_id: 2
+  default_is_public: false
+  default_source_id: 2
+  user_id: 1  
+
+user1_3:
+  id: 3
+  provider_name: Electricals
+  description: Terms from component manufacturer
+  source_language_id: french
+  target_language_id: english
+  default_domain_id: 2
+  default_is_public: false
+  default_source_id: 2
+  user_id: 1 
+  
+user1_4:
+  id: 4
+  provider_name: Computing
+  description: Computing software terms
+  source_language_id: german
+  target_language_id: english_gb
+  default_domain_id: 1
+  default_is_public: false
+  default_source_id: 3
+  user_id: 1 
+
+user2_1:
+  id: 5
+  provider_name: Cars and Trucks
+  description: Terms from leading car manufacturer
+  source_language_id: german
+  target_language_id: english_us
+  default_domain_id: 4
+  default_is_public: false
+  default_source_id: 2
+  user_id: 2
+
+user2_2:
+  id: 6
+  provider_name: Electricals
+  description: Terms from component manufacturer
+  source_language_id: german
+  target_language_id: english
+  default_domain_id: 2
+  default_is_public: false
+  default_source_id: 2
+  user_id: 2  
+
+user2_3:
+  id: 7
+  provider_name: Electricals
+  description: Terms from component manufacturer
+  source_language_id: french
+  target_language_id: english
+  default_domain_id: 2
+  default_is_public: false
+  default_source_id: 2
+  user_id: 2 
+  
+user2_4:
+  id: 8
+  provider_name: Computing
+  description: Computing software terms
+  source_language_id: german
+  target_language_id: english_gb
+  default_domain_id: 1
+  default_is_public: false
+  default_source_id: 4
+  user_id: 2  
+ 
+      

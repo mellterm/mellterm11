@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110410133550) do
+ActiveRecord::Schema.define(:version => 20110403043729) do
 
   create_table "companies", :force => true do |t|
     t.string   "code"
@@ -40,14 +40,13 @@ ActiveRecord::Schema.define(:version => 20110410133550) do
   add_index "documents", ["provider_id"], :name => "index_documents_on_provider_id"
 
   create_table "domain_cubes", :force => true do |t|
+    t.integer  "translation_id"
     t.integer  "domain_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "translation_id"
   end
 
-  add_index "domain_cubes", ["domain_id"], :name => "index_domain_cubes_on_domain_id"
-  add_index "domain_cubes", ["domain_id"], :name => "index_domain_cubes_on_term_id_and_domain_id", :unique => true
+  add_index "domain_cubes", ["translation_id", "domain_id"], :name => "index_domain_cubes_on_translation_id_and_domain_id", :unique => true
 
   create_table "domains", :force => true do |t|
     t.string   "code"
