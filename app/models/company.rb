@@ -16,4 +16,6 @@ class Company < ActiveRecord::Base
 	
 	has_many :translations
 	
+	has_many :associations, :as => :associable
+	attr_accessible :code, :long_name, :notes, :address
 end

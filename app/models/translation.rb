@@ -35,5 +35,7 @@ class Translation < ActiveRecord::Base
   	belongs_to :provider			#user.provider.translation
   	belongs_to :user				
 	
+  	has_many :associations, :as => :associable
+  	
   	accepts_nested_attributes_for :source_tu, :target_tu, :source 
 end

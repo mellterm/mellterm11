@@ -26,6 +26,6 @@ class Document < ActiveRecord::Base
   								:message => "must be one of: #{DOCUMENT_TYPES.join(', ')}" 
 	
 
-	
-	
+	has_many :associations, :as => :associable
+	attr_accessible :name, :document_type 
 end

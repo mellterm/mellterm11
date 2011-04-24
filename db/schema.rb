@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110403043729) do
+ActiveRecord::Schema.define(:version => 20110424085357) do
+
+  create_table "associations", :force => true do |t|
+    t.integer "translation_id"
+    t.string  "description"
+    t.integer "associable_id"
+    t.string  "associable_type"
+  end
 
   create_table "companies", :force => true do |t|
     t.string   "code"
