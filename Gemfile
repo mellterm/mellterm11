@@ -9,6 +9,7 @@ gem 'rd_searchlogic'
 gem 'paperclip', '2.3.8'
 gem 'acts_as_tree'
 gem 'haml'
+gem 'formtastic', '1.2.3'
 
 group :development do
   gem 'rspec-rails', '2.3.0'

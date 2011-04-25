@@ -1,0 +1,19 @@
+%table.translationform
+  %tr
+  - semantic_form_for(:translation, :namespace => 'trans_form') do |t|
+    - t.inputs "Defaults", :id => "defaults" do
+      = t.input :is_public, :as => :radio, :collection => ["Yes", "No"]
+      = t.input :translation_type, :as => :radio, :collection => ["Term", "Segment"]  
+      = t.input :source_id, :as=> :select, :include_blank => false, :collection => Source.find(:all)
+      = link_to 'Create New Source'
+    - t.inputs "Mains", :id => "mains" do      
+      = t.input :language_id, :label => "From", :for => :source_tu, :as => :select, 
+      :collection => Language.find(:all)  
+      = t.input :language_id, :label => "To", :for => :target_tu, :as => :select, 
+      :collection => Language.find(:all)  
+      = t.input :content, :for => :source_tu
+      = t.input :definition, :for => :source_tu    
+      = t.input :content, :for => :target_tu
+      = t.input :definition, :for => :target_tu
+      = t.input :domain_id, :for => :domain_cubes, :as => :select, :collection => Domain.all    
+    = t.buttons

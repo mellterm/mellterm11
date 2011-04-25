@@ -1,30 +1,22 @@
 %table.translationform
   %tr
-  - form_for :translation do |t|  
-    = link_to 'Edit Defaults'
-    .field
-    = t.radio_button :is_public, 1
-    = t.label :is_public, "Public to all?"
-    = t.radio_button :is_public, 0
-    = t.label :is_public, "Private"    
-    .field
-    Translation Type
-    = t.radio_button :translation_type, 1
-    = t.label :translation_type, "Term"
-    = t.radio_button :translation_type, 2
-    = t.label :translation_type, "Segment"
-    .field
-    =t.label :source_id, "Enter a Source"
-    =t.collection_select (:source_id, Source.all, :id, :name)
-
-    =t.fields_for :domain do |dom| 
-      .field
-      =dom.label :domain, "Domain"
-      =dom.collection_select(:domain_id, Domain.all, :id, :codewithlongname)
-      %br
-      = link_to 'Add 2nd Domain' 
-      %br/
-        
+  = link_to 'Show Editable Defaults'
+  %br
+  - form_for :translation do |t|      
+    #defaults
+      = t.radio_button :is_public, 1
+      = t.label :is_public, "Public"
+      = t.radio_button :is_public, 0
+      = t.label :is_public, "Private"    
+      #p
+      = t.radio_button :translation_type, 1
+      = t.label :translation_type, "Term"
+      = t.radio_button :translation_type, 2
+      = t.label :translation_type, "Segment"
+      #p
+      = t.label :source_id, "Enter a Source"
+      =t.collection_select (:source_id, Source.all, :id, :name)
+      = link_to 'Create New Source'   
     %br/
     = link_to 'Enter Translation(s)'	
     =t.fields_for :source_tu do |su| 
@@ -38,11 +30,30 @@
       =tu.collection_select(:language_id, Language.all, :id, :code)
       =tu.text_field :definition, :value => "enter a definition"	
       %br
-      =t.label :source_url, "Enter a Source URL"
-      =t.text_field :source_url
+    =t.fields_for :domain_cube do |dom| 
+      =dom.label :domain, "Extra Domain"
+      =dom.collection_select(:domain_id, Domain.all, :id, :codewithlongname)
       %br
+      = link_to 'Add a 2nd Extra Domain' 
+      %br/
+      =t.label :source_url, "Enter a Source URL"
+      =t.text_field :source_url 
+      %br
+    =t.fields_for :association do |assoc|
+      Create an association
+      =assoc.radio_button("association", "document")
+      =assoc.label :assoc_document, "Document"
+      =assoc.radio_button("association", "company")
+      =assoc.label :assoc_document, "Company"
+      =assoc.radio_button("association", "translation")
+      =assoc.label :assoc_document, "Translation"
+      %br
+      =assoc.text_field :assocsearch, :value => "search for name here"
+      =assoc.text_field :selected, :value => "selected goes here?" 
+      %br 
+      = link_to 'Add Another Association'
+      %p 
     = link_to 'Add Another Translation'
-    
-    .field
+    %p
     =t.submit "Submit Translation"
     %br/
