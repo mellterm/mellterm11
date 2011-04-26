@@ -7,7 +7,7 @@ require 'populator'
 			Rake::Task['db:reset'].invoke
 			
 			make_users
-			make_domaincubes
+			make_conceptdomains
 			#make_translations
 			#make_subscriptions
 			#make_currencies
@@ -134,7 +134,9 @@ require 'populator'
 	
 	
 	
+	#subscriptions must be changed -> user to provider
 	def make_subscriptions
+		
 		
 		users = User.all
 		user = users.first
@@ -147,18 +149,6 @@ require 'populator'
 	
 	
 	
-	def make_currencies
-		name = ["EUR", "USD", "GBP", "RMB"]
-		long_name = ["Euro", "US Dollars", "Canadian Dollars", "Chinese Yuan"]
-		
-		name.each do 
-		Currency.create!(
-		:name => name.pop,
-		:long_name => long_name.pop
-		) 
-		end
-	end
-	
 
 	def make_domains
 	#domains now in domains.yml
@@ -169,11 +159,11 @@ require 'populator'
 		
 	end	
 	
-	def make_domaincubes 	
+	def make_conceptdomains 	
 
 		15.times do |n|
-			DomainCube.create!(
-				:translation_id => n,
+			ConceptDomain.create!(
+				:concept_id => n,
 				:domain_id => n
 			)
 

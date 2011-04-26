@@ -1,0 +1,19 @@
+transstatus1:
+  id: 1
+  name: translated
+
+transstatus2:
+  id: 2
+  name: reviewed_1
+
+transstatus3:
+  id: 3
+  name: reviewed_2
+ 
+transstatus4:
+  id: 4
+  name: agency_approved
+  
+transstatus5:
+  id: 5
+  name: client_approved    

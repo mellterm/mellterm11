@@ -1,0 +1,258 @@
+newtrans1:
+  id: 1
+  language_id: 1
+  conceptId: 1
+  content: Schlitze
+  is_source: true
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: nice time
+  source_id: 1
+  provider_id: 1
+  is_public: true
+  
+newtrans2:
+  id: 2
+  language_id: 4
+  conceptId: 1
+  content: slits
+  is_source: false
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: nice time
+  source_id: 1
+  provider_id: 1
+  is_public: true  
+  
+newtrans3:
+  id: 3
+  language_id: 1
+  conceptId: 2
+  content: verschlossen
+  is_source: true
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: nice time
+  source_id: 1
+  provider_id: 1
+  is_public: true
+
+newtrans4:
+  id: 4
+  language_id: 5
+  conceptId: 2
+  content: sealed
+  is_source: false
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: nice time
+  source_id: 1
+  provider_id: 1
+  is_public: true
+  
+newtrans5:
+  id: 5
+  language_id: 2
+  conceptId: 3
+  content: umgeformte Blechteile
+  is_source: true
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: nice time
+  source_id: 1
+  provider_id: 1
+  is_public: true
+  
+newtrans6:
+  id: 6
+  language_id: 4
+  conceptId: 3
+  content: formed sheet metal parts
+  is_source: false
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: tough one
+  source_id: 1
+  provider_id: 1
+  is_public: true
+  
+newtrans7:
+  id: 7
+  language_id: 3
+  conceptId: 4
+  content: Strahlquelle
+  is_source: true
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: 
+  source_id: 1
+  provider_id: 1
+  is_public: true
+  
+  
+newtrans8:
+  id: 8
+  language_id: 4
+  conceptId: 4
+  content: beam source
+  is_source: false
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: 
+  source_id: 1
+  provider_id: 1
+  is_public: true
+  
+  
+newtrans9:
+  id: 9
+  language_id: 2
+  conceptId: 5
+  content: Ansteuerungsfähigkeit
+  is_source: true
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: can it handle umlauts?
+  source_id: 1
+  provider_id: 1
+  is_public: true
+  
+  
+newtrans10:
+  id: 10
+  language_id: 5
+  conceptId: 5
+  content: control capability
+  is_source: false
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: easier in En
+  source_id: 1
+  provider_id: 1
+  is_public: true
+  
+newtrans11:
+  id: 11
+  language_id: 1
+  conceptId: 6
+  content: fixieren
+  is_source: true
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: verb
+  translation_status_id: 1
+  comments: verb begging for an association
+  source_id: 1
+  provider_id: 1
+  is_public: true
+  
+newtrans12:
+  id: 12
+  language_id: 4
+  conceptId: 6
+  content: to fix
+  is_source: false
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: verb
+  translation_status_id: 1
+  comments: nice time
+  source_id: 1
+  provider_id: 1
+  is_public: true
+
+newtrans13:
+  id: 13
+  language_id: 1
+  conceptId: 7
+  content: Bleche, Rohre, Profile
+  is_source: true
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: verb
+  translation_status_id: 1
+  comments: some commas
+  source_id: 1
+  provider_id: 1
+  is_public: true
+
+newtrans14:
+  id: 14
+  language_id: 5
+  conceptId: 7
+  content: sheet metal parts, piping, profiles
+  is_source: false
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: verb
+  translation_status_id: 1
+  comments: 
+  source_id: 1
+  provider_id: 1
+  is_public: true
+  
+newtrans15:
+  id: 15
+  language_id: 2
+  conceptId: 8
+  content: Technische Daten
+  is_source: true
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: nice time
+  source_id: 1
+  provider_id: 1
+  is_public: false
+  
+newtrans16:
+  id: 16
+  language_id: 4
+  conceptId: 8
+  content: Specifications
+  is_source: false
+  created_by_id: 1
+  last_updated_by_id: 1
+  term_type: term
+  part_of_speech: noun
+  translation_status_id: 1
+  comments: nice time
+  source_id: 1
+  provider_id: 1
+  is_public: false               

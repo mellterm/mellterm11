@@ -35,10 +35,10 @@ class NewTranslation < ActiveRecord::Base
 	belongs_to :source
 	belongs_to :company
 	belongs_to :created_by, :class_name => :user, :foreign_key => :created_by_id
-	belongs_to :last_updated_by_id, :class_name => :user, :foreign_key => last_updated_by_id
+	belongs_to :last_updated_by, :class_name => :user, :foreign_key => last_updated_by_id
 	belongs_to :translation_status
 	
-	accepts_nested_attributes_for :source, :concept_domain 
+	accepts_nested_attributes_for :source, :concept_domain, :translation_status_id 
 	
 	validates_inclusion_of :term_type, :in => ['term', 'segment', 'synonym', 'abbreviation'], :message=> "Please choose from term (default), segment, synonym, abbreviation"
 	
