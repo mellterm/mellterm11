@@ -33,7 +33,7 @@ class Provider < ActiveRecord::Base
   	
   	belongs_to :source, :foreign_key => :default_source_id
   	has_many :translations, :dependent => :destroy
-	
+	has_many :new_translations
 	
 	
 	validates :provider_name, :presence => true
