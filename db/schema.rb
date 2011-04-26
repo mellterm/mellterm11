@@ -10,13 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110424085357) do
+ActiveRecord::Schema.define(:version => 20110426090034) do
+
+  create_table "association_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "associations", :force => true do |t|
-    t.integer "translation_id"
-    t.string  "description"
     t.integer "associable_id"
     t.string  "associable_type"
+    t.integer "conceptId"
+    t.integer "association_type_id"
   end
 
   create_table "companies", :force => true do |t|
@@ -24,6 +30,13 @@ ActiveRecord::Schema.define(:version => 20110424085357) do
     t.string   "long_name"
     t.text     "notes"
     t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "concept_domains", :force => true do |t|
+    t.integer  "concept_id"
+    t.integer  "domain_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,6 +83,24 @@ ActiveRecord::Schema.define(:version => 20110424085357) do
   create_table "languages", :force => true do |t|
     t.string   "code"
     t.string   "long_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "new_translations", :force => true do |t|
+    t.integer  "language_id"
+    t.integer  "conceptId"
+    t.string   "content"
+    t.boolean  "is_source"
+    t.integer  "created_by_id"
+    t.integer  "last_updated_by_id"
+    t.string   "term_type"
+    t.string   "part_of_speech"
+    t.integer  "translation_status_id"
+    t.string   "comments"
+    t.integer  "source_id"
+    t.integer  "provider_id"
+    t.boolean  "is_public"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -142,6 +173,12 @@ ActiveRecord::Schema.define(:version => 20110424085357) do
   end
 
   add_index "target_tus", ["content"], :name => "index_target_tus_on_content"
+
+  create_table "translation_statuses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "translations", :force => true do |t|
     t.integer  "source_tu_id"

@@ -1,0 +1,2 @@
+class ConceptDomainsController < ApplicationController
+end

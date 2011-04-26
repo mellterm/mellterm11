@@ -1,19 +1,24 @@
 # == Schema Information
-# Schema version: 20110424085357
+# Schema version: 20110426073702
 #
 # Table name: associations
 #
-#  id              :integer         not null, primary key
-#  translation_id  :integer
-#  description     :string(255)
-#  associable_id   :integer
-#  associable_type :string(255)
+#  id                  :integer         not null, primary key
+#  associable_id       :integer
+#  associable_type     :string(255)
+#  conceptId           :integer
+#  association_type_id :integer
 #
 
 class Association < ActiveRecord::Base
 	
 	belongs_to :associable, :polymorphic => true
 	
-	attr_accessible :description, :translation_id, :associable_id, :associable_type
+	belongs_to :association_type
+	
+	
+	attr_accessible :conceptid, :associable_id, :associable_type
+	
+	
 
 end

@@ -1,0 +1,2 @@
+class NewTranslationsController < ApplicationController
+end
