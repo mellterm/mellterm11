@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: association_types
+# Table name: term_types
 #
 #  id         :integer         not null, primary key
 #  name       :string(255)
@@ -8,8 +8,8 @@
 #  updated_at :datetime
 #
 
-require 'spec_helper'
-
-describe AssociationType do
-  pending "add some examples to (or delete) #{__FILE__}"
+class TermType < ActiveRecord::Base
+  
+  has_many :terms
+  
 end

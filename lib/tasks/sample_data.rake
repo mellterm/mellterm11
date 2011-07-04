@@ -69,6 +69,9 @@ require 'populator'
 	end
 	
 	def make_translations
+	  
+	  #REPLACE with Make terms each provider gets this vanilla version#
+	  
 		#to make a translation create two tus for source/target, each tu needs a language.
 		 
 		
@@ -104,9 +107,13 @@ require 'populator'
 
 		User.all(:limit => 6).each do |user|
 			
-			provider = user.providers.create! (
-				:provider_name => "A provider",
-				:description =>  "A description of a provider"
+			provider_name = "Provider Dont Care"
+			provider_description = "This is a provider"
+			
+			
+			provider = user.providers.create!(
+				:provider_name => provider_name ,
+				:description =>  provider_description
 			)
 			
 			25.times do 

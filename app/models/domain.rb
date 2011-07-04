@@ -18,8 +18,8 @@
 class Domain < ActiveRecord::Base
 	
 
-	has_many :domain_cubes
-	has_many :translations, :through => :domain_cubes
+	has_many :term_domains
+	has_many :terms, :through => :term_domains
 	
 	
 	has_attached_file 	:photo,

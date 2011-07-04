@@ -15,7 +15,6 @@
       = t.label :translation_type, "Segment"
       #p
       = t.label :source_id, "Enter a Source"
-      =t.collection_select (:source_id, Source.all, :id, :name)
       = link_to 'Create New Source'   
     %br/
     = link_to 'Enter Translation(s)'	

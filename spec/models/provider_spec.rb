@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: providers
+#
+#  id                 :integer         not null, primary key
+#  provider_name      :string(255)
+#  description        :string(255)
+#  source_language_id :integer
+#  target_language_id :integer
+#  default_domain_id  :integer
+#  default_is_public  :boolean
+#  default_source_id  :integer
+#  user_id            :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+
 require 'spec_helper'
 
 describe Provider do

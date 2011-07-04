@@ -1,6 +1,10 @@
 <h1><%= gravatar_for current_user%> 
-	Your Providers </h1>
+	These are Your Providers </h1>
 
+show provider, add translations to provider (Form for Entering Translations..)
+
+
+<%= link_to 'Create a New Provider', new_provider_path %>
 <% if @providers.any? %>
 	<table class="terms" summary="User own terms">
 	
@@ -12,4 +16,4 @@
 	</table>
 		
 <% end %>
-<%= link_to 'New Provider', new_provider_path %>
+

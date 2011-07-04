@@ -27,7 +27,7 @@ class TranslationsController < ApplicationController
 		@translation = current_user.translations.build(params[:translation])
 		@source_tu = @translation.build_source_tu(params[:translation][:source_tu])
 		@target_tu = @translation.build_target_tu(params[:translation][:target_tu])
-		:source_id = @provider.default_source_id
+		@source_id = @provider.default_source_id
 		if @translation.valid?
 				Translation.transaction do
 					@translation.save

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: subscriptions
+#
+#  id            :integer         not null, primary key
+#  subscriber_id :integer
+#  subscribee_id :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 require 'spec_helper'
 
 describe Subscription do

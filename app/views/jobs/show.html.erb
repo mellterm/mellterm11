@@ -1,25 +1,20 @@
-<p id="notice"><%= notice %></p>
+<% title "Job" %>
 
 <p>
-  <b>Name:</b>
-  <%= @job.name %>
+  <strong>Code:</strong>
+  <%= @job.code %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @job.description %>
+</p>
+<p>
+  <strong>Owner:</strong>
+  <%= @job.owner_id %>
 </p>
 
 <p>
-  <b>Company:</b>
-  <%= @job.company_id %>
+  <%= link_to "Edit", edit_job_path(@job) %> |
+  <%= link_to "Destroy", @job, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", jobs_path %>
 </p>
-
-<p>
-  <b>Invoiced amount:</b>
-  <%= @job.invoiced_amount %>
-</p>
-
-<p>
-  <b>Currency:</b>
-  <%= @job.currency_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>

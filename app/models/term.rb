@@ -21,8 +21,11 @@
 #  updated_at        :datetime
 #
 
-require 'spec_helper'
-
-describe Term do
-  pending "add some examples to (or delete) #{__FILE__}"
+class Term < ActiveRecord::Base
+  
+  belongs_to :job
+  belongs_to :source
+  belongs_to :created_by, :class_name => 'User'
+  belongs_to :approved_by, :class_name => 'User'
+  belongs_to :term_type
 end

@@ -1,5 +1,7 @@
 Mellterm11::Application.routes.draw do
   
+  resources :jobs
+
 	resources :companies
 	resources :documents
  	resources :sources

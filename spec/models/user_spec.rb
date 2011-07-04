@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                    :integer         not null, primary key
+#  name                  :string(255)
+#  email                 :string(255)
+#  phone                 :string(255)
+#  skype                 :string(255)
+#  time_zone             :string(255)
+#  notes                 :text
+#  created_at            :datetime
+#  updated_at            :datetime
+#  encrypted_password    :string(255)
+#  salt                  :string(255)
+#  admin                 :boolean         default(FALSE)
+#  city_name             :string(255)
+#  native_language_id    :integer
+#  preferred_language_id :integer
+#  provider_id           :integer
+#  credit_balance        :integer         default(0)
+#
+
 require 'spec_helper'
 #rake db:test:prepare beforehand 
 

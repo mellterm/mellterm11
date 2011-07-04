@@ -15,8 +15,8 @@
 class Source < ActiveRecord::Base
 	
 	attr_accessible :name, :description, :is_public, :url
-	
-	has_many :translations
-	
+
+	has_many :terms
+	belongs_to :provider
 
 end

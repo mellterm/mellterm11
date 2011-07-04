@@ -1,5 +1,4 @@
 # == Schema Information
-# Schema version: 20110126110437
 #
 # Table name: users
 #
@@ -14,7 +13,7 @@
 #  updated_at            :datetime
 #  encrypted_password    :string(255)
 #  salt                  :string(255)
-#  admin                 :boolean
+#  admin                 :boolean         default(FALSE)
 #  city_name             :string(255)
 #  native_language_id    :integer
 #  preferred_language_id :integer

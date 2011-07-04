@@ -8,14 +8,15 @@
 			</h1>
 			</div>
 			<%= render 'subscribe_form' if signed_in? %>
-			<% if @user.providers.any? %>
+				<% if @user.providers.any? %>
+					<%= render 'shared/provider_stats' %>
+				<% else %>
+					No Providers yet. Create one!
+				<% end %>
+		
 				
-				<table class="terms" summary = "User terms" >
-			
-					<%= render @providers %>
-				</table>
 					
-			<% end %>
+		
 		</td>
 		
 		<td class="sidebar round">
@@ -37,13 +38,7 @@
 				<strong>Current credit:</strong>
 				<%= @user.credit_balance.to_s %><br />
 			<% end %>
-			<% if @user.providers.any? %>
-				<strong>Subscriptions held:</strong>
-					<%= render 'shared/provider_stats' %>
-			<% else %>
-				No Providers yet. Create one!
-				<% link_to new_provider(user) %>		
-			<% end %>		
+		
 				
 			
 			<strong>Subscriptions held:</strong>

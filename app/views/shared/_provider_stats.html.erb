@@ -1,14 +1,19 @@
 <% @user ||= current_user %>
 <div class="stats">
-<table summary="User stats for providers/translations">
+<table>
 	<tr>
 		<td>
-			<strong>Total Number of Providers:</strong><%= @user.providers.count %><br />
+			<strong>Total Number of Providers:</strong><br/>
+			<%= @user.providers.count %><br />
+			Click to Enter Translations</br/>
 				<% for provider in @user.providers %>
-					<a href="<%= user_provider_path(@user,provider) %>">
+				<a href="<%= user_provider_path(@user,provider) %>">
 					<span id="providers" class="stat">
-						<%= provider.provider_name %><br/>
-						<%= pluralize(provider.translations.count, "translations") %>
+		<%= provider.provider_name %><br/>
+		<%= pluralize(provider.translations.count, "translations") %>
+	    <%= link_to 'Edit', edit_provider_path(provider) %>
+	    <%= link_to 'Destroy', provider, 
+			:confirm => 'Are you sure?', :method => :delete %>
 					</span>
 				</a><br /> 
 				<% end %>

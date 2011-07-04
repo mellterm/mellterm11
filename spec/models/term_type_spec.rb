@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: association_types
+# Table name: term_types
 #
 #  id         :integer         not null, primary key
 #  name       :string(255)
@@ -10,6 +10,6 @@
 
 require 'spec_helper'
 
-describe AssociationType do
+describe TermType do
   pending "add some examples to (or delete) #{__FILE__}"
 end

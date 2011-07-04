@@ -32,8 +32,9 @@ class Provider < ActiveRecord::Base
   	belongs_to :domain, :foreign_key => :default_domain_id, :dependent => :destroy
   	
   	belongs_to :source, :foreign_key => :default_source_id
-  	has_many :translations, :dependent => :destroy
-	has_many :new_translations
+  	has_many :terms, :dependent => :destroy
+	  has_many :sources, :dependent => :destroy
+	  has_many :jobs, :dependent => :destroy
 	
 	
 	validates :provider_name, :presence => true
